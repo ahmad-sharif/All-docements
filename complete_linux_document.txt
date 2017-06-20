@@ -1,0 +1,786 @@
+Managing Linux Libraries and Software processes:
+ 
+Library:
+ 
+- Linux libraries are chunk of code that program developer can reference inside of their       
+  application. Instead of rewriting the whole code it gives references. It can be use again  and 
+  again.
+- Configure library
+→  vi /etc/ld.so.conf    → Global system configuration libraries
+→  /usr/lib/                  → This is core libraries
+→ /lib/                          → Another library 
+→  if mkdir /usr/local/mylibrary → vi /usr/local/mylibrary/mylibrary.so → “this is library docs”
+→ then need to export library path not all files to add this in my shell 
+→ export LD_LIBRARY_PATH = /usr/lib/mylibrary → Include library path to vi /etc/ld.so.conf
+→ ldconfig  → must run this command to to refresh libraries. 
+ 
+ 
+Using ps to Manage Processes:
+ 
+→ w → Show who is logged on and what they are doing
+→ ps → report a snapshot of the current processes
+→ ps -eU user  → Showing all processes using by user user
+→ ps -U root --forest → Shows the tree/hierarchy of processes
+→ ps u U root            → Shows processes by userlist view
+→ ps aux  → Details of all processes 
+→ ps aux | grep user, ps aux | grep httpd → Show processes of user and httpd
+→ ps aux | grep pts/0   → Shows the processes of pts/0
+→ ps axo pid, nice,comm,stat,euid,ruid,tty,tpgid,ppid,pcpu → Customize view 
+→ PS_PERSONALITY → Environmental variable to change ps
+ 
+ 
+Using Top to Manage Processes:
+ 
+→ By default it update every 3 seconds, uptime, how many user login, 
+→ Load Average last 1 minute:past 5 minutes:past 15 minutes
+→ Load average is 100% if it shows 1.0 for one cpu, 2.0 for 2 cpus.
+→ k      →  Kill process
+→ r       → Renice process
+→ s      → Change update time
+→ P      → Sort by CPU usage
+→ M/m    → Sort by Memory usage
+→ top -d 1 -n 5 -p 1,2,3 → d for update rate, p for show details of PID, n for 5 times update
+→ grep “model name”  /proc/cpuinfo | wc -l → To see how many cpu
+Using Nice, Renice to Manage Processes: 
+ 
+→ Highest to Lowest priority is -20 to 19
+→ Nice give always 10 priority by default
+→ nice httpd /nice -n 10 httpd → It is same priority of 10
+→ time nice -n -20 tar -cvf test.tar test  → Change priority at process
+→ ps axo pid,comm,nice | grep httpd 
+→ renice -n 10 $(pgrep httpd) → if we want to use nice, then we have to kill processes
+→ renice -n -20 -p 1620 → Change priority of current process to -20
+→ renice -n -20 -p 1620/ renice -n -20 1620  → It is same 
+→ renice -p ,-g ,-u → Change priority on PID, group, specific user
+ 
+Using pgrep, pkill, kill to Manage Processes:
+ 
+→ pgrep httpd → All PID of httpd process
+→ pgrep httpd -l    → All PID and  process name of httpd
+→ pgrep -u user -l  → All PID and processes name of user user
+→ pgrep -u user -l sshd  → All PID and process name of sshd of user
+→ pgrep -v -u user  → Shows all processes that do no belong to user user
+→ pgrep n → process ide of most recent process started for a user
+→ pkill httpd → Kills all processes of httpd
+→ pkill -u user sshd → Kills sshd processes of user user
+→ pkill -t pts/1 → Kill all processes started from a specific terminal
+→ kill -l   → To see all pkill processes
+→ kill -1 PID    → Restart a process
+→ kill -9 PID   → Kills forcefully
+→ kill -15 PID   → Kills Nicely
+→ killall → 
+ 
+ 
+Background And Foreground Processes Management:
+ 
+→ Ctrl + z   → To send background job
+→ &   → Adding & sign to send a job in background 
+→ ./test &   → Sending a job background
+→ jobs   → To see background jobs
+→ bg 1   → To send a job background
+→ fg 1   → To bring a job foreground
+→ kill -9 %1 → To kill a job from background 
+→ If we do exit from any terminal ,the background jobs goes off. 
+→ Use nohup to continue background jobs
+→ nohup ping -c 500 goggle.com 
+→ nohup ping -c 500 google.com > /dev/null 2>&1
+→ screen command to run tasks in background
+ 
+Uname to See Kernel informations: 
+ 
+→ uname -a → All information about kernel
+→ --kernel-name [ -s ] : --nodename [ -n ] : --kernel-release [ -r ] : --kernel-ersion [ -v ] :
+    --processor [ -p ] : --hardware [ -i ] :  --machine [ -m ] :
+     --operating-system [ -o ]  
+ 
+Htop:
+→ Learn About htop
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Linux File Managements:
+ 
+File Managements: 
+→ ls / ls $(PWD) / dir / vdir  → Listing Directory Entries
+→ ls  -al  /  ll → Displaying a long directory listing
+→ ls -t   → Listing sorted by time
+→ ls -R → Shows Directories contains recursively
+→ ls -lrt   → Listing sorted from oldest to newest
+→ touch file.txt / echo “abc” > file.txt / vi file.txt → Creating file
+→ touch -c file.txt  → Do not create a file
+→ echo ‘’ abc’’ >> file.txt → Create file if not exists
+→ touch -d '1 May 2005 10:22' file.txt → Set time and date of a file
+→ touch -t YYYYMMDDHHMM.SS file.txt → Set time and date of a file
+→ touch -am file.txt   → To change or update last access and modification time to current time
+→ stat file.txt   → Here stat shows file system status 
+→ placing . in front of any file , makes it hidden file
+→ mkdir dir → Creating directory
+→ mkdir -p dir1/dir2/dir3 → Creating parent directory
+→ cp < source file > < destination new file>  → Copy a file
+→ cp -pR < source file > < destination file>   → Copy with same owner permission and
+       recursively files
+→ cp -u <source file> <destination file >  →  Copy if original is newer than target file
+→ cp -a <source file > <destination archive file > → Copy Recursively to archive 
+→ cp -i <source file > < destination file >  → Ask us to overwrite 
+→ mv <source> < new name>  → Rename a file or directory
+→ rm file.txt → Remove file
+→ rm -rf  dir / rmdir dir  → Remove Directory
+→ rmdir
+ 
+Soft Links and Hard Links:
+ 
+→ ln -s <source file > <new name for link > → Create a symbolic link
+→ Soft links / Symlinks /Symbolic links
+→ Symbolic link can be broken when Source or target is moved or deleted
+→ when open the link for edit, actually open the source location
+→ Can make multiple symbolic link for the same file on a system
+→ Symbolic link has same permission like source file
+→ ln < source file > < new file name for link > → Create a hard link
+→ Every file on the system by default has one hard link
+→ Hard link links directly to the inode source on the hard disk
+→ if source/target file is removed , that links still works and data is available on the node until all
+      links are no longer available
+→ All hard links has same time as well as permission like source
+→ It is not possible to identify which one is original file
+Using chmod, chown and umask to Manage Permission:
+ 
+→ whoami  → Shows user name
+→ Regular file [ - ], Directory [ d ], Symbolic link [ l ], Character Special Device [ c ], Block
+     Special Device [ b ], Socket [ s ], FIFO [ p ]
+→ ls -al / ll → Determine file ownership and permission
+→ User [ u ], group [ g ], other [ o ], all [ a ], read [ r/4 ], write [ w/2 ], execute [ x/1]
+→ chmod ug+rw file.txt → Add read write permission to user/group owner of the file 
+→ chmod ug=r o=x file.txt
+→ chmod -R g+r dir  → Recursively set read permission to group owner
+→ chmod -R g+rX dir → Here X is giving execute permission only for directories
+→ chmod g-r file.txt  → Remove read permission from group
+→ chmod 0441 file.txt → Giving read permission to user/group owner and execute to others
+→ chown username : groupname file.txt → Set / Change user name and group name of file.txt
+→ chown username : groupname -R dir  → Change user name and group name of dir directory
+→ chown username file.txt   → Change / set use ownership of file.txt
+→ chown :groupname file.txt  → Set group ownership of file.txt
+→ chgrp groupname file.txt  → Set group ownership of file.txt
+→ newgroup groupname → Now if we make file then it will have new groupname 
+→ If we make a file executable ,then we need to export that path 
+→ export PATH = $PATH:/root/script
+→ umask is hiding permission
+→ umask is persistence that means if we exit from shell , umask change to 0022 by default, 
+→ Here 0022 means masking / removing 2= write permission
+→ umask → umask 0444 → removing read permission 
+→ now if we make any file or directory that will be new permission
+→ All directory has to be execute permission to open
+→ umask 0777 → To remove all permissions next creating files,directories 
+→ If umask value is 022, then any new files will , by default, have the permissions 644 
+     (666-022). Likewise, any directories will,by default, be created with the permissions 755
+      (777-022).
+→  vim /etc/bashrc
+→ vim /etc/profile
+→ umask can be change to 222 from 002 for permanently change umask settings
+→ chmod u+s / 4644 file.txt  → set uid (4000) , If i am not owner of file.txt and if i call that
+      file to execute , set-uid give the permission that owners can do
+→ chmod g+s / 2644  file.txt  →  set gid (2000), If i am not group owner of file.txt and if i call that
+      file to execute , set-uid give the permission that owners can do
+→ chmod 6644 file.txt   → Here set uid and gid together
+→ chmod g+s file.txt   →  Giving set gid permission to file.txt
+→ chmod +t file.txt   → If someone own file.txt, after adding sticky bit that owner will not be able 
+     to delete that file.txt , renaming a directory , removing files 
+ 
+ 
+Using tar, zip, gzip, bzip to archive, Backup files Management: 
+tar:
+→ Create a file (-c), List contents of archive (-t), Extract files (-x), Compress in gzip (-z), 
+     bzip2 (j), Archive files (f), Differ between files (-d)
+→ tar -cvf < new tar file > < source files and directories >
+→ tar -cvf file.txt.tar dir file.txt → Archiving file 
+→ tar -tf file.txt.tar → To see all file inside of archive
+→ If we unzip the old files will be replace by new files which come from archive
+→ tar -dvf file.txt.tar.gz → To see the differ of files 
+→ After extracting files from archive , still tar files there 
+→ If exacts files are similar to existing files, then it will replace those
+gzip:
+→ tar -cvzf file.txt.tar.gz dir file.txt  → Archiving and compressing with gzip
+→ tar -cvzf file.txt.tgz dir file.txt  → Archiving and compressing with gzip
+→ tar -zxvf file.txt.tar.gz → Decompress from gzip
+→ tar -cvf file.txt.tar file.txt → gzip file.txt.tar → Compressed by gzip
+→ gzip -l file.txt  → gzip a file name file.txt, here l shows details of zipping
+→ gzip -d file.txt.tar.gz  → tar -xvf file.txt.tar  → unzipping from gzip
+→ gunzip file.txt.tar.gz  → tar -xvf file.txt.tar  → unzipping from gzip
+→ If we want to gzip a directory , first we need to do that → tar -cvf dir.tar dir, then → gzip dir.tar
+zip:
+→ zip file.txt.zip file.txt  → Compressin by zip
+→ unzip file.txt.zip        → Uncompress by unzip
+→ zip -r dir.zip dir   → Recursively compress directoty
+→ unzip  dir.zip    → uncompress by unzip
+→ tar -cvf file.txt.tar file.txt → zip file.txt.tar → Compress by zip
+→ unzip file.txt.tar.gz  → tar -xvf file.txt.tar  → unzipping from zip
+bzip2:
+→ tar -cvf file.txt.tar file.txt → bzip2 file.txt.tar → Compress by bzip2 extension .bz2
+→ bunzip file.txt.tar.bz2 → tar -xvf file.txt.tar  → Unzipping from bzip
+→ tar -jcvf file.txt.tar.bz2 dir file.txt  → Archiving and compressing with bgzip
+→ tar -jcvf file.txt.tb2 dir file.txt  → Archiving and compressing with bgzip
+→ tar -jxvf file.txt.tar.bz2  → uncompress from
+star:
+→ star -c -f=file.txt.tar dir file.txt  → Archiving by star
+→ star -t -f=file.txt.tar  → To see what files inside of archive
+→ star -c -f file.txt.tar dir file.txt → gzip file.txt.tar → Compression and zipping
+→ gunzip file.txt.tar.gz → star -x -f=file.txt.tar → unzipping
+→ star -x f-file.txt.tar dir → It only extract dir directory from the archive
+→ If exacts files are similar to existing files, then it will not replace those. Any new file will add
+→ star -cz -f=file.txt.tar.gz dir file.txt  → gzip by star
+File Management with Input-Output Redirection and Piping:
+→ ls -R /etc/ > file.txt  → Redirecting a standard output to file.txt
+→ echo “adding text file” >> file.txt → Redirecting and appending to file.txt
+→ | → piping
+→ cat /etc/ |  grep cron | grep daily > file.txt
+→ 2> → Redirects standard error to a file
+→ 2>> → Redirects and append standard error to a file
+→ cat file.txt > stdout 2> stderr  → It will go to stdout if execute otherwise goes to stderr
+→ ls /etc/ > /dev/null → Here /dev/null is empty space directory
+→ 2>&1   → Redirect to standard error to standard output
+→ cat /etc kjjkjkjkjhdjkh &> stdout → Redirect std output and error to stdout
+→ cat file.txts > stdout 2>&1  →  Redirecting stderr to stdout
+Piping:
+→ /var/log/syslog | grep tail -f → Shows last 10 lines
+tail -f /var/log/syslog | grep ahmad 
+→ /var/log/syslog | grep tail -f -n 5 → Shows last 5 lines
+→ /var/log/syslog | grep head → Shows first 10 lines
+→ /var/log/syslog | grep head -n 5 → Shows first 5 lines
+→ /var/log/syslog | grep less → Output can be pipped into for easy browsing
+→ ls /etc | grep cron | grep daily > grep.txt
+→ ls /etc | sort -f > sort.txt  → cat sort.txt | grep cron
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Searching Files with grep and RegEx: 
+Basic regexp
+→ ^  → It matches the start of a line
+→ $  → It matches end of a line
+→ .  → Match any single character
+→ *  → Match zero or more previous character
+→ [A-Z], [a-z], [0-9], [abc]  → Matches any single character
+→ [ ^ads] → Matches except a, d, s
+Extended regex(Works only when we give -E for grep and -r for SED)
+Gready regex
+→ ?   → Matches zero or one previous character
+→ +   → Matches one or more previous character
+→ |   → Matches either one or another, 
+→ ( )  → Match a group
+→ ^12345$  → Matches Exact a word like 12345
+Intervel regex
+→ (123){ 2 } → Matches 2 times of previous character (123)
+→ (123) { n, }  → Matches n-th or more times of previous 123
+→ (123) {  , m }  → Matches up to m-th times of 123
+→ (123) { n, m }  → Matches n to m times of previous character
+ 
+Examples:
+→ grep ‘^#’ /etc/ssh/sshd_config  → Select the lines which starts with #
+→ grep -i ‘^auth’ /etc/ssh/sshd_config  → Select lines which starts with auth, case insensitive
+→ grep -v ‘^Auth’ /etc/ssh/sshd_config  → Select lines except starting with Auth
+→ grep ‘file$’ /etc/ssh/sshd_config  → Shows the lines which has ‘file’ in the last
+→ grep -i ‘^Authentication$’ /etc/ssh/sshd_config → Returns only Authentication, case
+      Insensitive
+→ grep [abcd]uthentication /etc/ssh/sshd_config  → Matches any single letter from abcd and 
+     then rest of the pattern
+→ grep ‘^[abcd]uthentication’ /etc/ssh/sshd_config  → It starts with a or b or c or d and then rest 
+     of the pattern 
+→ **** grep ‘[^abcd]’ /etc/ssh/sshd_config  → Matches except a or b or c
+→ grep -E ‘(a)+’ /etc/ssh/sshd_config  → Matches one or more times a
+→ grep ‘co...g’ /etc/ssh/sshd_config  → Matches any three single character
+→ grep -lr cron /etc/  → Shows all files path where is cron written
+→ ls /etc | grep cron  → Normal cron character search
+→ grep -E ‘ssh|config’ /etc/ssh/sshd_config → Search either ssh or config, it search bothe of 
+     them
+→ grep -E ‘ssh|config’ /etc/ssh/sshd_config | grep -v abc  → Search either ssh or config, it 
+     search bothe of them and then pipe it again except abc
+ 
+Finding Files By using Find and Locate:
+→ yum install mlocate
+→ yum install httpd
+→ updatebd
+→ locate → Finding Files by name
+→ locate httpd  → It finds where are httpd files are
+→ locate syslog  → Locate where are syslogs 
+→ find / -type f/d   → Search files by type of  file or directory
+→ find . -type d  → It search directory from current directory
+→ find / -name file.txt → Search files by name from root directory
+→ find / -size b/k/M/G  → Search by size of byte/Kilobyte/Megabyte
+→ find / -user user   → Find files by user user from root directory
+→ find / -uid 1002  → Find files by uid from root directory
+→ find . -type f -perm 0777 → Find files which has 0777 permission
+→ find . -type f ! -perm 0777 → Find files which has not 0777 permission
+→ find / -type f -name *.txt -size 5M → Search for a file name *.txt and size is 5M
+→ find / -size +5M -size -10M → search a file size between 5 to 10 M
+→ n , -n, +n  → n is n-th mins / days, -n is up to n-th mins / days, +n is more than n-th min / days
+→ -mtime → for modified time
+→ find / -mtime -3 → Finding files which were modified last 3 days
+→ find / -mtime +3 → Finding files which were modified more than 3 days 
+→ If we take one file and do next
+→ stat /usr/share/httpd/error/included → To see changes and modified times of that file
+→ find / -mtime +50 -mtime -100  → Find all the files modified more than 50 days back and less 
+     than 100 days
+→ -ctime → For changes time
+→ find / -cmin -60 → Find all files which are changed in last 1 hour
+→ -mmin  → For modified minits
+→ find / -mmin -3 → Finding files which were modified last 3 mins ago
+→ -atime for access time
+→ find / -atime 50 → Find all files which are accessed 50 days back
+→ find / -empty -exec rm {} \; → Remove all empty files one after other when find is running.
+find / -empty -exec rm {} \+ → Remove all empty files in one short after find completes to run
+ 
+→ find / -user user -type f -name file.txt rm {} \;  → Remove files which owns by user user and 
+     name is file.txt 
+ 
+Rm Ahamad.txt saima.txt linux.txt
+ 
+Rm -rf *.txt
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Users and Groups Managements:
+ 
+→ 0 is root user, 1-200 are system uses for rhel processes, 201-999 system user use by system
+     Processes but they do not own files on the system, 1000+ is regular system users
+→ /etc/default/useradd → Here is Default settings for user add
+→ /etc/login.defs  → Here is the configuration for user and group
+→ /etc/passwd → This is user login/password information 
+→ username : password : uid : gid : comments : /home/dir : shell
+→ getent passwd user → grep user /etc/passwd → To see user id and group id 
+     Information
+→ /etc/shadow  → Contains password policies
+→ Username : Encrypted password : Last change : Min age : Max age : Warning : Inactive 
+     : Expire
+→ Min age → Minimum number of days before a password a password may be change; a 0
+     means that there is no minimum days .  Max age  → Maximum number of days password
+     Must be change.  Warning  → Number of days before password expire .  Inactive  → Number
+     of days an account remain active after password has expired 
+→ getent passwd user →  cat /etc/passwd | grep user  → To see user id and group id 
+     Information
+→ Each user can have only one primary group and can be more than one supplementary group
+→ /etc/groups → Group members belongs to this directory
+→ getent group user → groups user → To see user user’s group informations
+Useradd:
+→ id user → To see user id and group id information
+→ useradd --help → To see all options of useradd
+→ useradd user → Add user
+→ useradd -p ‘password’ -u uid -g ‘primary group’ -G  ‘supplementary group’ -c  ‘comments’ 
+     -m ‘create a new home directory, not default location’ -f  ‘inactive account’ -r  ‘create a 
+     system user’ -s →  ‘/bin/shell  /bin/nologin’ -U ‘group id’ -M ‘do no create home directory’
+Usermod:
+→ getent passwd user →  cat /etc/passwd | grep user  → To see user id and group id 
+     Information
+→ usermod --help → To see all options of usermod
+→ useradd -p ‘123’ -u 1001 -g ‘user’ -G ‘group’ -c ‘ahmad’ -m ‘/home/user1’ - s ‘/bin/bash’ user
+→ usermod -c ‘comment’ -G ‘add group’ -aG ‘append group’ -l ‘change username’ -m ‘move 
+     home directory’ -p ‘change password’ -u ‘set uid’ -L ‘lock account’ -U ‘unlock account’
+→ usemod -e -1 user → lock the user immediately
+Chage(change age):
+→ chage → Change user password expiry information
+→ chage --help → To see all options of chage
+→ chage -l user → Give all password expire informations
+→ date -d ‘+40 days’ +%F  → Shows date after 40 days
+→ chage -E 2017-01-31 user → chage -E 40 user→ Account will be expire after 40 days
+→ chage -M 50 user → Maximum number of days 50 between password change
+→ chage -W 7 user  → Number of days of warning before password expires
+→ chage -I 5 user → Password will inactive after 5 days after password expire
+→ chage -m 10 user → Minimum number of days between password change
+→ chage -d 0 user → Expire everything, password must be change
+Userdel:
+→ userdel user → Delete user account
+→ userdel -r user → Delete user account and user home directory (Always use this)
+Group:
+→ cat /etc/group → user : pass : gid → Information about group
+→ getent group user → cat /etc/group → Information about group of user user
+→ groups user → Information about primary and supplementary group of user user
+Groupadd: 
+→ group add group → group add
+→ group -g gid -p ‘password’ -r ‘create a system group’ groupname
+Groupmod: 
+→ groupmod -g gid -p ‘change password’ -n ‘new name of group’ -R ‘change to root directory’ group
+Groupdel: 
+→ groupdel group → Delete group
+Newgroup and set-GID:
+→ If user has more than one group and he wants to make a file , it shows group permission is 
+    user’s primary group name, So if we want to make a file with other supplementary group 
+    permission , he need to switch group by “newgroup groupname -”
+→ newgroup groupname - → Switch groups
+→ If we have a directory with many group’s user access, and someone want to make file there , 
+    it shows that file group owner change to user’s primary group, that's why that file is not 
+    accessible by other user , To solve that problem we need to put set-gid chmod 2070 dir or
+    chmod g+s dir. So under that directory all permission will be same like parent directory 
+ 
+ 
+ 
+Package Managements:
+Yum and RPM:
+→ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Disk Managements:
+ 
+List , Create and Delete Partitions on MBR and GPT Disks:
+ 
+→ MBR can be only 4 partitions , it is 32 bits
+→ GPT is 64 bits , can be 128 partitions of 8GB
+→ fdisk - manipulate disk partition table
+→ fdisk -l → List  the  partition  tables for the specified devices and then exit.  If no
+              devices are given, those mentioned in /proc/partitions (if that exists)  are
+              used.
+ 
+Creating partitions:
+ 
+→ gdisk /dev/xvdf or 
+→ fdisk /dev/xvdf     → for making Linux LVM partition of whole disk
+→ n → for new partition 
+→ …….. L   → This is for partition type 
+→ 8e00
+→ t
+→ w
+→ y
+→ mkfs -t xfs /dev/xvdf1  → This is for file system
+→ mount /dev/xvdf1 /mnt/mymount  → mounting device at /mnt/mymount
+Or
+→ mount -U UUID /mnt/mymount
+→ umount /mnt/mymount → Unmounting device
+ 
+Delete partitions:
+ 
+→ gdisk xvdf or → do not choose xvdf1, because this is a partition, so choose xvdf
+→ fdisk xvdf
+→ d → d for delete partition
+ 
+ 
+Managing Logical volume:
+ 
+The Logical Volume Manager (LVM) is a flexible disk space solution that allows for expanding disk space. 
+The Logical Volume Manager The Logical Volume Manager creates a virtual layer of storage on top of the physical hardware. 
+The operating system then reads this logical volume as it would a regular disk. 
+Using LVM also allows users to expand their disk space with ease — instead of working with complicated partitions, a new physical disk can be added to the LVM volume group.
+→ lsblk →  list block devices
+→ lsblk --output NAME,FSTYPE,LABEL,UUID,MODE  
+→ fdisk -l → to see all available blocks
+→ yum install lvm2
+→ 
+→ pvcreate /dev/xvdf1
+→ pvdisplay
+→ physical volume → volume group → logical volume 
+→ pvcreate disk-name → gvcreate group-volume-name disk-name, disk-name  → lvcreate -n  
+ 
+ 
+Preparing the physical disk for Logical Volume:
+ 
+→ gdisk /dev/xvdf → for making Linux LVM partition of whole disk
+→ n → for partition
+→ …….. L   → This is for partition type 
+→ 8e00
+→ t
+→ w
+→ y
+→ 
+→ same procedure for /dev/xvdg and /dev/xvdh
+→   ls  → now we can see that xvdf1, xvdg1, xvdh1 were created
+→ 
+→ pvcreate /dev/xvdf1→ pvcreate /dev/xvdg1 → pvcreate /dev/xvdh1
+→ pvdisplay → to see all physical volumes
+→ vgcreate vg /dev/xvd{f1,g1}  → To create a volume group, name is vg
+→ vgdisplay  → To see the volume group
+→ lvcreate -n Logical_volume_name -L size_in_M_G_T volume_Group_Name
+→ lv create -n lv -L 100M vg
+→ lvdisplay → to see the logical volume display
+→ mkfs -t xfs location_of_logical_volume
+→ mkfs -t xfs /dev/vg/lv → Making filesystem to xfs
+→ df -h
+→ mkdir /mnt/myvolume
+→ mount /dev/vg/lv /mnt/myvolume/ → mounting the volume to /mnt/myvolume
+→ df -h
+→ touch /mnt/myvolume/ file{1..5}  → Making files for testing
+→ df -h
+→ vi /etc/fstab → we can add full path or UUID or LABEL of Logical volume
+→ mount -a
+→ cat /etc/mtab
+ 
+Extend , resize, remove of Logical Volume:
+ 
+→ lvextend /dev/vg/lv -L 1G /dev/vg/lv or → lvresize /dev/vg/lv -L size_M_G_T → This will make 
+     the the disk size what we put
+→ vgextend /dev/vg/lv -L +1G /dev/vg/lv → This will add 1G value
+ 
+→ lvreduce -n /dev/vg/lv -L 500M → for reduce
+→ lvdisplay→ df -h  → we can not see the extended update volume that's why we need to run 
+     bellow comm
+→  xfs_growfs /mnt/myvolume/
+→ df -h  → Now we can see updated results
+ 
+→ umount /mnt/myvolume/
+→ lvremove /mnt/myvolume
+ 
+Extend , resize, remove of Volume Group:
+ 
+→ vgextend vg /dev/xvdh1 → If we add a physical volume, xvdh1, then we can add this to exist 
+     Volume Group. 
+→ vgdisplay 
+ 
+→ we can move one disk from Volume Group
+→ pvmove /dev/xvdf1 → vgreduce vg /dev/xvdf1  → to reduce a disk from Volume Group
+→ vgdisplay 
+ 
+→ vgremove /dev/vg → remove Volume Group
+ 
+Remove Physical volume:
+→ pvremove disk_name
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+RAID0:
+ 
+configure:
+ 
+→ fdisk -l
+→ lsblk
+→ first we need two disks or partitions to make RAID0
+→ Now make two RAID partition,
+→ yum install mdadm
+→ mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/disk1 /dev/disk2
+→ mkfs -t xfs /dev/md0 
+→ mkdir /mnt/raid0_name
+→ mount /dev/md0 /mnt/raid0_name/
+→ vi /etc/fstab  → append this line /dev/md0    /mnt/raid0_name xfs defaults 0 0 → For 
+     mounting permanently
+→ mount -a
+→ df -h
+→ cat /etc/mtab
+→ We can make RAID0 from LVM
+→ mdadm --create --verbose /dev/md0 --level=stripe --raid-devices=2 /dev/vg1/lv1 /dev/vg2/lv2 
+ 
+Unconfigure RAID0: 
+ 
+→ df -h
+→ cat /etc/mtab → to see /dev/md0 is it mounted in permanently or not, 
+→ umount /mnt/raid0_name
+→ vi /etc/fstab → to see /dev/md0 is it mounted in permanently or not, if there remove it from
+→ mdadm --manage /dev/md0 --stop
+→ fdisk /dev/xvdf → go for deleting partitions
+→ partprobe
+→ mount -a
+→ fdisk -l
+→ df -h
+→ cat /etc/mtab
+→  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+RAID1:  
+ 
+Configure:
+ 
+→ raid1 means mirroring
+→ need two devices. One is a replica of one another
+→ fdisk -l
+→ lsblk
+→ first we need two disks or partitions to make RAID1
+→ Now make two RAID partition,
+→ partprobe disk_name
+→ yum install mdadm
+→ mdadm --create  /dev/md0 --level=1 --raid-devices=2 /dev/disk1 /dev/disk2
+→ mkfs -t xfs /dev/md0 
+Or
+→ mke2fs -j /dev/md0
+→ mkdir /mnt/raid1_name
+→ mount /dev/md0 /mnt/raid1_name/
+→ df -h
+→ vi /etc/fstab  → append this line /dev/md0    /mnt/raid0_name xfs defaults 0 0 → For 
+     mounting permanently
+→ mount -a
+→ df -h
+→ cat /etc/mtab
+→ We can make RAID1 from two LVM
+→ mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/vg1/lv1 /dev/vg2/lv2 
+ 
+Unconfigure:
+ 
+→ df -h
+→ cat /etc/mtab → to see /dev/md0 is it mounted in permanently or not, 
+→ umount /mnt/raid1_name
+→ vi /etc/fstab → to see /dev/md0 is it mounted in permanently or not, if there remove it from
+→ mdadm --manage /dev/md0 --stop
+→ fdisk /dev/xvdf → go for deleting partitions
+→ partprobe /dev/xvdf
+→ mount -a
+→ fdisk -l
+→ df -h
+→ cat /etc/mtab
+ 
+ 
+ 
+RAID5:
+ 
+Configure:
+ 
+→ raid1 means mirroring
+→ need three devices.
+→ fdisk -l
+→ lsblk
+→ first we need three disks or partitions to make RAID5
+→ Now make two RAID partition,
+→ partprobe disk_name
+→ yum install mdadm
+→ mdadm --create  /dev/md0 --level=5 --raid-devices=3 /dev/disk1 /dev/disk2 /dev/disk3
+→ mkfs -t xfs /dev/md0 
+Or
+→ mke2fs -j /dev/md0
+→ mkdir /mnt/raid5_name
+→ mount /dev/md0 /mnt/raid1_name/
+→ df -h
+→ cat /etc/mtab
+→ vi /etc/fstab  → append this line /dev/md0    /mnt/raid0_name ex3 defaults 0 0 → For 
+     mounting permanently
+→ mount -a
+→ df -h
+→ cat /etc/mtab
+→ We can make RAID5 from two LVM
+→ mdadm --create --verbose /dev/md0 --level=5 --raid-devices=3 /dev/vg1/lv1 /dev/vg2/lv2 lv3 
+ 
+Unconfigure:
+ 
+→ df -h
+→ cat /etc/mtab → to see /dev/md0 is it mounted in permanently or not, 
+→ umount /mnt/raid1_name
+→ vi /etc/fstab → to see /dev/md0 is it mounted in permanently or not, if there remove it from
+→ mdadm --manage /dev/md0 --stop
+→ fdisk /dev/xvdf → go for deleting partitions
+→ partprobe /dev/xvdf
+→ mount -a
+→ fdisk -l
+→ df -h
+→ cat /etc/mtab
+ 
+ 
+DNS: 
+Domain Name Server Configuration
+ 
+ 
+Caching name server
+Vi /etc/resolv.conf
+nslookup 
+Yum provive nslookup
+Yum install bind-utils
+ 
+DNS Caching Name Server:
+→ yum install bind bind-utils → when we install this, it has a default caching name server
+→ 
+ 
+ 
+
