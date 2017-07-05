@@ -1,0 +1,3337 @@
+﻿https://pymotw.com/3/py-modindex.html
+
+
+http://www.linuxnix.com/python-builtin-helpdir-help-type-and-___doc_-functions/
+
+
+
+
+http://www.linuxnix.com/40-online-help-resources-for-python-learning/
+
+
+
+
+Samba config
+
+
+http://www.linuxnix.com/samba-server-configuration/
+
+
+
+
+
+
+Disk management
+
+
+
+
+http://www.linuxnix.com/disk-management-i-formating-with-ext2ext3/
+
+
+
+
+Aws
+
+
+
+
+http://www.linuxnix.com/amazon-aws-regions-vs-availability-zones-vs-edge-locations-vs-data-centers/
+
+
+
+
+Installation of Python:
+
+
+By default Python is installed in many Linux/Unix machines
+→ yum install python → For RedHat Based 
+→ apt-get install python → For Debian Based
+→ pkgadd -d ActivePython* → For Sun Solaris
+ 
+Getting help on Python:
+→ python -V → Find Python Version
+→ python → To go to Python prompt by executing python command
+
+
+→ help(subprocess/variablename) → Help function to know more about a variable, datatype, function, module, class, method
+→ dir()  → Same as help function. Dir is one more help command available in python to show available function for given name
+→ type(variablename) → It shows the type of variable 
+Data Types:
+
+
+There are eight types of data in python.
+Use type() function to get the type of data
+
+
+→ Booleans → True or false as output
+→ None
+→ Numbers  → Can store numbers
+→ Strings → Can store chars
+→ List(Arrays) → Can store multiple/list values and it can be changed
+        → row1 = ["Joseph", "McCullough"] → Example
+→ Tuples → Can be store multiple/list values and can not be changed
+→ Sets → It is an unordered list of unique values
+→ Dictionary  → It is also called Hashes or Associative arrays or key-value pairs and can store key value pairs
+        → dic = { (1,2,3):"abc", 3.1415:"abc"}
+        → dic
+ 
+Print Statements, Joiners and quotes:
+
+
+→ , →  For concatenation print statements with space 
+→ + → For concatenation print statements without space
+→ VAR1=10 → print VAR1, “abc” → 10 abc
+→ print “Hello”+”World” → Helloworld
+→         %d will format a number for display.
+* %s will insert the presentation string representation of the object (i.e. str(o))
+* %r will insert the canonical string representation of the object (i.e. repr(o))
+
+
+→ name = 'marcog' 
+     number = 42 
+     print '%s %d' % (name, number)
+     will print marcog 42. Note that name is a string (%s) and number is an integer (%d for decimal).
+     In Python 3 the example would be:
+print('%s %d' % (name, number))
+
+
+→ Escape characters: 
+\n
+\r
+\t
+\u
+\L
+\U
+\E
+
+
+Quotes:
+Single/Double quotes is to hold string with spaces together. No difference between single quotes and double quotes.
+
+
+
+
+Boolean:
+
+
+Built-in functions:
+
+
+Python built in function example:
+http://joequery.me/code/python-builtin-functions/#format
+
+
+The Python interpreter has a number of functions built into it that are always available. They are listed here in alphabetical order.
+abs (x) -- built-in function
+Return the absolute value of a number. The argument may be a plain or long integer or a floating point number.
+apply (function, args) -- built-in function
+The function argument must be a callable object (a user-defined or built-in function or method, or a class object) and the argsargument must be a tuple. The function is called with args as argument list; the number of arguments is the the length of the tuple. (This is different from just calling func(args), since in that case there is always exactly one argument.)
+chr (i) -- built-in function
+Return a string of one character whose ASCII code is the integer i, e.g., chr(97) returns the string 'a'. This is the inverse of ord(). The argument must be in the range [0..255], inclusive.
+cmp (x, y) -- built-in function
+Compare the two objects x and y and return an integer according to the outcome. The return value is negative if x < y, zero if x == y and strictly positive if x > y.
+coerce (x, y) -- built-in function
+Return a tuple consisting of the two numeric arguments converted to a common type, using the same rules as used by arithmetic operations.
+compile (string, filename, kind) -- built-in function
+Compile the string into a code object. Code objects can be executed by a exec() statement or evaluated by a call to eval(). The filename argument should give the file from which the code was read; pass e.g. '<string>' if it wasn't read from a file. The kind argument specifies what kind of code must be compiled; it can be 'exec' if string consists of a sequence of statements, or 'eval' if it consists of a single expression.
+dir () -- built-in function
+Without arguments, return the list of names in the current local symbol table. With a module, class or class instance object as argument (or anything else that has a __dict__ attribute), returns the list of names in that object's attribute dictionary. The resulting list is sorted. For example:
+* >>> import sys
+* >>> dir()
+* ['sys']
+* >>> dir(sys)
+* ['argv', 'exit', 'modules', 'path', 'stderr', 'stdin', 'stdout']
+* >>>
+divmod (a, b) -- built-in function
+Take two numbers as arguments and return a pair of integers consisting of their integer quotient and remainder. With mixed operand types, the rules for binary arithmetic operators apply. For plain and long integers, the result is the same as (a / b, a % b). For floating point numbers the result is the same as (math.floor(a / b), a % b).
+eval (s, globals, locals) -- built-in function
+The arguments are a string and two optional dictionaries. The string argument is parsed and evaluated as a Python expression (technically speaking, a condition list) using the dictionaries as global and local name space. The string must not contain null bytes or newline characters. The return value is the result of the expression. If the third argument is omitted it defaults to the second. If both dictionaries are omitted, the expression is executed in the environment where eval is called. Syntax errors are reported as exceptions. Example:
+* >>> x = 1
+* >>> print eval('x+1')
+* 2
+* >>>
+This function can also be used to execute arbitrary code objects (e.g. created by compile()). In this case pass a code object instead of a string. The code object must have been compiled passing 'eval' to the kind argument.
+Note: dynamic execution of statements is supported by the exec statement.
+filter (function, list) -- built-in function
+Construct a list from those elements of list for which function returns true. If list is a string or a tuple, the result also has that type; otherwise it is always a list. If function is None, the identity function is assumed, i.e. all elements of list that are false (zero or empty) are removed.
+float (x) -- built-in function
+Convert a number to floating point. The argument may be a plain or long integer or a floating point number.
+getattr (object, name) -- built-in function
+The arguments are an object and a string. The string must be the name of one of the object's attributes. The result is the value of that attribute. For example, getattr(x, 'foobar') is equivalent to x.foobar.
+hasattr (object, name) -- built-in function
+The arguments are an object and a string. The result is 1 if the string is the name of one of the object's attributes, 0 if not. (This is implemented by calling getattr(object, name) and seeing whether it raises an exception or not.)
+hash (object) -- built-in function
+Return the hash value of the object (if it has one). Hash values are 32-bit integers. They are used to quickly compare dictionary keys during a dictionary lookup. Numeric values that compare equal have the same hash value (even if they are of different types, e.g. 1 and 1.0).
+hex (x) -- built-in function
+Convert a number to a hexadecimal string. The result is a valid Python expression.
+id (object) -- built-in function
+Return the `identity' of an object. This is an integer which is guaranteed to be unique and constant for this object during its lifetime. (Two objects whose lifetimes are disjunct may have the same id() value.) (Implementation note: this is the address of the object.)
+input (prompt) -- built-in function
+Almost equivalent to eval(raw_input(prompt)). As for raw_input(), the prompt argument is optional. The difference is that a long input expression may be broken over multiple lines using the backslash convention.
+int (x) -- built-in function
+Convert a number to a plain integer. The argument may be a plain or long integer or a floating point number.
+len (s) -- built-in function
+Return the length (the number of items) of an object. The argument may be a sequence (string, tuple or list) or a mapping (dictionary).
+long (x) -- built-in function
+Convert a number to a long integer. The argument may be a plain or long integer or a floating point number.
+map (function, list, ...) -- built-in function
+Apply function to every item of list and return a list of the results. If additional list arguments are passed, function must take that many arguments and is applied to the items of all lists in parallel; if a list is shorter than another it is assumed to be extended with None items. If function is None, the identity function is assumed; if there are multiple list arguments, map returns a list consisting of tuples containing the corresponding items from all lists (i.e. a kind of transpose operation). The listarguments may be any kind of sequence; the result is always a list.
+max (s) -- built-in function
+Return the largest item of a non-empty sequence (string, tuple or list).
+min (s) -- built-in function
+Return the smallest item of a non-empty sequence (string, tuple or list).
+oct (x) -- built-in function
+Convert a number to an octal string. The result is a valid Python expression.
+open (filename, mode, bufsize) -- built-in function
+Return a new file object (described earlier under Built-in Types). The first two arguments are the same as for stdio's fopen(): filename is the file name to be opened, mode indicates how the file is to be opened: 'r' for reading, 'w' for writing (truncating an existing file), and 'a' opens it for appending. Modes 'r+', 'w+' and 'a+' open the file for updating, provided the underlying stdio library understands this. On systems that differentiate between binary and text files, 'b' appended to the mode opens the file in binary mode. If the file cannot be opened, IOError is raised. If mode is omitted, it defaults to 'r'. The optional bufsize argument specifies the file's desired buffer size: 0 means unbuffered, 1 means line buffered, any other positive value means use a buffer of (approximately) that size. A negative bufsize means to use the system default, which is usually line buffered for for tty devices and fully buffered for other files.(1)
+ord (c) -- built-in function
+Return the ASCII value of a string of one character. E.g., ord('a') returns the integer 97. This is the inverse of chr().
+pow (x, y) -- built-in function
+Return x to the power y. The arguments must have numeric types. With mixed operand types, the rules for binary arithmetic operators apply. The effective operand type is also the type of the result; if the result is not expressible in this type, the function raises an exception; e.g., pow(2, -1) is not allowed.
+range (start, end, step) -- built-in function
+This is a versatile function to create lists containing arithmetic progressions. It is most often used in for loops. The arguments must be plain integers. If the step argument is omitted, it defaults to 1. If the start argument is omitted, it defaults to 0. The full form returns a list of plain integers [start, start + step, start + 2 * step, ...]. If step is positive, the last element is the largest start + i * step less than end; if step is negative, the last element is the largest start + i * stepgreater than end. step must not be zero. Example:
+* >>> range(10)
+* [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+* >>> range(1, 11)
+* [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+* >>> range(0, 30, 5)
+* [0, 5, 10, 15, 20, 25]
+* >>> range(0, 10, 3)
+* [0, 3, 6, 9]
+* >>> range(0, -10, -1)
+* [0, -1, -2, -3, -4, -5, -6, -7, -8, -9]
+* >>> range(0)
+* []
+* >>> range(1, 0)
+* []
+* >>>
+raw_input (prompt) -- built-in function
+The string argument is optional; if present, it is written to standard output without a trailing newline. The function then reads a line from input, converts it to a string (stripping a trailing newline), and returns that. When EOF is read, EOFError is raised. Example:
+* >>> s = raw_input('--> ')
+* --> Monty Python's Flying Circus
+* >>> s
+* 'Monty Python\'s Flying Circus'
+* >>>
+reduce (function, list, initializer) -- built-in function
+Apply the binary function to the items of list so as to reduce the list to a single value. E.g., reduce(lambda x, y: x*y, list, 1) returns the product of the elements of list. The optional initializer can be thought of as being prepended to list so as to allow reduction of an empty list. The list arguments may be any kind of sequence.
+reload (module) -- built-in function
+Re-parse and re-initialize an already imported module. The argument must be a module object, so it must have been successfully imported before. This is useful if you have edited the module source file using an external editor and want to try out the new version without leaving the Python interpreter. Note that if a module is syntactically correct but its initialization fails, the first import statement for it does not import the name, but does create a (partially initialized) module object; to reload the module you must first import it again (this will just make the partially initialized module object available) before you can reload() it.
+repr (object) -- built-in function
+Return a string containing a printable representation of an object. This is the same value yielded by conversions (reverse quotes). It is sometimes useful to be able to access this operation as an ordinary function. For many types, this function makes an attempt to return a string that would yield an object with the same value when passed to eval().
+round (x, n) -- built-in function
+Return the floating point value x rounded to n digits after the decimal point. If n is omitted, it defaults to zero. The result is a floating point number. Values are rounded to the closest multiple of 10 to the power minus n; if two multiples are equally close, rounding is done away from 0 (so e.g. round(0.5) is 1.0 and round(-0.5) is -1.0).
+setattr (object, name, value) -- built-in function
+This is the counterpart of getattr. The arguments are an object, a string and an arbitrary value. The string must be the name of one of the object's attributes. The function assigns the value to the attribute, provided the object allows it. For example,setattr(x, 'foobar', 123) is equivalent to x.foobar = 123.
+str (object) -- built-in function
+Return a string containing a nicely printable representation of an object. For strings, this returns the string itself. The difference with repr(object is that str(object does not always attempt to return a string that is acceptable to eval(); its goal is to return a printable string.
+type (object) -- built-in function
+Return the type of an object. The return value is a type object. There is not much you can do with type objects except compare them to other type objects; e.g., the following checks if a variable is a string:
+* >>> if type(x) == type(''): print 'It is a string'
+vars () -- built-in function
+Without arguments, return a dictionary corresponding to the current local symbol table. With a module, class or class instance object as argument (or anything else that has a __dict__ attribute), returns a dictionary corresponding to the object's symbol table. The returned dictionary should not be modified: the effects on the corresponding symbol table are undefined.(2)
+xrange (start, end, step) -- built-in function
+This function is very similar to range(), but returns an ``xrange object'' instead of a list. This is an opaque sequence type which yields the same values as the corresponding list, without actually storing them all simultaneously. The advantage ofxrange() over range() is minimal (since xrange() still has to create the values when asked for them) except when a very large range is used on a memory-starved machine (e.g. DOS) or when all of the range's elements are never used (e.g. when the loop is usually terminated with break).
+
+
+
+
+2.2. Built-in Exceptions
+Exceptions are string objects. Two distinct string objects with the same value are different exceptions. This is done to force programmers to use exception names rather than their string value when specifying exception handlers. The string value of all built-in exceptions is their name, but this is not a requirement for user-defined exceptions or exceptions defined by library modules.
+The following exceptions can be generated by the interpreter or built-in functions. Except where mentioned, they have an `associated value' indicating the detailed cause of the error. This may be a string or a tuple containing several items of information (e.g., an error code and a string explaining the code).
+User code can raise built-in exceptions. This can be used to test an exception handler or to report an error condition `just like' the situation in which the interpreter raises the same exception; but beware that there is nothing to prevent user code from raising an inappropriate error.
+AttributeError -- built-in exception
+Raised when an attribute reference or assignment fails. (When an object does not support attributes references or attribute assignments at all, TypeError is raised.)
+EOFError -- built-in exception
+Raised when one of the built-in functions (input() or raw_input()) hits an end-of-file condition (EOF) without reading any data. (N.B.: the read() and readline() methods of file objects return an empty string when they hit EOF.) No associated value.
+IOError -- built-in exception
+Raised when an I/O operation (such as a print statement, the built-in open() function or a method of a file object) fails for an I/O-related reason, e.g., `file not found', `disk full'.
+ImportError -- built-in exception
+Raised when an import statement fails to find the module definition or when a from ... import fails to find a name that is to be imported.
+IndexError -- built-in exception
+Raised when a sequence subscript is out of range. (Slice indices are silently truncated to fall in the allowed range; if an index is not a plain integer, TypeError is raised.)
+KeyError -- built-in exception
+Raised when a mapping (dictionary) key is not found in the set of existing keys.
+KeyboardInterrupt -- built-in exception
+Raised when the user hits the interrupt key (normally Control-C or DEL). During execution, a check for interrupts is made regularly. Interrupts typed when a built-in function input() or raw_input()) is waiting for input also raise this exception. No associated value.
+MemoryError -- built-in exception
+Raised when an operation runs out of memory but the situation may still be rescued (by deleting some objects). The associated value is a string indicating what kind of (internal) operation ran out of memory. Note that because of the underlying memory management architecture (C's malloc() function), the interpreter may not always be able to completely recover from this situation; it nevertheless raises an exception so that a stack traceback can be printed, in case a run-away program was the cause.
+NameError -- built-in exception
+Raised when a local or global name is not found. This applies only to unqualified names. The associated value is the name that could not be found.
+OverflowError -- built-in exception
+Raised when the result of an arithmetic operation is too large to be represented. This cannot occur for long integers (which would rather raise MemoryError than give up). Because of the lack of standardization of floating point exception handling in C, most floating point operations also aren't checked. For plain integers, all operations that can overflow are checked except left shift, where typical applications prefer to drop bits than raise an exception.
+RuntimeError -- built-in exception
+Raised when an error is detected that doesn't fall in any of the other categories. The associated value is a string indicating what precisely went wrong. (This exception is a relic from a previous version of the interpreter; it is not used any more except by some extension modules that haven't been converted to define their own exceptions yet.)
+SyntaxError -- built-in exception
+Raised when the parser encounters a syntax error. This may occur in an import statement, in an exec statement, in a call to the built-in function eval() or input(), or when reading the initial script or standard input (also interactively).
+SystemError -- built-in exception
+Raised when the interpreter finds an internal error, but the situation does not look so serious to cause it to abandon all hope. The associated value is a string indicating what went wrong (in low-level terms).
+You should report this to the author or maintainer of your Python interpreter. Be sure to report the version string of the Python interpreter (sys.version; it is also printed at the start of an interactive Python session), the exact error message (the exception's associated value) and if possible the source of the program that triggered the error.
+SystemExit -- built-in exception
+This exception is raised by the sys.exit() function. When it is not handled, the Python interpreter exits; no stack traceback is printed. If the associated value is a plain integer, it specifies the system exit status (passed to C's exit() function); if it isNone, the exit status is zero; if it has another type (such as a string), the object's value is printed and the exit status is one.
+A call to sys.exit is translated into an exception so that clean-up handlers (finally clauses of try statements) can be executed, and so that a debugger can execute a script without running the risk of losing control. The posix._exit() function can be used if it is absolutely positively necessary to exit immediately (e.g., after a fork() in the child process).
+TypeError -- built-in exception
+Raised when a built-in operation or function is applied to an object of inappropriate type. The associated value is a string giving details about the type mismatch.
+ValueError -- built-in exception
+Raised when a built-in operation or function receives an argument that has the right type but an inappropriate value, and the situation is not described by a more precise exception such as IndexError.
+ZeroDivisionError -- built-in exception
+Raised when the second argument of a division or modulo operation is zero. The associated value is a string indicating the type of the operands and the operation.
+
+
+
+
+
+
+
+
+Python String:
+
+
+1. Define:
+
+
+String is a data type representing char in computer program
+→ var1=’abcdef’
+
+
+2. Quotes:
+
+
+String should be in quotes always. Single and double quotes are same and triple quotes are for multiple lines
+→ var2=”””abc
+               def”””
+
+
+3. String Operators:
+→ , → For printing multiple strings with space as separator
+        → print var1,var2
+→ + → For concatenating multiple string without space
+        → print (var1+var2)
+→ % → for formating like padding, datatype definition for a string 
+        → print “%10s” %var1
+→ * → for multiplying a string
+        → print var1*5
+
+
+
+
+4. Substrings:
+
+
+var1[0] → First value in string
+var[0:5] or var[:5] → First 6 elements in a string
+var[5:] → 6th char to end
+Var[:-1] → last char
+?????
+
+
+5. String Logical Operators:
+
+
+→ ‘a’ in var1
+→ ‘a’ not in var1
+
+
+String Methods:
+
+
+String capitalize:
+
+
+str.capitalize()
+→ It returns a copy of the string with only its first character capitalized
+str = "this is string example....wow!!!";
+
+print "str.capitalize() : ", str.capitalize()
+str.capitalize() :  This is string example....wow!!!
+String centre:
+
+
+str.center(width[, fillchar])
+The method center() returns centered in a string of length width. Padding is done using the specified fillchar. Default filler is a space.
+str = "this is string example....wow!!!";
+
+print "str.center(40, 'a') : ", str.center(40, 'a')
+str.center(40, 'a') :  aaaathis is string example....wow!!!aaaa
+
+
+
+
+
+
+Python Strings:
+Strings are amongst the most popular types in Python. We can create them simply by enclosing characters in quotes. Python treats single quotes the same as double quotes. Creating strings is as simple as assigning a value to a variable. For example −
+var1 = 'Hello World!'
+var2 = "Python Programming"
+
+Accessing Values in Strings:
+Python does not support a character type; these are treated as strings of length one, thus also considered a substring.
+To access substrings, use the square brackets for slicing along with the index or indices to obtain your substring. For example −
+#!/usr/bin/python
+
+var1 = 'Hello World!'
+var2 = "Python Programming"
+
+print "var1[0]: ", var1[0]
+print "var2[1:5]: ", var2[1:5]
+
+When the above code is executed, it produces the following result −
+var1[0]:  H
+var2[1:5]:  ytho
+
+Updating Strings:
+You can "update" an existing string by rereassigning a variable to another string. The new value can be related to its previous value or to a completely different string altogether. For example −
+#!/usr/bin/python
+
+var1 = 'Hello World!'
+
+print "Updated String :- ", var1[:6] + 'Python'
+
+When the above code is executed, it produces the following result −
+Updated String :-  Hello Python
+
+Escape Characters
+Following table is a list of escape or non-printable characters that can be represented with backslash notation.
+An escape character gets interpreted; in a single quoted as well as double quoted strings.
+Backslash
+notation
+	Hexadecimal
+character
+	Description
+	\a
+	0x07
+	Bell or alert
+	\b
+	0x08
+	Backspace
+	\cx
+	 
+	Control-x
+	\C-x
+	 
+	Control-x
+	\e
+	0x1b
+	Escape
+	\f
+	0x0c
+	Formfeed
+	\M-\C-x
+	 
+	Meta-Control-x
+	\n
+	0x0a
+	Newline
+	\nnn
+	 
+	Octal notation, where n is in the range 0.7
+	\r
+	0x0d
+	Carriage return
+	\s
+	0x20
+	Space
+	\t
+	0x09
+	Tab
+	\v
+	0x0b
+	Vertical tab
+	\x
+	 
+	Character x
+	\xnn
+	 
+	Hexadecimal notation, where n is in the range 0.9, a.f, or A.F
+	String Special Operators
+Assume string variable a holds 'Hello' and variable b holds 'Python', then −
+Operator
+	Description
+	Example
+	+
+	Concatenation - Adds values on either side of the operator
+	a + b will give HelloPython
+	*
+	Repetition - Creates new strings, concatenating multiple copies of the same string
+	a*2 will give -HelloHello
+	[]
+	Slice - Gives the character from the given index
+	a[1] will give e
+	[ : ]
+	Range Slice - Gives the characters from the given range
+	a[1:4] will give ell
+	in
+	Membership - Returns true if a character exists in the given string
+	H in a will give 1
+	not in
+	Membership - Returns true if a character does not exist in the given string
+	M not in a will give 1
+	r/R
+	Raw String - Suppresses actual meaning of Escape characters. The syntax for raw strings is exactly the same as for normal strings with the exception of the raw string operator, the letter "r," which precedes the quotation marks. The "r" can be lowercase rr or uppercase RR and must be placed immediately preceding the first quote mark.
+	print r'\n' prints \n and print R'\n'prints \n
+	%
+	Format - Performs String formatting
+	See at next section
+	String Formatting Operator
+One of Python's coolest features is the string format operator %. This operator is unique to strings and makes up for the pack of having functions from C's printffamily. Following is a simple example −
+#!/usr/bin/python
+
+print "My name is %s and weight is %d kg!" % ('Zara', 21) 
+
+
+When the above code is executed, it produces the following result −
+My name is Zara and weight is 21 kg!
+
+Here is the list of complete set of symbols which can be used along with % −
+Format Symbol
+	Conversion
+	%c
+	character
+	%s
+	string conversion via str prior to formatting
+	%i
+	signed decimal integer
+	%d
+	signed decimal integer
+	%u
+	unsigned decimal integer
+	%o
+	octal integer
+	%x
+	hexadecimal integer lowercaseletterslowercaseletters
+	%X
+	hexadecimal integer UPPERcaselettersUPPERcaseletters
+	%e
+	exponential notation withlowercase′e′withlowercase′e′
+	%E
+	exponential notation withUPPERcase′E′withUPPERcase′E′
+	%f
+	floating point real number
+	%g
+	the shorter of %f and %e
+	%G
+	the shorter of %f and %E
+	Other supported symbols and functionality are listed in the following table −
+Symbol
+	Functionality
+	*
+	argument specifies width or precision
+	-
+	left justification
+	+
+	display the sign
+	<sp>
+	leave a blank space before a positive number
+	#
+	add the octal leading zero ′0′′0′ or hexadecimal leading '0x' or '0X', depending on whether 'x' or 'X' were used.
+	0
+	pad from left with zeros insteadofspacesinsteadofspaces
+	%
+	'%%' leaves you with a single literal '%'
+	varvar
+	mapping variable dictionaryargumentsdictionaryarguments
+	m.n.
+	m is the minimum total width and n is the number of digits to display after the decimal point ifappl.ifappl.
+	Triple Quotes
+Python's triple quotes comes to the rescue by allowing strings to span multiple lines, including verbatim NEWLINEs, TABs, and any other special characters.
+The syntax for triple quotes consists of three consecutive single or double quotes.
+#!/usr/bin/python
+
+para_str = """this is a long string that is made up of
+several lines and non-printable characters such as
+TAB ( \t ) and they will show up that way when displayed.
+NEWLINEs within the string, whether explicitly given like
+this within the brackets [ \n ], or just a NEWLINE within
+the variable assignment will also show up.
+"""
+print para_str
+
+When the above code is executed, it produces the following result. Note how every single special character has been converted to its printed form, right down to the last NEWLINE at the end of the string between the "up." and closing triple quotes. Also note that NEWLINEs occur either with an explicit carriage return at the end of a line or its escape code \n\n −
+this is a long string that is made up of
+several lines and non-printable characters such as
+TAB (    ) and they will show up that way when displayed.
+NEWLINEs within the string, whether explicitly given like
+this within the brackets [
+], or just a NEWLINE within
+the variable assignment will also show up.
+
+Raw strings do not treat the backslash as a special character at all. Every character you put into a raw string stays the way you wrote it −
+#!/usr/bin/python
+
+print 'C:\\nowhere'
+
+When the above code is executed, it produces the following result −
+C:\nowhere
+
+Now let's make use of raw string. We would put expression in r'expression' as follows −
+#!/usr/bin/python
+
+print r'C:\\nowhere'
+
+When the above code is executed, it produces the following result −
+C:\\nowhere
+
+Unicode String
+Normal strings in Python are stored internally as 8-bit ASCII, while Unicode strings are stored as 16-bit Unicode. This allows for a more varied set of characters, including special characters from most languages in the world. I'll restrict my treatment of Unicode strings to the following −
+#!/usr/bin/python
+
+print u'Hello, world!'
+
+When the above code is executed, it produces the following result −
+Hello, world!
+
+As you can see, Unicode strings use the prefix u, just as raw strings use the prefix r.
+Built-in String Methods
+String capitalize Method:
+It returns a copy of the string with only its first character capitalized.
+
+
+→ str.capitalize()
+Return Value:  string
+Example:
+#!/usr/bin/python
+str = "this is string example....wow!!!";
+print "str.capitalize() : ", str.capitalize()
+
+Result:
+str.capitalize() :  This is string example....wow!!!
+String center Method:
+The method center returns centered in a string of length width. Padding is done using the specified fillchar. Default filler is a space.
+
+
+→ str.center(width[, fillchar])
+
+Parameters
+* width →  This is the total width of the string.
+* fillchar →  This is the filler character.
+Return Value: This method returns centered in a string of length width.
+Example:
+#!/usr/bin/python
+str = "this is string example....wow!!!";
+print "str.center(40, 'a') : ", str.center(40, 'a')
+
+Result:
+str.center(40, 'a') :  aaaathis is string example....wow!!!aaaa
+
+
+3. Python String count Method:
+
+
+The method count returns the number of occurrences of substring sub in the range [start, end]. Optional arguments start and end are interpreted as in slice notation.
+
+
+→ str.count(sub, start= 0,end=len(string))
+
+Parameters
+* sub -- This is the substring to be searched.
+* start -- Search starts from this index. First character starts from 0 index. By default search starts from 0 index.
+* end -- Search ends from this index. First character starts from 0 index. By default search ends at the last index.
+Return Value
+Centered in a string of length width.
+Example
+#!/usr/bin/python
+str = "this is string example....wow!!!";
+sub = "i";
+print "str.count(sub, 4, 40) : ", str.count(sub, 4, 40)
+sub = "wow";
+print "str.count(sub) : ", str.count(sub)
+
+Result
+str.count(sub, 4, 40) :  2
+str.count(sub) :  1
+4. Python String decode Method:
+The method decode decodes the string using the codec registered for encoding. It defaults to the default string encoding.
+
+
+→ Str.decode(encoding='UTF-8',errors='strict')
+
+Parameters
+* encoding -- This is the encodings to be used. For a list of all encoding schemes please visit: Standard Encodings.
+* errors -- This may be given to set a different error handling scheme. The default for errors is 'strict', meaning that encoding errors raise a UnicodeError. Other possible values are 'ignore', 'replace', 'xmlcharrefreplace', 'backslashreplace' and any other name registered via codecs.register_error..
+Return Value
+Decoded string.
+Example
+#!/usr/bin/python
+
+Str = "this is string example....wow!!!";
+Str = Str.encode('base64','strict');
+
+print "Encoded String: " + Str
+print "Decoded String: " + Str.decode('base64','strict')
+
+Result
+Encoded String: dGhpcyBpcyBzdHJpbmcgZXhhbXBsZS4uLi53b3chISE=
+
+Decoded String: this is string example....wow!!!
+
+
+5. Python String encode Method:
+The method encode returns an encoded version of the string. Default encoding is the current default string encoding. The errors may be given to set a different error handling scheme.
+Syntax
+str.encode(encoding='UTF-8',errors='strict')
+
+Parameters
+* encoding -- This is the encodings to be used. For a list of all encoding schemes please visit: Standard Encodings.
+* errors -- This may be given to set a different error handling scheme. The default for errors is 'strict', meaning that encoding errors raise a UnicodeError. Other possible values are 'ignore', 'replace', 'xmlcharrefreplace', 'backslashreplace' and any other name registered via codecs.register_error.
+Return Value
+Decoded string.
+Example
+#!/usr/bin/python
+
+str = "this is string example....wow!!!";
+
+print "Encoded String: " + str.encode('base64','strict')
+
+Result
+Encoded String: dGhpcyBpcyBzdHJpbmcgZXhhbXBsZS4uLi53b3chISE=
+
+
+
+
+6
+
+
+Python String endswith Method:
+
+
+Description
+It returns True if the string ends with the specified suffix, otherwise return False optionally restricting the matching with the given indices start and end.
+Syntax
+str.endswith(suffix[, start[, end]])
+
+Parameters
+* suffix -- This could be a string or could also be a tuple of suffixes to look for.
+* start -- The slice begins from here.
+* end -- The slice ends here.
+Return Value
+TRUE if the string ends with the specified suffix, otherwise FALSE.
+Example
+#!/usr/bin/python
+
+str = "this is string example....wow!!!";
+
+suffix = "wow!!!";
+print str.endswith(suffix)
+print str.endswith(suffix,20)
+
+suffix = "is";
+print str.endswith(suffix, 2, 4)
+print str.endswith(suffix, 2, 6)
+
+Result
+True
+True
+True
+False
+
+
+7
+
+
+Python String expandtabs Method
+https://www.tutorialspoint.com/python/string_expandtabs.htm
+Copyright © tutorialspoint.com
+
+
+Description
+It returns a copy of the string in which tab characters ie. '\t' are expanded using spaces, optionally using the given tabsize default8default8..
+Syntax
+str.expandtabs(tabsize=8)
+
+Parameters
+* tabsize -- This specifies the number of characters to be replaced for a tab character '\t'.
+* Return Value
+* This method returns a copy of the string in which tab characters i.e., '\t' have been expanded using spaces.
+Example
+#!/usr/bin/python
+
+str = "this is\tstring example....wow!!!";
+
+
+print "Original string: " + str
+print "Defualt exapanded tab: " +  str.expandtabs()
+print "Double exapanded tab: " +  str.expandtabs(16)
+
+Result
+Original string: this is        string example....wow!!!
+Defualt exapanded tab: this is string example....wow!!!
+Double exapanded tab: this is         string example....wow!!!
+
+
+
+
+8. Python String find Method:
+
+
+It determines if string str occurs in string, or in a substring of string if starting index beg and ending index end are given.
+
+
+→ str.find(str, beg=0, end=len(string))
+
+Parameters
+* str -- This specifies the string to be searched.
+* beg -- This is the starting index, by default its 0.
+* end -- This is the ending index, by default its equal to the length of the string.
+Return Value→ Index if found and -1 otherwise.
+Example:
+#!/usr/bin/python
+str1 = "this is string example....wow!!!";
+str2 = "exam";
+
+print str1.find(str2)
+print str1.find(str2, 10)
+print str1.find(str2, 40)
+
+Result
+15
+15
+-1
+
+
+
+
+9. Python String index Method:
+
+
+It determines if string str occurs in string or in a substring of string if starting index beg and ending index end are given. This method is same as find, but raises an exception if sub is not found.
+
+
+→ str.index(str, beg=0 end=len(string))
+
+Parameters
+* str -- This specifies the string to be searched.
+* beg -- This is the starting index, by default its 0.
+* end -- This is the ending index, by default its equal to the length of the string.
+Return Value
+Index if found otherwise raises an exception if str is not found.
+Example
+#!/usr/bin/python
+
+str1 = "this is string example....wow!!!";
+str2 = "exam";
+
+print str1.index(str2)
+print str1.index(str2, 10)
+print str1.index(str2, 40)
+
+Result
+15
+15
+Traceback (most recent call last):
+ File "test.py", line 8, in 
+ print str1.index(str2, 40);
+ValueError: substring not found
+
+shell returned 1
+
+
+
+
+
+
+10. Python String isalnum Method:
+
+
+
+
+Description
+The method isalnum checks whether the string consists of alphanumeric characters.
+Syntax
+Following is the syntax for isalnum method:
+str.isalnum()
+
+Parameters
+* NA
+Return Value
+This method returns true if all characters in the string are alphanumeric and there is at least one character, false otherwise.
+Example
+The following example shows the usage of isalnum method.
+#!/usr/bin/python
+
+str = "this2009";  # No space in this string
+print str.isalnum()
+
+str = "this is string example....wow!!!";
+print str.isalnum()
+
+When we run above program, it produces following result:
+True
+False
+
+
+
+
+11. Python String isalpha Method:
+
+
+The method isalpha checks whether the string consists of alphabetic characters only.
+
+
+→ str.isalpha()
+
+
+Return Value → This method returns true if all characters in the string are alphabetic and there is at least one character, false otherwise.
+Example:
+#!/usr/bin/python
+
+str = "this";  # No space & digit in this string
+print str.isalpha()
+
+str = "this is string example....wow!!!";
+print str.isalpha()
+
+When we run above program, it produces following result −
+True
+False
+
+
+
+
+12. Python String isdigit Method:
+
+
+The method isdigit checks whether the string consists of digits only.
+
+
+→ str.isdigit()
+
+Return Value → This method returns true if all characters in the string are digits and there is at least one character, false otherwise.
+Example:
+#!/usr/bin/python
+
+str = "123456";  # Only digit in this string
+print str.isdigit()
+
+str = "this is string example....wow!!!";
+print str.isdigit()
+
+Result:
+True
+False
+
+
+
+
+13. Python String islower Method:
+
+
+The method islower checks whether all the case-based characters lettersletters of the string are lowercase.
+
+
+→ str.islower()
+
+
+Return Value → This method returns true if all cased characters in the string are lowercase and there is at least one cased character, false otherwise.
+Example:
+#!/usr/bin/python
+
+str = "THIS is string example....wow!!!"; 
+print str.islower()
+
+str = "this is string example....wow!!!";
+print str.islower()
+
+Results:
+
+
+False
+True
+
+
+
+
+14. Python String isnumeric Method:
+
+
+The method isnumeric checks whether the string consists of only numeric characters. This method is present only on unicode objects.
+Note: To define a string as Unicode, one simply prefixes a 'u' to the opening quotation mark of the assignment. Below is the example.
+
+
+→ str.isnumeric()
+Return Value → This method returns true if all characters in the string are numeric, false otherwise.
+Example:
+#!/usr/bin/python
+
+
+str = u"this2009";  
+print str.isnumeric()
+
+str = u"23443434";
+print str.isnumeric()
+
+Results:
+
+
+False
+True
+
+
+
+
+15
+
+
+Python String isspace Method
+https://www.tutorialspoint.com/python/string_isspace.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method isspace checks whether the string consists of whitespace..
+Syntax
+Following is the syntax for isspace method:
+str.isspace()
+
+Parameters
+* NA
+Return Value
+This method returns true if there are only whitespace characters in the string and there is at least one character, false otherwise.
+Example
+The following example shows the usage of isspace method.
+#!/usr/bin/python
+
+str = "       "; 
+print str.isspace()
+
+str = "This is string example....wow!!!";
+print str.isspace()
+
+When we run above program, it produces following result −
+True
+False
+
+
+
+
+16
+
+
+Python String istitle Method
+https://www.tutorialspoint.com/python/string_istitle.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method istitle checks whether all the case-based characters in the string following non-casebased letters are uppercase and all other case-based characters are lowercase.
+Syntax
+Following is the syntax for istitle method:
+str.istitle()
+
+Parameters
+* NA
+Return Value
+This method returns true if the string is a titlecased string and there is at least one character, for example uppercase characters may only follow uncased characters and lowercase characters only cased ones.It returns false otherwise.
+Example
+The following example shows the usage of istitle method.
+#!/usr/bin/python
+
+
+str = "This Is String Example...Wow!!!";
+print str.istitle()
+
+
+
+
+17. Python String isupper Method:
+
+
+The method isupper checks whether all the case-based characters lettersletters of the string are uppercase.
+
+
+→ str.isupper()
+
+Return Value → This method returns true if all cased characters in the string are uppercase and there is at least one cased character, false otherwise.
+Example:
+
+
+#!/usr/bin/python
+
+str = "THIS IS STRING EXAMPLE....WOW!!!"; 
+print str.isupper()
+
+str = "THIS is string example....wow!!!";
+print str.isupper()
+
+Results:
+True
+False
+
+
+
+
+18. Python String join Method:
+
+
+The method join returns a string in which the string elements of sequence have been joined by str separator.
+
+
+→ str.join(sequence)
+
+Parameters
+* sequence -- This is a sequence of the elements to be joined.
+Return Value
+This method returns a string, which is the concatenation of the strings in the sequence seq. The separator between elements is the string providing this method.
+Example
+
+
+#!/usr/bin/python
+
+s = "-";
+seq = ("a", "b", "c"); # This is sequence of strings.
+print s.join( seq )
+
+Result:
+a-b-c
+
+
+
+
+19
+
+
+Python String len Method
+https://www.tutorialspoint.com/python/string_len.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method len returns the length of the string.
+Syntax
+Following is the syntax for len method −
+len( str )
+
+Parameters
+* NA
+Return Value
+This method returns the length of the string.
+Example
+The following example shows the usage of len method.
+#!/usr/bin/python
+
+str = "this is string example....wow!!!";
+
+print "Length of the string: ", len(str)
+
+When we run above program, it produces following result −
+Length of the string:  32
+
+
+
+
+20
+
+
+Python String ljust Method
+https://www.tutorialspoint.com/python/string_ljust.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method ljust returns the string left justified in a string of length width. Padding is done using the specified fillchar defaultisaspacedefaultisaspace. The original string is returned if width is less than lenss.
+Syntax
+Following is the syntax for ljust method −
+str.ljust(width[, fillchar])
+
+Parameters
+* width -- This is string length in total after padding.
+* fillchar -- This is filler character, default is a space.
+Return Value
+This method returns the string left justified in a string of length width. Padding is done using the specified fillchar defaultisaspacedefaultisaspace. The original string is returned if width is less than lenss.
+Example
+The following example shows the usage of ljust method.
+#!/usr/bin/python
+
+str = "this is string example....wow!!!";
+
+print str.ljust(50, '0')
+
+When we run above program, it produces following result −
+this is string example....wow!!!000000000000000000
+
+
+
+
+21
+
+
+Python String lower Method
+https://www.tutorialspoint.com/python/string_lower.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method lower returns a copy of the string in which all case-based characters have been lowercased.
+Syntax
+Following is the syntax for lower method −
+str.lower()
+
+Parameters
+* NA
+Return Value
+This method returns a copy of the string in which all case-based characters have been lowercased.
+Example
+The following example shows the usage of lower method.
+#!/usr/bin/python
+
+str = "THIS IS STRING EXAMPLE....WOW!!!";
+
+print str.lower()
+
+When we run above program, it produces following result −
+this is string example....wow!!!
+
+
+
+
+22
+
+
+Python String lstrip Method
+https://www.tutorialspoint.com/python/string_lstrip.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method lstrip returns a copy of the string in which all chars have been stripped from the beginning of the string defaultwhitespacecharactersdefaultwhitespacecharacters.
+Syntax
+Following is the syntax for lstrip method −
+str.lstrip([chars])
+
+Parameters
+* chars -- You can supply what chars have to be trimmed.
+Return Value
+This method returns a copy of the string in which all chars have been stripped from the beginning of the string defaultwhitespacecharactersdefaultwhitespacecharacters.
+Example
+The following example shows the usage of lstrip method.
+#!/usr/bin/python
+
+str = "     this is string example....wow!!!     ";
+print str.lstrip()
+str = "88888888this is string example....wow!!!8888888";
+print str.lstrip('8')
+
+When we run above program, it produces following result −
+this is string example....wow!!!
+this is string example....wow!!!8888888
+
+
+
+
+23
+
+
+Python String maketrans Method
+https://www.tutorialspoint.com/python/string_maketrans.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method maketrans returns a translation table that maps each character in the intabstring into the character at the same position in the outtab string. Then this table is passed to the translate function.
+Note: Both intab and outtab must have the same length.
+Syntax
+Following is the syntax for maketrans method −
+str.maketrans(intab, outtab)
+
+Parameters
+* intab -- This is the string having actual characters.
+* outtab -- This is the string having corresponding mapping character.
+Return Value
+This method returns a translate table to be used translate function.
+Example
+The following example shows the usage of maketrans method. Under this, every vowel in a string is replaced by its vowel position −
+#!/usr/bin/python
+
+from string import maketrans   # Required to call maketrans function.
+
+intab = "aeiou"
+outtab = "12345"
+trantab = maketrans(intab, outtab)
+
+str = "this is string example....wow!!!"
+print str.translate(trantab)
+
+When we run above program, it produces following result −
+th3s 3s str3ng 2x1mpl2....w4w!!!
+
+
+
+
+24
+
+
+Python String max Method
+https://www.tutorialspoint.com/python/string_max.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method max returns the max alphabetical character from the string str.
+Syntax
+Following is the syntax for max method −
+max(str)
+
+Parameters
+* str -- This is the string from which max alphabetical character needs to be returned.
+Return Value
+This method returns the max alphabetical character from the string str.
+Example
+The following example shows the usage of max method.
+#!/usr/bin/python
+
+str = "this is really a string example....wow!!!";
+print "Max character: " + max(str)
+
+str = "this is a string example....wow!!!";
+print "Max character: " + max(str)
+
+When we run above program, it produces following result −
+Max character: y
+Max character: x
+
+
+
+
+25
+
+
+Python String min Method
+https://www.tutorialspoint.com/python/string_min.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method min returns the min alphabetical character from the string str.
+Syntax
+Following is the syntax for min method:
+min(str)
+
+Parameters
+* str -- This is the string from which min alphabetical character needs to be returned.
+Return Value
+This method returns the max alphabetical character from the string str.
+Example
+The following example shows the usage of min method.
+#!/usr/bin/python
+
+str = "this-is-real-string-example....wow!!!";
+print "Min character: " + min(str)
+
+str = "this-is-a-string-example....wow!!!";
+print "Min character: " + min(str)
+
+When we run above program, it produces following result −
+Min character: !
+Min character: !
+
+
+
+
+
+
+26. Python String replace Method:
+
+
+The method replace returns a copy of the string in which the occurrences of old have been replaced with new, optionally restricting the number of replacements to max.
+
+
+→ str.replace(old, new[, max])
+
+Parameters
+* old -- This is old substring to be replaced.
+* new -- This is new substring, which would replace old substring.
+* max -- If this optional argument max is given, only the first count occurrences are replaced.
+Return Value:
+This method returns a copy of the string with all occurrences of substring old replaced by new. If the optional argument max is given, only the first count occurrences are replaced.
+Example
+
+
+#!/usr/bin/python
+
+str = "this is string example....wow!!! this is really string";
+print str.replace("is", "was")
+print str.replace("is", "was", 3)
+
+Results:
+
+
+thwas was string example....wow!!! thwas was really string
+thwas was string example....wow!!! thwas is really string
+
+
+
+
+27
+
+
+Python String rfind Method
+https://www.tutorialspoint.com/python/string_rfind.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method rfind returns the last index where the substring str is found, or -1 if no such index exists, optionally restricting the search to string[beg:end].
+Syntax
+Following is the syntax for rfind method −
+str.rfind(str, beg=0 end=len(string))
+
+Parameters
+* str -- This specifies the string to be searched.
+* beg -- This is the starting index, by default its 0.
+* end -- This is the ending index, by default its equal to the length of the string.
+Return Value
+This method returns last index if found and -1 otherwise.
+Example
+The following example shows the usage of rfind method.
+#!/usr/bin/python
+
+str1 = "this is really a string example....wow!!!";
+str2 = "is";
+
+print str1.rfind(str2)
+
+print str1.rfind(str2, 0, 10)
+print str1.rfind(str2, 10, 0)
+
+print str1.find(str2)
+print str1.find(str2, 0, 10)
+print str1.find(str2, 10, 0)
+
+When we run above program, it produces following result −
+5
+5
+-1
+2
+2
+-1
+
+
+
+
+28
+
+
+Python String rindex Method
+https://www.tutorialspoint.com/python/string_rindex.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method rindex returns the last index where the substring str is found, or raises an exception if no such index exists, optionally restricting the search to string[beg:end].
+Syntax
+Following is the syntax for rindex method −
+str.rindex(str, beg=0 end=len(string))
+
+Parameters
+* str -- This specifies the string to be searched.
+* beg -- This is the starting index, by default its 0
+* len -- This is ending index, by default its equal to the length of the string.
+Return Value
+This method returns last index if found otherwise raises an exception if str is not found.
+Example
+The following example shows the usage of rindex method.
+#!/usr/bin/python
+
+str1 = "this is string example....wow!!!";
+str2 = "is";
+
+print str1.rindex(str2)
+print str1.index(str2)
+
+When we run above program, it produces following result −
+5
+2
+
+
+
+
+29
+
+
+
+
+Python String rjust Method
+https://www.tutorialspoint.com/python/string_rjust.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method rjust returns the string right justified in a string of length width. Padding is done using the specified fillchar defaultisaspacedefaultisaspace. The original string is returned if width is less than lenss.
+Syntax
+Following is the syntax for rjust method −
+str.rjust(width[, fillchar])
+
+Parameters
+* width -- This is the string length in total after padding.
+* fillchar -- This is the filler character, default is a space.
+Return Value
+This method returns the string right justified in a string of length width. Padding is done using the specified fillchar defaultisaspacedefaultisaspace. The original string is returned if width is less than lenss.
+Example
+The following example shows the usage of rjust method.
+#!/usr/bin/python
+
+str = "this is string example....wow!!!";
+
+print str.rjust(50, '0')
+
+When we run above program, it produces following result −
+000000000000000000this is string example....wow!!!
+
+
+
+
+30
+
+
+Python String rstrip Method
+https://www.tutorialspoint.com/python/string_rstrip.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method rstrip returns a copy of the string in which all chars have been stripped from the end of the string defaultwhitespacecharactersdefaultwhitespacecharacters.
+Syntax
+Following is the syntax for rstrip method −
+str.rstrip([chars])
+
+Parameters
+* chars -- You can supply what chars have to be trimmed.
+Return Value
+This method returns a copy of the string in which all chars have been stripped from the end of the string defaultwhitespacecharactersdefaultwhitespacecharacters.
+Example
+The following example shows the usage of rstrip method.
+#!/usr/bin/python
+
+str = "     this is string example....wow!!!     ";
+print str.rstrip()
+str = "88888888this is string example....wow!!!8888888";
+print str.rstrip('8')
+
+When we run above program, it produces following result −
+    this is string example....wow!!!
+88888888this is string example....wow!!!
+
+
+
+
+31. Python String split Method:
+
+
+The method split returns a list of all the words in the string, using str as the separator splitsonallwhitespaceifleftunspecifiedsplitsonallwhitespaceifleftunspecified, optionally limiting the number of splits to num.
+
+
+→ str.split(str="", num=string.count(str)).
+
+Parameters
+* str →  This is any delimeter, by default it is space.
+* num →  this is number of lines minus one
+Return Value → This method returns a list of lines.
+Example
+
+
+#!/usr/bin/python
+
+str = "Line1-abcdef \nLine2-abc \nLine4-abcd";
+print str.split( )
+print str.split(' ', 1 )
+
+Results:
+
+
+['Line1-abcdef', 'Line2-abc', 'Line4-abcd']
+['Line1-abcdef', '\nLine2-abc \nLine4-abcd']
+
+
+
+
+
+
+32
+
+
+Python String splitlines Method
+https://www.tutorialspoint.com/python/string_splitlines.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method splitlines returns a list with all the lines in string, optionally including the line breaks ifnumissuppliedandistrueifnumissuppliedandistrue
+Syntax
+Following is the syntax for splitlines method −
+str.splitlines( num=string.count('\n'))
+
+Parameters
+* num -- This is any number, if present then it would be assumed that line breaks need to be included in the lines.
+Return Value
+This method returns true if found matching string otherwise false.
+Example
+The following example shows the usage of splitlines method.
+#!/usr/bin/python
+
+str = "Line1-a b c d e f\nLine2- a b c\n\nLine4- a b c d";
+print str.splitlines( )
+print str.splitlines( 0 )
+print str.splitlines( 3 )
+print str.splitlines( 4 )
+print str.splitlines( 5 )
+
+When we run above program, it produces following result −
+['Line1-a b c d e f', 'Line2- a b c', '', 'Line4- a b c d']
+['Line1-a b c d e f', 'Line2- a b c', '', 'Line4- a b c d']
+['Line1-a b c d e f\n', 'Line2- a b c\n', '\n', 'Line4- a b c d']
+['Line1-a b c d e f\n', 'Line2- a b c\n', '\n', 'Line4- a b c d']
+['Line1-a b c d e f\n', 'Line2- a b c\n', '\n', 'Line4- a b c d']
+
+
+
+
+33. Python String startswith Method:
+The method startswith checks whether string starts with str, optionally restricting the matching with the given indices start and end.
+
+
+→ str.startswith(str, beg=0,end=len(string));
+
+Parameters
+* str -- This is the string to be checked.
+* beg -- This is the optional parameter to set start index of the matching boundary.
+* end -- This is the optional parameter to end start index of the matching boundary.
+Return Value
+This method returns true if found matching string otherwise false.
+
+
+Example
+
+
+#!/usr/bin/python
+
+str = "this is string example....wow!!!";
+print str.startswith( 'this' )
+print str.startswith( 'is', 2, 4 )
+print str.startswith( 'this', 2, 4 )
+
+When we run above program, it produces following result −
+True
+True
+False
+
+
+
+
+
+
+
+
+
+
+34. Python String strip Method:
+
+
+The method strip returns a copy of the string in which all chars have been stripped from the beginning and the end of the string defaultwhitespacecharactersdefaultwhitespacecharacters.
+
+
+→ str.strip([chars]);
+
+Parameters
+* chars -- The characters to be removed from beginning or end of the string.
+Return Value
+This method returns a copy of the string in which all chars have been stripped from the beginning and the end of the string.
+Example:
+
+
+#!/usr/bin/python
+
+str = "0000000this is string example....wow!!!0000000";
+print str.strip( '0' )
+
+Result:
+
+
+this is string example....wow!!!
+
+
+
+
+35
+
+
+Python String swapcase Method
+https://www.tutorialspoint.com/python/string_swapcase.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method swapcase returns a copy of the string in which all the case-based characters have had their case swapped.
+Syntax
+Following is the syntax for swapcase method −
+str.swapcase();
+
+Parameters
+* NA
+Return Value
+This method returns a copy of the string in which all the case-based characters have had their case swapped.
+Example
+The following example shows the usage of swapcase method.
+#!/usr/bin/python
+
+str = "this is string example....wow!!!";
+print str.swapcase()
+
+str = "THIS IS STRING EXAMPLE....WOW!!!";
+print str.swapcase()
+
+When we run above program, it produces following result −
+THIS IS STRING EXAMPLE....WOW!!!
+this is string example....wow!!!
+
+
+
+
+36
+
+
+Python String title Method
+https://www.tutorialspoint.com/python/string_title.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method title returns a copy of the string in which first characters of all the words are capitalized.
+Syntax
+Following is the syntax for title method −
+str.title();
+
+Parameters
+* NA
+Return Value
+This method returns a copy of the string in which first characters of all the words are capitalized.
+Example
+The following example shows the usage of title method.
+#!/usr/bin/python
+
+str = "this is string example....wow!!!";
+print str.title()
+
+When we run above program, it produces following result −
+This Is String Example....Wow!!!
+
+
+
+
+37
+
+
+Python String translate Method
+https://www.tutorialspoint.com/python/string_translate.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method translate returns a copy of the string in which all characters have been translated using table constructedwiththemaketrans(constructedwiththemaketrans( function in the string module), optionally deleting all characters found in the string deletechars.
+Syntax
+Following is the syntax for translate method −
+str.translate(table[, deletechars]);
+
+Parameters
+* table -- You can use the maketrans helper function in the string module to create a translation table.
+* deletechars -- The list of characters to be removed from the source string.
+Return Value
+This method returns a translated copy of the string.
+Example
+The following example shows the usage of translate method. Under this every vowel in a string is replaced by its vowel position −
+#!/usr/bin/python
+
+from string import maketrans   # Required to call maketrans function.
+
+intab = "aeiou"
+outtab = "12345"
+trantab = maketrans(intab, outtab)
+
+str = "this is string example....wow!!!";
+print str.translate(trantab)
+
+When we run above program, it produces following result −
+th3s 3s str3ng 2x1mpl2....w4w!!!
+
+Following is the example to delete 'x' and 'm' characters from the string −
+#!/usr/bin/python
+
+from string import maketrans   # Required to call maketrans function.
+
+intab = "aeiou"
+outtab = "12345"
+trantab = maketrans(intab, outtab)
+
+str = "this is string example....wow!!!";
+print str.translate(trantab, 'xm')
+
+This will produce following result −
+th3s 3s str3ng 21pl2....w4w!!!
+
+
+
+
+38
+
+
+Python String upper Method
+https://www.tutorialspoint.com/python/string_upper.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method upper returns a copy of the string in which all case-based characters have been uppercased.
+Syntax
+Following is the syntax for upper method −
+str.upper()
+
+Parameters
+* NA
+Return Value
+This method returns a copy of the string in which all case-based characters have been uppercased.
+Example
+The following example shows the usage of upper method.
+#!/usr/bin/python
+
+str = "this is string example....wow!!!";
+
+print "str.capitalize() : ", str.upper()
+
+When we run above program, it produces following result −
+str.capitalize() :  THIS IS STRING EXAMPLE....WOW!!!
+39
+
+
+Python String zfill Method
+https://www.tutorialspoint.com/python/string_zfill.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method zfill pads string on the left with zeros to fill width.
+Syntax
+Following is the syntax for zfill method −
+str.zfill(width)
+
+Parameters
+* width -- This is final width of the string. This is the width which we would get after filling zeros.
+Return Value
+This method returns padded string.
+Example
+The following example shows the usage of zfill method.
+#!/usr/bin/python
+
+str = "this is string example....wow!!!";
+
+print str.zfill(40)
+print str.zfill(50)
+
+When we run above program, it produces following result −
+00000000this is string example....wow!!!
+000000000000000000this is string example....wow!!!
+
+
+
+
+40
+Python String isdecimal Method
+https://www.tutorialspoint.com/python/string_isdecimal.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method isdecimal checks whether the string consists of only decimal characters. This method are present only on unicode objects.
+Note: To define a string as Unicode, one simply prefixes a 'u' to the opening quotation mark of the assignment. Below is the example.
+Syntax
+Following is the syntax for isdecimal method −
+str.isdecimal()
+
+Parameters
+* NA
+Return Value
+This method returns true if all characters in the string are decimal, false otherwise.
+Example
+The following example shows the usage of isdecimal method.
+#!/usr/bin/python
+
+
+str = u"this2009";  
+print str.isdecimal();
+
+
+
+
+Dictionary:
+
+
+Python Dictionary
+https://www.tutorialspoint.com/python/python_dictionary.htm
+Copyright © tutorialspoint.com
+
+
+Each key is separated from its value by a colon ::, the items are separated by commas, and the whole thing is enclosed in curly braces. An empty dictionary without any items is written with just two curly braces, like this: {}.
+Keys are unique within a dictionary while values may not be. The values of a dictionary can be of any type, but the keys must be of an immutable data type such as strings, numbers, or tuples.
+Accessing Values in Dictionary:
+To access dictionary elements, you can use the familiar square brackets along with the key to obtain its value. Following is a simple example −
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+
+print "dict['Name']: ", dict['Name']
+print "dict['Age']: ", dict['Age']
+
+When the above code is executed, it produces the following result −
+dict['Name']:  Zara
+dict['Age']:  7
+
+If we attempt to access a data item with a key, which is not part of the dictionary, we get an error as follows −
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+
+print "dict['Alice']: ", dict['Alice']
+
+When the above code is executed, it produces the following result −
+dict['Alice']:
+Traceback (most recent call last):
+  File "test.py", line 4, in <module>
+     print "dict['Alice']: ", dict['Alice'];
+KeyError: 'Alice'
+
+Updating Dictionary
+You can update a dictionary by adding a new entry or a key-value pair, modifying an existing entry, or deleting an existing entry as shown below in the simple example −
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+
+dict['Age'] = 8; # update existing entry
+dict['School'] = "DPS School"; # Add new entry
+
+
+print "dict['Age']: ", dict['Age']
+print "dict['School']: ", dict['School']
+
+When the above code is executed, it produces the following result −
+dict['Age']:  8
+dict['School']:  DPS School
+
+Delete Dictionary Elements
+You can either remove individual dictionary elements or clear the entire contents of a dictionary. You can also delete entire dictionary in a single operation.
+To explicitly remove an entire dictionary, just use the del statement. Following is a simple example −
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+
+del dict['Name']; # remove entry with key 'Name'
+dict.clear();     # remove all entries in dict
+del dict ;        # delete entire dictionary
+
+print "dict['Age']: ", dict['Age']
+print "dict['School']: ", dict['School']
+
+This produces the following result. Note that an exception is raised because after del dict dictionary does not exist any more −
+dict['Age']:
+Traceback (most recent call last):
+ File "test.py", line 8, in <module>
+   print "dict['Age']: ", dict['Age'];
+TypeError: 'type' object is unsubscriptable
+
+Note: del method is discussed in subsequent section.
+Properties of Dictionary Keys
+Dictionary values have no restrictions. They can be any arbitrary Python object, either standard objects or user-defined objects. However, same is not true for the keys.
+There are two important points to remember about dictionary keys −
+aa More than one entry per key not allowed. Which means no duplicate key is allowed. When duplicate keys encountered during assignment, the last assignment wins. For example −
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7, 'Name': 'Manni'}
+
+print "dict['Name']: ", dict['Name']
+
+When the above code is executed, it produces the following result −
+dict['Name']:  Manni
+
+bb Keys must be immutable. Which means you can use strings, numbers or tuples as dictionary keys but something like ['key'] is not allowed. Following is a simple example:
+#!/usr/bin/python
+
+dict = {['Name']: 'Zara', 'Age': 7}
+
+print "dict['Name']: ", dict['Name']
+
+When the above code is executed, it produces the following result −
+Traceback (most recent call last):
+  File "test.py", line 3, in <module>
+     dict = {['Name']: 'Zara', 'Age': 7};
+TypeError: list objects are unhashable
+
+Built-in Dictionary Functions & Methods −
+
+
+1
+
+
+Python dictionary cmp Method
+https://www.tutorialspoint.com/python/dictionary_cmp.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method cmp compares two dictionaries based on key and values.
+Syntax
+Following is the syntax for cmp method −
+cmp(dict1, dict2)
+
+Parameters
+* dict1 -- This is the first dictionary to be compared with dict2.
+* dict2 -- This is the second dictionary to be compared with dict1.
+Return Value
+This method returns 0 if both dictionaries are equal, -1 if dict1 < dict2 and 1 if dict1 > dic2.
+Example
+The following example shows the usage of cmp method.
+#!/usr/bin/python
+
+dict1 = {'Name': 'Zara', 'Age': 7};
+dict2 = {'Name': 'Mahnaz', 'Age': 27};
+dict3 = {'Name': 'Abid', 'Age': 27};
+dict4 = {'Name': 'Zara', 'Age': 7};
+print "Return Value : %d" %  cmp (dict1, dict2)
+print "Return Value : %d" %  cmp (dict2, dict3)
+print "Return Value : %d" %  cmp (dict1, dict4)
+
+When we run above program, it produces following result −
+Return Value : -1
+Return Value : 1
+Return Value : 0
+
+
+2
+
+
+Python dictionary len Method
+https://www.tutorialspoint.com/python/dictionary_len.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method len gives the total length of the dictionary. This would be equal to the number of items in the dictionary.
+Syntax
+Following is the syntax for len method −
+len(dict)
+
+Parameters
+* dict -- This is the dictionary, whose length needs to be calculated.
+Return Value
+This method returns the length.
+Example
+The following example shows the usage of len method.
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7};
+print "Length : %d" % len (dict)
+
+When we run above program, it produces following result −
+Length : 2
+
+
+
+
+3
+
+
+
+
+Python dictionary str Method
+https://www.tutorialspoint.com/python/dictionary_str.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method str produces a printable string representation of a dictionary.
+Syntax
+Following is the syntax for str method −
+str(dict)
+
+Parameters
+* dict -- This is the dictionary.
+Return Value
+This method returns string representation.
+Example
+The following example shows the usage of str method.
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7};
+print "Equivalent String : %s" % str (dict)
+
+When we run above program, it produces following result −
+Equivalent String : {'Age': 7, 'Name': 'Zara'}
+
+
+
+
+4
+
+
+
+
+Python dictionary type Method
+https://www.tutorialspoint.com/python/dictionary_type.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method type returns the type of the passed variable. If passed variable is dictionary then it would return a dictionary type.
+Syntax
+Following is the syntax for type method −
+type(dict)
+
+Parameters
+* dict -- This is the dictionary.
+Return Value
+This method returns the type of the passed variable.
+Example
+The following example shows the usage of type method.
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7};
+print "Variable Type : %s" %  type (dict)
+
+When we run above program, it produces following result −
+Variable Type : <type 'dict'>
+
+
+
+
+5
+
+
+Python dictionary clear Method
+https://www.tutorialspoint.com/python/dictionary_clear.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method clear removes all items from the dictionary.
+Syntax
+Following is the syntax for clear method −
+dict.clear()
+
+Parameters
+* NA
+Return Value
+This method does not return any value.
+Example
+The following example shows the usage of clear method.
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7};
+
+print "Start Len : %d" %  len(dict)
+dict.clear()
+print "End Len : %d" %  len(dict)
+
+When we run above program, it produces following result −
+Start Len : 2
+End Len : 0
+
+
+
+
+6
+
+
+Python dictionary copy Method
+https://www.tutorialspoint.com/python/dictionary_copy.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method copy returns a shallow copy of the dictionary.
+Syntax
+Following is the syntax for copy method −
+dict.copy()
+
+Parameters
+* NA
+Return Value
+This method returns a shallow copy of the dictionary.
+Example
+The following example shows the usage of copy method.
+#!/usr/bin/python
+
+dict1 = {'Name': 'Zara', 'Age': 7};
+
+dict2 = dict1.copy()
+print "New Dictinary : %s" %  str(dict2)
+
+When we run above program, it produces following result −
+New Dictinary : {'Age': 7, 'Name': 'Zara'}
+
+
+
+
+7
+
+
+Python dictionary fromkeys Method
+https://www.tutorialspoint.com/python/dictionary_fromkeys.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method fromkeys creates a new dictionary with keys from seq and values set to value.
+Syntax
+Following is the syntax for fromkeys method −
+dict.fromkeys(seq[, value])
+
+Parameters
+* seq -- This is the list of values which would be used for dictionary keys preparation.
+* value -- This is optional, if provided then value would be set to this value
+Return Value
+This method returns the list.
+Example
+The following example shows the usage of fromkeys method.
+#!/usr/bin/python
+
+seq = ('name', 'age', 'sex')
+
+dict = dict.fromkeys(seq)
+print "New Dictionary : %s" %  str(dict)
+
+dict = dict.fromkeys(seq, 10)
+print "New Dictionary : %s" %  str(dict)
+
+When we run above program, it produces following result −
+New Dictionary : {'age': None, 'name': None, 'sex': None}
+New Dictionary : {'age': 10, 'name': 10, 'sex': 10}
+
+
+
+
+8
+
+
+Python dictionary get Method
+https://www.tutorialspoint.com/python/dictionary_get.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method get returns a value for the given key. If key is not available then returns default value None.
+Syntax
+Following is the syntax for get method −
+dict.get(key, default=None)
+
+Parameters
+* key -- This is the Key to be searched in the dictionary.
+* default -- This is the Value to be returned in case key does not exist.
+Return Value
+This method return a value for the given key. If key is not available, then returns default value None.
+Example
+The following example shows the usage of get method.
+#!/usr/bin/python
+
+dict = {'Name': 'Zabra', 'Age': 7}
+
+print "Value : %s" %  dict.get('Age')
+print "Value : %s" %  dict.get('Education', "Never")
+
+When we run above program, it produces following result −
+Value : 7
+Value : Never
+
+
+
+
+9
+
+
+Python dictionary has_key Method
+https://www.tutorialspoint.com/python/dictionary_has_key.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method has_key returns true if a given key is available in the dictionary, otherwise it returns a false.
+Syntax
+Following is the syntax for has_key method −
+dict.has_key(key)
+
+Parameters
+* key -- This is the Key to be searched in the dictionary.
+Return Value
+This method return true if a given key is available in the dictionary, otherwise it returns a false.
+Example
+The following example shows the usage of has_key method.
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7}
+
+print "Value : %s" %  dict.has_key('Age')
+print "Value : %s" %  dict.has_key('Sex')
+
+When we run above program, it produces following result −
+Value : True
+Value : False
+
+
+
+
+10
+
+
+Python dictionary items Method
+https://www.tutorialspoint.com/python/dictionary_items.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method items returns a list of dict's key,valuekey,value tuple pairs
+Syntax
+Following is the syntax for items method −
+dict.items()
+
+Parameters
+* NA
+Return Value
+This method returns a list of tuple pairs.
+Example
+The following example shows the usage of items method.
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7}
+
+print "Value : %s" %  dict.items()
+
+When we run above program, it produces following result −
+Value : [('Age', 7), ('Name', 'Zara')]
+
+
+
+
+11
+
+
+Python dictionary keys Method
+https://www.tutorialspoint.com/python/dictionary_keys.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method keys returns a list of all the available keys in the dictionary.
+Syntax
+Following is the syntax for keys method −
+dict.keys()
+
+Parameters
+* NA
+Return Value
+This method returns a list of all the available keys in the dictionary.
+Example
+The following example shows the usage of keys method.
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7}
+
+print "Value : %s" %  dict.keys()
+
+When we run above program, it produces following result −
+Value : ['Age', 'Name']
+
+
+
+
+12
+
+
+
+
+Python dictionary setdefault Method
+https://www.tutorialspoint.com/python/dictionary_setdefault.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method setdefault is similar to get, but will set dict[key]=default if key is not already in dict.
+Syntax
+Following is the syntax for setdefault method −
+dict.setdefault(key, default=None)
+
+Parameters
+* key -- This is the key to be searched.
+* default -- This is the Value to be returned in case key is not found.
+Return Value
+This method returns the key value available in the dictionary and if given key is not available then it will return provided default value.
+Example
+The following example shows the usage of setdefault method.
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7}
+
+print "Value : %s" %  dict.setdefault('Age', None)
+print "Value : %s" %  dict.setdefault('Sex', None)
+
+When we run above program, it produces following result −
+Value : 7
+Value : None
+
+
+
+
+13
+
+
+Python dictionary update Method
+https://www.tutorialspoint.com/python/dictionary_update.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method update adds dictionary dict2's key-values pairs in to dict. This function does not return anything.
+Syntax
+Following is the syntax for update method −
+dict.update(dict2)
+
+Parameters
+* dict2 -- This is the dictionary to be added into dict.
+Return Value
+This method does not return any value.
+Example
+The following example shows the usage of update method.
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7}
+dict2 = {'Sex': 'female' }
+
+dict.update(dict2)
+print "Value : %s" %  dict
+
+When we run above program, it produces following result −
+Value : {'Age': 7, 'Name': 'Zara', 'Sex': 'female'}
+14
+
+
+Python dictionary values Method
+https://www.tutorialspoint.com/python/dictionary_values.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method values returns a list of all the values available in a given dictionary.
+Syntax
+Following is the syntax for values method −
+dict.values()
+
+Parameters
+* NA
+Return Value
+This method returns a list of all the values available in a given dictionary.
+Example
+The following example shows the usage of values method.
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7}
+
+print "Value : %s" %  dict.values()
+
+When we run above program, it produces following result −
+Value : [7, 'Zara']
+
+
+List:
+
+
+Python Lists
+https://www.tutorialspoint.com/python/python_lists.htm
+Copyright © tutorialspoint.com
+
+
+The most basic data structure in Python is the sequence. Each element of a sequence is assigned a number - its position or index. The first index is zero, the second index is one, and so forth.
+Python has six built-in types of sequences, but the most common ones are lists and tuples, which we would see in this tutorial.
+There are certain things you can do with all sequence types. These operations include indexing, slicing, adding, multiplying, and checking for membership. In addition, Python has built-in functions for finding the length of a sequence and for finding its largest and smallest elements.
+Python Lists
+The list is a most versatile datatype available in Python which can be written as a list of comma-separated values itemsitems between square brackets. Important thing about a list is that items in a list need not be of the same type.
+Creating a list is as simple as putting different comma-separated values between square brackets. For example −
+list1 = ['physics', 'chemistry', 1997, 2000];
+list2 = [1, 2, 3, 4, 5 ];
+list3 = ["a", "b", "c", "d"]
+
+Similar to string indices, list indices start at 0, and lists can be sliced, concatenated and so on.
+Accessing Values in Lists
+To access values in lists, use the square brackets for slicing along with the index or indices to obtain value available at that index. For example −
+#!/usr/bin/python
+
+list1 = ['physics', 'chemistry', 1997, 2000];
+list2 = [1, 2, 3, 4, 5, 6, 7 ];
+
+print "list1[0]: ", list1[0]
+print "list2[1:5]: ", list2[1:5]
+
+When the above code is executed, it produces the following result −
+list1[0]:  physics
+list2[1:5]:  [2, 3, 4, 5]
+
+Updating Lists
+You can update single or multiple elements of lists by giving the slice on the left-hand side of the assignment operator, and you can add to elements in a list with the append method. For example −
+#!/usr/bin/python
+
+list = ['physics', 'chemistry', 1997, 2000];
+
+print "Value available at index 2 : "
+print list[2]
+list[2] = 2001;
+print "New value available at index 2 : "
+print list[2]
+
+Note: append method is discussed in subsequent section.
+When the above code is executed, it produces the following result −
+Value available at index 2 :
+1997
+New value available at index 2 :
+2001
+
+Delete List Elements
+To remove a list element, you can use either the del statement if you know exactly which elementss you are deleting or the remove method if you do not know. For example −
+#!/usr/bin/python
+
+list1 = ['physics', 'chemistry', 1997, 2000];
+
+print list1
+del list1[2];
+print "After deleting value at index 2 : "
+print list1
+
+When the above code is executed, it produces following result −
+['physics', 'chemistry', 1997, 2000]
+After deleting value at index 2 :
+['physics', 'chemistry', 2000]
+
+Note: remove method is discussed in subsequent section.
+Basic List Operations
+Lists respond to the + and * operators much like strings; they mean concatenation and repetition here too, except that the result is a new list, not a string.
+In fact, lists respond to all of the general sequence operations we used on strings in the prior chapter.
+Python Expression
+	Results
+	Description
+	len[1,2,3][1,2,3]
+	3
+	Length
+	[1, 2, 3] + [4, 5, 6]
+	[1, 2, 3, 4, 5, 6]
+	Concatenation
+	['Hi!'] * 4
+	['Hi!', 'Hi!', 'Hi!', 'Hi!']
+	Repetition
+	3 in [1, 2, 3]
+	True
+	Membership
+	for x in [1, 2, 3]: print x,
+	1 2 3
+	Iteration
+	Indexing, Slicing, and Matrixes
+Because lists are sequences, indexing and slicing work the same way for lists as they do for strings.
+Assuming following input −
+L = ['spam', 'Spam', 'SPAM!']
+
+ 
+Python Expression
+	Results
+	Description
+	L[2]
+	'SPAM!'
+	Offsets start at zero
+	L[-2]
+	'Spam'
+	Negative: count from the right
+	L[1:]
+	['Spam', 'SPAM!']
+	Slicing fetches sections
+	Built-in List Functions & Methods:
+1
+Python List cmp Method
+https://www.tutorialspoint.com/python/list_cmp.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method cmp compares elements of two lists.
+Syntax
+Following is the syntax for cmp method −
+cmp(list1, list2)
+
+Parameters
+* list1 -- This is the first list to be compared.
+* list2 -- This is the second list to be compared.
+Return Value
+If elements are of the same type, perform the compare and return the result. If elements are different types, check to see if they are numbers.
+* If numbers, perform numeric coercion if necessary and compare.
+* If either element is a number, then the other element is "larger" numbersare"smallest"numbersare"smallest".
+* Otherwise, types are sorted alphabetically by name.
+If we reached the end of one of the lists, the longer list is "larger." If we exhaust both lists and share the same data, the result is a tie, meaning that 0 is returned.
+Example
+The following example shows the usage of cmp method.
+#!/usr/bin/python
+
+list1, list2 = [123, 'xyz'], [456, 'abc']
+
+print cmp(list1, list2)
+print cmp(list2, list1)
+list3 = list2 + [786];
+print cmp(list2, list3)
+
+When we run above program, it produces following result −
+-1
+1
+-1
+2
+
+
+Python List len Method
+https://www.tutorialspoint.com/python/list_len.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method len returns the number of elements in the list.
+Syntax
+Following is the syntax for len method −
+len(list)
+
+Parameters
+* list -- This is a list for which number of elements to be counted.
+Return Value
+This method returns the number of elements in the list.
+Example
+The following example shows the usage of len method.
+#!/usr/bin/python
+
+list1, list2 = [123, 'xyz', 'zara'], [456, 'abc']
+
+print "First list length : ", len(list1)
+print "Second list length : ", len(list2)
+
+When we run above program, it produces following result −
+First list length :  3
+Second list length :  2
+
+
+
+
+3
+
+
+Python List max Method
+https://www.tutorialspoint.com/python/list_max.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method max returns the elements from the list with maximum value.
+Syntax
+Following is the syntax for max method −
+max(list)
+
+Parameters
+* list -- This is a list from which max valued element to be returned.
+Return Value
+This method returns the elements from the list with maximum value.
+Example
+The following example shows the usage of max method.
+#!/usr/bin/python
+
+list1, list2 = [123, 'xyz', 'zara', 'abc'], [456, 700, 200]
+
+print "Max value element : ", max(list1)
+print "Max value element : ", max(list2)
+
+When we run above program, it produces following result −
+Max value element :  zara
+Max value element :  700
+
+
+
+
+4
+
+
+Python List min Method
+https://www.tutorialspoint.com/python/list_min.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method min returns the elements from the list with minimum value.
+Syntax
+Following is the syntax for min method:
+min(list)
+
+Parameters
+* list -- This is a list from which min valued element to be returned.
+Return Value
+This method returns the elements from the list with minimum value.
+Example
+The following example shows the usage of min method.
+#!/usr/bin/python
+
+list1, list2 = [123, 'xyz', 'zara', 'abc'], [456, 700, 200]
+
+print "min value element : ", min(list1)
+print "min value element : ", min(list2)
+
+When we run above program, it produces following result −
+min value element :  123
+min value element :  200
+
+
+5
+
+
+Python List list Method
+https://www.tutorialspoint.com/python/list_list.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method list takes sequence types and converts them to lists. This is used to convert a given tuple into list.
+Note: Tuple are very similar to lists with only difference that element values of a tuple can not be changed and tuple elements are put between parentheses instead of square bracket.
+Syntax
+Following is the syntax for list method:
+list( seq )
+
+Parameters
+* seq -- This is a tuple to be converted into list.
+Return Value
+This method returns the list.
+Example
+The following example shows the usage of list method.
+#!/usr/bin/python
+
+aTuple = (123, 'xyz', 'zara', 'abc');
+aList = list(aTuple)
+
+print "List elements : ", aList
+
+When we run above program, it produces following result:
+List elements :  [123, 'xyz', 'zara', 'abc']
+
+
+
+
+6
+
+
+Python List append Method
+https://www.tutorialspoint.com/python/list_append.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method append appends a passed obj into the existing list.
+Syntax
+Following is the syntax for append method −
+list.append(obj)
+
+Parameters
+* obj -- This is the object to be appended in the list.
+Return Value
+This method does not return any value but updates existing list.
+Example
+The following example shows the usage of append method.
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc'];
+aList.append( 2009 );
+print "Updated List : ", aList
+
+When we run above program, it produces following result −
+Updated List :  [123, 'xyz', 'zara', 'abc', 2009]
+
+
+7
+
+
+Python List count Method
+https://www.tutorialspoint.com/python/list_count.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method count returns count of how many times obj occurs in list.
+Syntax
+Following is the syntax for count method −
+list.count(obj)
+
+Parameters
+* obj -- This is the object to be counted in the list.
+Return Value
+This method returns count of how many times obj occurs in list.
+Example
+The following example shows the usage of count method.
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc', 123];
+
+print "Count for 123 : ", aList.count(123)
+print "Count for zara : ", aList.count('zara')
+
+When we run above program, it produces following result −
+Count for 123 :  2
+Count for zara :  1
+
+
+
+
+8
+
+
+Python List extend Method
+https://www.tutorialspoint.com/python/list_extend.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method extend appends the contents of seq to list.
+Syntax
+Following is the syntax for extend method −
+list.extend(seq)
+
+Parameters
+* seq -- This is the list of elements
+Return Value
+This method does not return any value but add the content to existing list.
+Example
+The following example shows the usage of extend method.
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc', 123];
+bList = [2009, 'manni'];
+aList.extend(bList)
+
+print "Extended List : ", aList 
+
+When we run above program, it produces following result −
+Extended List :  [123, 'xyz', 'zara', 'abc', 123, 2009, 'manni']
+
+
+
+
+9
+
+
+Python List index Method
+https://www.tutorialspoint.com/python/list_index.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method index returns the lowest index in list that obj appears.
+Syntax
+Following is the syntax for index method −
+list.index(obj)
+
+Parameters
+* obj -- This is the object to be find out.
+Return Value
+This method returns index of the found object otherwise raise an exception indicating that value does not find.
+Example
+The following example shows the usage of index method.
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc'];
+
+print "Index for xyz : ", aList.index( 'xyz' ) 
+print "Index for zara : ", aList.index( 'zara' ) 
+
+When we run above program, it produces following result −
+Index for xyz :  1
+Index for zara :  2
+10
+
+
+Python List insert Method
+https://www.tutorialspoint.com/python/list_insert.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method insert inserts object obj into list at offset index.
+Syntax
+Following is the syntax for insert method −
+list.insert(index, obj)
+
+Parameters
+* index -- This is the Index where the object obj need to be inserted.
+* obj -- This is the Object to be inserted into the given list.
+Return Value
+This method does not return any value but it inserts the given element at the given index.
+Example
+The following example shows the usage of insert method.
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc']
+
+aList.insert( 3, 2009)
+
+print "Final List : ", aList
+
+When we run above program, it produces following result −
+Final List : [123, 'xyz', 'zara', 2009, 'abc']
+
+
+
+
+11
+
+
+Python List pop Method
+https://www.tutorialspoint.com/python/list_pop.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method pop removes and returns last object or obj from the list.
+Syntax
+Following is the syntax for pop method −
+list.pop(obj=list[-1])
+
+Parameters
+* obj -- This is an optional parameter, index of the object to be removed from the list.
+Return Value
+This method returns the removed object from the list.
+Example
+The following example shows the usage of pop method.
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc'];
+
+print "A List : ", aList.pop()
+print "B List : ", aList.pop(2)
+
+When we run above program, it produces following result −
+A List :  abc
+B List :  zara
+
+
+
+
+12
+
+
+Python List remove Method
+https://www.tutorialspoint.com/python/list_remove.htm
+Copyright © tutorialspoint.com
+
+
+Parameters
+* obj -- This is the object to be removed from the list.
+Return Value
+This method does not return any value but removes the given object from the list.
+Example
+The following example shows the usage of remove method.
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc', 'xyz'];
+
+aList.remove('xyz');
+print "List : ", aList
+aList.remove('abc');
+print "List : ", aList
+
+When we run above program, it produces following result −
+List :  [123, 'zara', 'abc', 'xyz']
+List :  [123, 'zara', 'xyz']
+
+
+13
+
+
+Python List reverse Method
+https://www.tutorialspoint.com/python/list_reverse.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method reverse reverses objects of list in place.
+Syntax
+Following is the syntax for reverse method −
+list.reverse()
+
+Parameters
+* NA
+Return Value
+This method does not return any value but reverse the given object from the list.
+Example
+The following example shows the usage of reverse method.
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc', 'xyz'];
+
+aList.reverse();
+print "List : ", aList
+
+When we run above program, it produces following result −
+List :  ['xyz', 'abc', 'zara', 'xyz', 123]
+
+
+
+
+14
+
+
+
+
+Python List sort Method
+https://www.tutorialspoint.com/python/list_sort.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method sort sorts objects of list, use compare func if given.
+Syntax
+Following is the syntax for sort method −
+list.sort([func])
+
+Parameters
+NA
+Return Value
+This method does not return any value but reverse the given object from the list.
+Example
+The following example shows the usage of sort method.
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc', 'xyz'];
+
+aList.sort();
+print "List : ", aList
+
+When we run above program, it produces following result −
+List :  [123, 'abc', 'xyz', 'xyz', 'zara']
+
+
+
+
+Tuples:
+
+
+Python Tuples
+https://www.tutorialspoint.com/python/python_tuples.htm
+Copyright © tutorialspoint.com
+
+
+A tuple is a sequence of immutable Python objects. Tuples are sequences, just like lists. The differences between tuples and lists are, the tuples cannot be changed unlike lists and tuples use parentheses, whereas lists use square brackets.
+Creating a tuple is as simple as putting different comma-separated values. Optionally you can put these comma-separated values between parentheses also. For example −
+tup1 = ('physics', 'chemistry', 1997, 2000);
+tup2 = (1, 2, 3, 4, 5 );
+tup3 = "a", "b", "c", "d";
+
+The empty tuple is written as two parentheses containing nothing −
+tup1 = ();
+
+To write a tuple containing a single value you have to include a comma, even though there is only one value −
+tup1 = (50,);
+
+Like string indices, tuple indices start at 0, and they can be sliced, concatenated, and so on.
+Accessing Values in Tuples:
+To access values in tuple, use the square brackets for slicing along with the index or indices to obtain value available at that index. For example −
+#!/usr/bin/python
+
+tup1 = ('physics', 'chemistry', 1997, 2000);
+tup2 = (1, 2, 3, 4, 5, 6, 7 );
+
+print "tup1[0]: ", tup1[0]
+print "tup2[1:5]: ", tup2[1:5]
+
+When the above code is executed, it produces the following result −
+tup1[0]:  physics
+tup2[1:5]:  [2, 3, 4, 5]
+
+Updating Tuples
+Tuples are immutable which means you cannot update or change the values of tuple elements. You are able to take portions of existing tuples to create new tuples as the following example demonstrates −
+#!/usr/bin/python
+
+tup1 = (12, 34.56);
+tup2 = ('abc', 'xyz');
+
+# Following action is not valid for tuples
+# tup1[0] = 100;
+
+# So let's create a new tuple as follows
+tup3 = tup1 + tup2;
+print tup3
+
+When the above code is executed, it produces the following result −
+(12, 34.56, 'abc', 'xyz')
+
+Delete Tuple Elements
+Removing individual tuple elements is not possible. There is, of course, nothing wrong with putting together another tuple with the undesired elements discarded.
+To explicitly remove an entire tuple, just use the del statement. For example:
+#!/usr/bin/python
+
+tup = ('physics', 'chemistry', 1997, 2000);
+
+print tup
+del tup;
+print "After deleting tup : "
+print tup
+
+This produces the following result. Note an exception raised, this is because after del tup tuple does not exist any more −
+('physics', 'chemistry', 1997, 2000)
+After deleting tup :
+Traceback (most recent call last):
+ File "test.py", line 9, in <module>
+   print tup;
+NameError: name 'tup' is not defined
+
+Basic Tuples Operations
+Tuples respond to the + and * operators much like strings; they mean concatenation and repetition here too, except that the result is a new tuple, not a string.
+In fact, tuples respond to all of the general sequence operations we used on strings in the prior chapter −
+Python Expression
+	Results
+	Description
+	len(1,2,3(1,2,3)
+	3
+	Length
+	1,2,31,2,3 + 4,5,64,5,6
+	1,2,3,4,5,61,2,3,4,5,6
+	Concatenation
+	′Hi!′,′Hi!′, * 4
+	′Hi!′,′Hi!′,′Hi!′,′Hi!′′Hi!′,′Hi!′,′Hi!′,′Hi!′
+	Repetition
+	3 in 1,2,31,2,3
+	True
+	Membership
+	for x in 1,2,31,2,3: print x,
+	1 2 3
+	Iteration
+	Indexing, Slicing, and Matrixes
+Because tuples are sequences, indexing and slicing work the same way for tuples as they do for strings. Assuming following input −
+L = ('spam', 'Spam', 'SPAM!')
+
+ 
+Python Expression
+	Results
+	Description
+	L[2]
+	'SPAM!'
+	Offsets start at zero
+	L[-2]
+	'Spam'
+	Negative: count from the right
+	L[1:]
+	['Spam', 'SPAM!']
+	Slicing fetches sections
+	No Enclosing Delimiters
+Any set of multiple objects, comma-separated, written without identifying symbols, i.e., brackets for lists, parentheses for tuples, etc., default to tuples, as indicated in these short examples −
+#!/usr/bin/python
+
+print 'abc', -4.24e93, 18+6.6j, 'xyz'
+x, y = 1, 2;
+print "Value of x , y : ", x,y
+
+When the above code is executed, it produces the following result −
+abc -4.24e+93 (18+6.6j) xyz
+Value of x , y : 1 2
+
+Built-in Tuple Functions
+Python includes the following tuple functions −
+
+
+1
+
+
+Python Tuple cmp Method
+https://www.tutorialspoint.com/python/tuple_cmp.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method cmp compares elements of two tuples.
+Syntax
+Following is the syntax for cmp method −
+cmp(tuple1, tuple2)
+
+Parameters
+* tuple1 -- This is the first tuple to be compared
+* tuple2 -- This is the second tuple to be compared
+Return Value
+If elements are of the same type, perform the compare and return the result. If elements are different types, check to see if they are numbers.
+* If numbers, perform numeric coercion if necessary and compare.
+* If either element is a number, then the other element is "larger" numbersare"smallest"numbersare"smallest".
+* Otherwise, types are sorted alphabetically by name.
+If we reached the end of one of the tuples, the longer tuple is "larger." If we exhaust both tuples and share the same data, the result is a tie, meaning that 0 is returned.
+Example
+The following example shows the usage of cmp method.
+#!/usr/bin/python
+
+tuple1, tuple2 = (123, 'xyz'), (456, 'abc')
+
+print cmp(tuple1, tuple2)
+print cmp(tuple2, tuple1)
+tuple3 = tuple2 + (786,);
+print cmp(tuple2, tuple3)
+
+When we run above program, it produces following result −
+-1
+1
+-1
+
+
+
+
+2
+
+
+Python Tuple len Method
+https://www.tutorialspoint.com/python/tuple_len.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method len returns the number of elements in the tuple.
+Syntax
+Following is the syntax for len method −
+len(tuple)
+
+Parameters
+* tuple -- This is a tuple for which number of elements to be counted.
+Return Value
+This method returns the number of elements in the tuple.
+Example
+The following example shows the usage of len method.
+#!/usr/bin/python
+
+tuple1, tuple2 = (123, 'xyz', 'zara'), (456, 'abc')
+
+print "First tuple length : ", len(tuple1)
+print "Second tuple length : ", len(tuple2)
+
+When we run above program, it produces following result −
+First tuple length :  3
+Second tuple length :  2
+
+
+
+
+
+
+3
+
+
+
+
+Python Tuple max Method
+https://www.tutorialspoint.com/python/tuple_max.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method max returns the elements from the tuple with maximum value.
+Syntax
+Following is the syntax for max method −
+max(tuple)
+
+Parameters
+* tuple -- This is a tuple from which max valued element to be returned.
+Return Value
+This method returns the elements from the tuple with maximum value.
+Example
+The following example shows the usage of max method.
+#!/usr/bin/python
+
+tuple1, tuple2 = (123, 'xyz', 'zara', 'abc'), (456, 700, 200)
+
+print "Max value element : ", max(tuple1)
+print "Max value element : ", max(tuple2)
+
+When we run above program, it produces following result −
+Max value element :  zara
+Max value element :  700
+
+
+
+
+4
+
+
+
+
+Python Tuple min Method
+https://www.tutorialspoint.com/python/tuple_min.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method min returns the elements from the tuple with minimum value.
+Syntax
+Following is the syntax for min method −
+min(tuple)
+
+Parameters
+* tuple -- This is a tuple from which min valued element to be returned.
+Return Value
+This method returns the elements from the tuple with minimum value.
+Example
+The following example shows the usage of min method.
+#!/usr/bin/python
+
+tuple1, tuple2 = (123, 'xyz', 'zara', 'abc'), (456, 700, 200)
+
+print "min value element : ", min(tuple1)
+print "min value element : ", min(tuple2)
+
+When we run above program, it produces following result −
+min value element :  123
+min value element :  200
+
+
+
+
+
+
+5
+
+
+
+
+
+
+Python Tuple tuple Method
+https://www.tutorialspoint.com/python/tuple_tuple.htm
+Copyright © tutorialspoint.com
+
+
+Description
+The method tuple converts a list of items into tuples
+Syntax
+Following is the syntax for tuple method −
+tuple( seq )
+
+Parameters
+* seq -- This is a tuple to be converted into tuple.
+Return Value
+This method returns the tuple.
+Example
+The following example shows the usage of tuple method.
+#!/usr/bin/python
+
+aList = (123, 'xyz', 'zara', 'abc');
+aTuple = tuple(aList)
+
+print "Tuple elements : ", aTuple
+
+When we run above program, it produces following result −
+Tuple elements :  (123, 'xyz', 'zara', 'abc')
+
+
+
+
+
+
+
+
+
+
+
+
+String inbuilt functions:
+
+
+
+
+Conversion:

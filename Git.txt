@@ -1,0 +1,59 @@
+﻿Git:
+
+
+→ This is distributed VCS
+→ yum install git
+→ git --version
+→ git config --global user.name "Ahmad Sharif"
+→ git config --global user.email "as.bd@hotmail.com"
+→ git config --list
+→ git help config  → for getting help git help then what you want to see.
+
+
+Initialize a repository from existing code:
+
+
+→ First we need to go that directory which we want to track then we will do ls -la to see files, then i need to run git init then we can see .git repository, it contains everything related to our repository. We want to stop tracking our project by deleting .git directory 
+
+
+→ cd /vagrant/mygit
+→ git init
+→ git status   → to see how many files are untracked
+→ If we want not to track any file , then we will make a file , name is .gitignore. Then we will keep in .gitignore  those file which we don't want to track
+→ vim .gitignore →    .DS_Store
+.project
+*.pyc  → here * is wild card
+
+
+→ git status  → if we now run this command then we can not see that files putted in .gitignore file
+→ There are three stages in git
+        → Working area  → Staging Area → .git Repository
+→ We are now at Working Area
+→ Now we will add files to staging area by git add -A for all files or we can do it individually
+→ git add .gitignore  → adding .gitignore
+→ git status → Now we can not see .gitignore is untrack. So .gitignore is in Staging Area
+→ git add -A  → to add all in staging area
+→ git status    → then we can see all of our files in Staging Area
+
+
+Remove files from staging area:
+→ git reset calc.py   → to remove calc.py file from staging area
+→ git reset    → to remove all files from staging area
+→ git status
+→ git add -A
+→ git status
+→ git commit -m “message about what kind of change we made here”
+→ git commit -m “Initial commit”
+→ git status → now we can see our working directory is clean
+→ git log → we can see log which we just commit
+
+
+Clonig a remote repository:
+
+
+→ mkdir cloned-repo
+→ cd cloned-repo
+→ git clone https://github.com/ahmad-sharif/puppet.git .
+→ git remote -v
+→ git branch -a
+→

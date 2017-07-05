@@ -1,0 +1,1391 @@
+﻿http://sqlinfo.net/mysql/mysql_data_types.php
+https://www.techonthenet.com/mysql/
+
+
+MySQL Data Types
+Text Data Types
+CHAR( )      fixed from 0 to 255 characters long 
+VARCHAR( )   variable from 0 to 255 characters long 
+TINYTEXT     maximum length of 255 characters 
+TEXT         maximum length of 65535 characters 
+BLOB         maximum length of 65535 characters 
+MEDIUMTEXT   maximum length of 16777215 characters 
+MEDIUMBLOB   maximum length of 16777215 characters 
+LONGTEXT     maximum length of 4294967295 characters 
+LONGBLOB     maximum length of 4294967295 characters
+
+
+Numeric Data Types
+TINYINT( )     -128 to 127 SIGNED or 0 to 255 UNSIGNED 
+SMALLINT( )    -32768 to 32767 SIGNED or 0 to 65535 UNSIGNED 
+MEDIUMINT( )   -8388608 to 8388607 SIGNED or 0 to 16777215 UNSIGNED 
+INT( )         -2147483648 to 2147483647 SIGNED or 0 to 4294967295 UNSIGNED 
+BIGINT( )      -9223372036854775808 to 9223372036854775807 SIGNED or 0 to 18446744073709551615 UNSIGNED 
+FLOAT          small number with a floating decimal point 
+DOUBLE( , )    large number with a floating decimal point
+DECIMAL( , )   DOUBLE stored as a string , allowing for a fixed decimal point
+ 
+
+Date Data Types
+ DATE      YYYY-MM-DD 
+DATETIME  YYYY-MM-DD HH:MM:SS 
+TIMESTAMP YYYYMMDDHHMMSS 
+TIME      HH:MM:SS
+
+
+
+Create users:
+
+
+CREATE USER
+ user_name IDENTIFIED BY [ PASSWORD ] 'password_value';
+→ create user ‘ahmad’@’localhost’ identified by ‘redhat’;
+→ create user ‘ahmad’ identified by ‘redhat’;
+
+
+→ DROP USER 'smithj'@'localhost';
+
+
+Find users:
+
+
+→ SELECT User
+FROM mysql.user;
+
+
+Find users login to mysql:
+
+
+Exactly this command.
+
+
+SELECT SUBSTRING_INDEX(host, ':', 1) AS host_short,
+      GROUP_CONCAT(DISTINCT user) AS users,
+      COUNT(*) AS threads
+FROM information_schema.processlist
+GROUP BY host_short
+ORDER BY COUNT(*), host_short;
+
+
+Rename user:
+
+
+RENAME USER
+ user_name TO new_name;
+
+
+
+
+Permission for users:
+
+
+→ show grants for 'ahmad1'@'localhost';
+
+
+
+
+
+
+
+
+
+
+SELECT
+	Ability to perform SELECT statements on the table.
+	INSERT
+	Ability to perform INSERT statements on the table.
+	UPDATE
+	Ability to perform UPDATE statements on the table.
+	DELETE
+	Ability to perform DELETE statements on the table.
+	INDEX
+	Ability to create an index on an existing table.
+	CREATE
+	Ability to perform CREATE TABLE statements.
+	ALTER
+	Ability to perform ALTER TABLE statements to change the table definition.
+	DROP
+	Ability to perform DROP TABLE statements.
+	GRANT OPTION
+	Allows you to grant the privileges that you possess to other users.
+	ALL
+	Grants all permissions except GRANT OPTION.
+
+
+	
+
+→ GRANT SELECT, INSERT, UPDATE, DELETE ON contacts TO 'smith'@'localhost';
+→ GRANT ALL ON contacts TO 'smith'@'localhost';
+→ GRANT SELECT ON contacts TO '*'@'localhost';
+
+
+
+
+
+
+
+
+Revoke:
+
+
+Use the previous privilege 
+
+
+
+
+→ REVOKE privileges ON object FROM user;
+
+
+
+
+
+
+
+
+Primary key :
+
+
+ALTER TABLE contacts
+ DROP PRIMARY KEY;
+
+
+ALTER TABLE contacts
+ ADD CONSTRAINT contacts_pk 
+   PRIMARY KEY (contact_id);
+1).
+
+
+→ SQL → structured query language
+→ List of Databases: Mysql, PostgreSQL, Oracle, MariaDB, SQlite, MS SQL Server, Openbase,
+dBase
+→ Create , alter and delete database and table
+→ Insert, update and delete records
+→ use alias, primary key and foreign key
+
+
+2).
+
+
+→ create database mybussiness;  → Creating database
+→ drop database mybussiness;     → Dropping/ Deleting Database.
+→ Problem to drop database → go to check
+
+
+
+
+3).
+
+
+Create table:
+
+
+→ create table customers (id int(11) not null auto_increment, firstName varchar(255), lastName varchar(255),address varchar(255), email varchar(255), city varchar(255), division varchar(255), postcode varchar(255), primary key (id)  );
+4).
+
+
+Insert into table:
+
+
+→ insert into customers (column) values (value we want to put);
+→insert into customers (firstName, lastName, address, email, city, division, postcode) VALUES ('Delowar jahan','imran','House 5 Lane 2','imran@gamil.com','Dhaka','Dhaka','1236'), ('Akbar','Hossain','House 51 Lane 2','akbar@gamil.com','Comilla','Chittagong','1422');
+Note: careful about ‘’ -single quote
+
+
+
+
+ 5)
+ Update query:
+
+
+→ update is for updating data
+→ update table_name set column_name =’new_value’ where column = ‘value’;
+→ update customes set email = ‘imran@gmail.com’ where id =1; → change/update/set email to imran@gmail.com
+
+
+6)
+Delete:
+→ delete from table_name where column = ‘value’; → delete a row from a table where column value is value
+→ delete from customers where id =’12’; → delete a row where id 
+‘S value is 12
+
+
+7)
+
+
+Alter is used for table columns updating
+
+
+Alter:
+
+
+→ alter → use it for update table column
+→ alter table table_name add new_column varchar(255); → adding a column
+→ alter table customers add new_column varchar(255) ; → Adding a new column at the end of the table
+→ ALTER TABLE table_name ADD column_name VARCHAR(60) FIRST; → Adding a column 
+     as a first column.
+→ ALTER TABLE table_name ADD column_name VARCHAR(60); → Adding a column at the 
+     end
+→ ALTER TABLE table_name ADD new_column type(value) AFTER column_name; → 
+     Adding a new_column after  column_name
+→ ALTER TABLE table_name  ADD column_1 type(value), ADD column_2 type(value);  →   
+     Adding multiple column in a table
+
+
+
+
+
+
+
+
+
+
+Modify:
+
+
+→ alter table customers modify column new_column int(11);  → changing new column variable type to int
+
+
+Drop column:
+
+
+→ ALTER TABLE ‘table_name’ DROP ‘column_name’; → Dropping a column
+Or
+→ ALTER TABLE ‘table_name’ DROP COLUMN ‘column_name’; → Dropping a column
+
+
+
+
+→ alter table customers drop column new_column;  → Deleting a column
+
+
+Deleting a row:
+
+
+→ DELETE FROM table_name WHERE column_name = ‘value’; → Deleting a row from a table
+
+
+
+
+
+
+
+
+8)
+
+
+Select Data:
+
+
+
+
+SELECT [ ALL | DISTINCT | DISTINCTROW ]
+      [ HIGH_PRIORITY ]
+      [ STRAIGHT_JOIN ]
+      [ SQL_SMALL_RESULT | SQL_BIG_RESULT ] [ SQL_BUFFER_RESULT ]
+      [ SQL_CACHE | SQL_NO_CACHE ]
+      [ SQL_CALC_FOUND_ROWS ]
+expressions
+FROM tables
+[WHERE conditions]
+[GROUP BY expressions]
+[HAVING condition]
+[ORDER BY expression [ ASC | DESC ]]
+[LIMIT [offset_value] number_rows | LIMIT number_rows OFFSET offset_value]
+[PROCEDURE procedure_name]
+[INTO [ OUTFILE 'file_name' options 
+      | DUMPFILE 'file_name'
+      | @variable1, @variable2, ... @variable_n]
+[FOR UPDATE | LOCK IN SHARE 
+MODE];
+
+
+
+
+→ select * from customers  → Select all from customers
+→ select * from customers limit 3; → shows all columns with 3 rows
+→ select * from customers limt 3,4 ; → Shows all column from number 4 rows up to 4 rows
+→ select firstName, lastName from customers;
+→ select * from customer where id = ‘7’; → shows a row which id is 7
+→ select * from customers order by lastname DESC|ASC ; → order by lastName des or ascending
+→ select city from customers;  → showing all cities
+→ select distinct city from customers; → distinct is for only one time show if repeating city name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+9)
+Operators:   
+=  ,  >  ,  <   ,  > =  ,   <=    ,  → column_name = ‘value’
+ <> ,!= → (Not Equal to) → Dept <> ‘Sales’  → except Sales  
+BETWEEN → Cost BETWEEN 10 AND 20
+LIKE  → first_name LIKE ‘Delowar% ’→ Matching a character pattern
+IN → Equal to one of multiple possible values   → id in (1,4,5) → where id is 1 , 4 , 6
+IS or IS NOT  → compare to null → address IS NOT NULL
+IS NOT DISTINCT FROM → Is equal to value or both are nulls  → Debs IS NOT DISTINCT FROM receivables ????
+AS  → Use to change a field name when viewing results → SELECT employee AS ‘department1’ from table name 
+
+
+
+
+10)
+
+
+→ alter table customers add column age int;  → adding a column and need to put some values
+between:
+→ select * from customers where age between 20 and 30; → showin row with the age of between 20 to 30
+
+
+11)
+like: 
+→ like is for maching pattern
+→ wild card % → zero , one or more tahn oe maching
+→ _ → is for single character maching
+→ select * from customers where city like ‘%r’ ; → maching city which last letter is r
+→ select * from customers where city not like ‘%r’ ; → maching city which last letter is not r
+→ try different pattern
+
+
+12)
+
+
+in:
+→ IN → to use multiple values inside where 
+→ select * from customers where division in ( ‘Dhaka’, ’Rajshahi’ ); → showind rows which division are Dhaka / Rajshahi 
+
+
+13)
+
+
+Indexes:
+→ an  index can be created in a table to find data more quickly and efficiently
+→ user can no see index, they just use to speed up searches/queries
+→ only create indexes on column ( and tables) that will be frequently searched against
+→ CREATE INDEX index_name ON table_name(column_name which we want to index);
+→ create index CIndex ON customers (city);
+→ DROP INDEX index_name ON table_name; → droppin index
+
+
+14)
+
+
+Relationship and Foreign keys:
+
+
+First i will make another table products
+→  create table products ( id int not null auto_increment, name varchar(255), price int, primary key (id));
+
+
+
+
+→ create table orders( 
+id int not null auto_increment, 
+orderNumber varchar(255), 
+productId int, 
+customerId int, 
+orderDate datetime default CuRREnt_timestamp, 
+primary key (id), 
+foreign key (productId) REFERENCES products(id), 
+foreign key (customerId) references customers(id))
+;
+
+
+To put time use datetime default current_timestamp
+ 
+15)
+
+
+JOINS:
+
+
+Insert values for products:
+→ insert into mybussiness.products(name, price ) values
+('Product One', 20),
+('Product Two', 30),
+('Product Three', 45),
+('Product Four', 85),
+('Product Five', 100),
+('Product Six', 250),
+('Product Seven', 20)
+;
+
+
+Insert values for orders:
+→  insert into orders (orderNumber, productId, customerId) values ('01','1','4'), ('02','3','1'), ('03','1','9'), ('04','6','2'), ('05','1','1'), ('06','4','6'), ('07','4','4'), ('08','2','5'), ('09','1','4');
+
+
+
+
+16)
+
+
+
+
+Structure of JOIN:
+
+
+
+
+SELECT table1.col1,  table1.col2,  table2.col2,  table2.col3
+FROM table1
+LEFT/RIGHT/INNER JOIN table2
+ON table1.primarykey = table2.foreignkey
+ORDER BY table1.col1
+
+
+
+
+Inner join:
+Join only common items match from both tables 
+
+
+Joining two tables
+
+
+select mybussiness.customers.firstName, mybussiness.customers.lastName, mybussiness.orders.orderNumber, mybussiness.orders.orderDate 
+from mybussiness.customers 
+inner join mybussiness.orders 
+ON mybussiness.customers.id = mybussiness.orders.customerId 
+order by mybussiness.customers.lastName;
+
+
+
+
+Or
+
+
+
+
+select customers.firstName, customers.lastName, orders.orderNumber 
+from customers  
+inner join orders  
+ON customers.id = orders.customerId 
+order by customers.lastName;
+
+
+17)
+Left join:
+Keep whole left table and right table. then match with other table. If any row does not match with left table then other table’s row will show null. 
+
+
+SELECT 
+    mybussiness.customers.firstName,
+    mybussiness.customers.lastName,
+    mybussiness.orders.id,
+    mybussiness.orders.orderdate
+FROM
+    mybussiness.customers
+        LEFT JOIN
+    mybussiness.orders ON mybussiness.customers.id = mybussiness.orders.customerId
+ORDER BY mybussiness.customers.lastName;
+
+
+
+
+Or 
+
+
+
+
+select customers.firstName, customers.lastName, orders.id, orders.orderdate 
+from customers 
+left join orders 
+on customers.id = orders.customerId 
+order by customers.firstName;
+
+
+
+
+18)
+
+
+Rigth join:
+
+
+Keep all of right table and fetch data from left table . If does not get from left is shows null
+
+
+
+
+SELECT 
+    mybussiness.orders.orderNumber,
+    mybussiness.orders.orderdate,
+    mybussiness.customers.firstName,
+    mybussiness.customers.lastName
+    
+FROM
+    mybussiness.orders
+        right JOIN mybussiness.customers 
+        ON mybussiness.orders.customerId = mybussiness.customers.id
+ORDER BY mybussiness.customers.lastName;
+
+
+
+
+
+
+Or  
+
+
+select orders.orderNumber, orders.orderDate, customers.firstName, customers.lastName 
+from orders 
+right join customers 
+on orders.customerId = customers.id 
+order by customers.lastName;
+
+
+
+
+
+
+19)
+
+
+Union operator:
+
+
+If both table has city column we can do union of them 
+
+
+Now add a tables. Name is suppliers
+
+
+ create table suppliers( 
+id int not null auto_increment, 
+firstName varchar(255), 
+lastName varchar(255), 
+address varchar(255), 
+email varchar(255), 
+city varchar(255), 
+division varchar(255), 
+postcode varchar(255), 
+primary key (id) );
+
+
+Now insert all items:
+
+
+insert into suppliers (firstName, lastName, address, email, city, division, postcode) VALUES ('Al','Amin','House 5 Lane 2','amin@gamil.com','Dhaka','Dhaka','1422'), ('Jabed','Hossain','House 51 Lane 2','jabed@gamil.com','Gazipur','Chittagong','1236'), ('Faisal','Khan','House1 lane 2','khan@gmail.com','Gazipur','Dhaka','1236'),('Humayun Kobir','Henu','House 8 Lane 20','kobir@gamil.com','Jamalpur','Dhaka','1236'), ('MM','Forhad','House 6 Lane 2','forhad@gmail.com','Moulobhibazar','Sylhet','1016'), ('Jahangir','Alom','House 9 Lane 18','alom@gmail.com','Habiganj','Sylhet','1100'), ('Ariful','Islam','House 3 Lane 3','ariful@gmail.com','Lalmonirhat','Rangpur','1258'), ('Abdul','Bari','House 8 Lane 1','bari@gmail.com','Rajshahi','Rajshahi','1244'), ('Kamal','Ahmed','House 9 Lane 21','kamal@gmail.com','Kurigram','Rangpur','1256'), ('Ivan','Habib','House 7 Lane 6','habib@gmail.com','Natore','Rajshahi','1284'), ('Kamala','Khan',NULL, NULL, NULL, NULL, NULL), (NULL, 'khan',NULL, NULL, NULL, NULL, NULL);
+
+
+
+
+
+
+select city from mybussiness.suppliers
+union 
+select city from mybussiness.customers;
+→ putting all elements together of same name columns, if any same data is more than one it shows only one
+
+
+20)
+
+
+Union all:
+
+
+
+
+Select city from customers 
+Union all
+Select city from suppliers
+Order by city;
+→ It will union all data. If a same data is more than one it will show all of them
+
+
+
+
+
+
+Select city from customers 
+where  city = ‘Dhaka’
+Union all
+Select city from suppliers
+Where city = ‘Dhaka’
+Order by city;
+→ union of city where city is Dhaka
+
+
+21)
+
+
+
+
+Grepping data from multiple tables:
+
+
+select orders.orderNumber, customers.firstName, customers.lastName, products.name from orders inner join customers on orders.customerId = customers.id inner join products on orders.productId = products.id order by customers.firstName;
+
+
+
+
+Or 
+
+
+select customers.firstName, customers.lastName, orders.orderNumber, products.name  from customers inner join orders on customers.id = orders.customerId inner join products on products.id = orders.productId ;
+
+
+
+
+
+
+22)
+
+
+Subquery in select:
+
+
+Using query in a query.
+
+
+Select * from customers where postcode > ‘1250’;
+or 
+select * from customers where id in (select id from customers where postcode > '1250');
+
+
+23)
+
+
+
+
+Subquery with INSERT:
+
+
+We will make a same table using subquery to a backup table
+
+
+Making a back up table of customers table
+
+
+
+
+First make a table same like where we want to copy.
+
+
+
+
+
+
+ create table customers_bup( 
+id int not null auto_increment, 
+firstName varchar(255), 
+lastName varchar(255), 
+address varchar(255), 
+email varchar(255), 
+city varchar(255), 
+division varchar(255), 
+postcode varchar(255), 
+primary key (id) );
+
+
+
+
+
+
+insert into customers_bup  select * from customers;
+
+
+Or 
+Insert into customers_bup 
+Select * from customers
+Where id in (
+Select id from customers)
+
+
+
+
+
+
+24)
+
+
+Subquery with update and delete:
+
+
+Add a column name is salary double()
+
+
+
+
+update customers_bup set postcode = postcode*2 where id in (select id from customers where postcode > 1250);
+
+
+
+
+Delete from customers_bup
+Where postcode in (select postcode from customers where postcode = 1250);
+
+
+
+
+25)
+
+
+Truncate table:
+
+
+If we want to delete all data from a table, then we have to use trancate
+
+
+→ truncate table table_name ;
+→ truncate table customers_bup
+
+
+
+
+26)
+
+
+Wildcards % _
+
+
+
+
+27)
+
+
+Aliases for column:
+For renaming column name
+Alias can be useful → 
+→ column names are big and not very redable
+→ Two or more columns are combined together
+
+
+
+
+Select firstName as ‘First Name’ , lastName as ‘lastName’ from customers
+
+
+Make one column from two column
+
+
+Select concat(firstName,’ ‘, lastName) as ‘Name’, email from customers;
+
+
+
+
+28)
+
+
+Aliases for table:
+
+
+Select o.id, o.orderDate, c.firstName, c.lastName
+From customers as c, orders as o;
+
+
+
+
+
+
+29) 
+
+
+Aggregate Functions:
+
+
+→ select  avg(age) from customers;  → making average of age
+→ select  count(age) from customers;  → count number of age
+→ select max(age) from customers;    → max /min value of age
+→ select sum(age) from customers;   → sum of age
+
+
+30)
+
+
+Group By statement:
+
+
+
+
+If we want to make a resultset of one or more columns together then we need to use group by statements. And we need use group by when we use aggregate function
+
+
+→ select age, count(age) 
+from customers 
+where age > 30 
+group by age;  → want to make a table whose age is more than 30
+
+
+
+
+31)
+
+
+Having Clause:
+
+
+When we do not use where that time we can use having
+Always need to use with group by with having
+We can make condition with having and when it get true result then it execute
+If we want to give any condition with aggregate function that time need to use having
+
+
+select age, count(age) 
+from customers 
+group by age
+Having count(age) >=2;
+→ it is counting how many times ages iis there and will show only if it is >=2
+
+
+32)
+
+
+View:
+Making a virtual table taking columns from different tables. It is helpful to work in dynamically programing
+→ create view customers_view as
+Select id ,firstName, lastName
+From customers
+Where firstName is not null;
+
+
+
+
+
+
+→ select * from customers_view;  → to see view
+
+
+
+
+33)
+
+
+
+
+Inserting data into view:
+When we made that view we put an condition that firstname is not null, that means in view table we can put null in firstName, but it will not show in the table
+
+
+
+
+Insert into customers_view 
+Values (‘14’,’Helal’,’Khan’);
+
+
+→ select * from customers_view;   → to see view
+34) 
+
+
+With Check option:
+
+
+create view customers_view_new as Select id ,firstName, lastName From customers Where firstName is not null with check option;
+
+
+Insert into customers_view_new values (14,’Al’,’Amin’’);
+
+
+Insert into customers_view_new values (14, NULL,’Amin’’); → CHECK OPTION failed
+
+
+
+
+Here firstName is not null, So If we insert firstName as a null , is will show an error, so we can not put null firstname for inserting value for with check option. 
+This is the difference between putting values in views with with check option and without with check option
+
+
+35)
+
+
+Update , Delete , Drop View:
+
+
+→ select * from customers_view; → to see the view
+Update:
+
+
+Update customer_view
+Set firstName = ‘Kamal’
+Where id = 11;
+
+
+ select * from customers_view;
+
+
+Delete:
+Delete from customers_view
+Where id =14;
+
+
+ select * from customers_view;
+
+
+Drop View:
+We must write view to delete view.
+
+
+Drop view customers_view_new;
+
+
+select * from customers_view_new;  → then we can see that customers_view_new does not exist.
+
+
+
+
+
+
+36)
+
+
+Ucase , Lcase:
+
+
+
+
+→ select firstName from customers;  → selecting first name
+→ select ucase(firstName) from customers; → uppercase firstname
+→ select ucase(firstName) as 'FIRST NAME' from customers;  → uppercase firstname and alias
+→  select ucase(firstName) as 'FIRST NAME', lcase(lastName), address from customers; → lowercase
+
+
+
+
+37)
+
+
+MID,  LENGTH, ROUND functions:
+
+
+Mid: 
+
+
+We want to bring first three characters from city
+→ select mid(city, from where, how many characters) as shortCity from customers;
+→ select mid(city,1,3) as shortCity from customers;
+→ select mid(city,0,3) as shortCity from customers; → it will show only null values.
+
+
+Length: 
+
+
+We want to see the length of a address field
+→ select firstName, length(address) as 'Length Of Address' from customers;
+Or
+→ select firstName, char_length(address) as 'Length Of Address' from customers;
+Round:
+→ alter table customers add column salary varchar(30);
+→ update  customers set salary=1000 where id =1; → for inserting values in customers table 
+
+
+Round:
+→ round makes a round figure. It do like 1.566 to 1.57
+→ select firstName, ROUND(salary, how many digit we want to see after decimal) as 'Round Salary' from customers;
+→ select firstName, round(salary,0) as ‘Round Salary’ from customers;
+
+
+Truncate:
+Truncate does not make round. It do like 1.566 to 1.56
+select firstName, truncate(salary,0) as ‘Round Salary’ from customers; 
+
+
+
+
+
+
+
+
+38)  
+
+
+Now Function :
+
+
+It takes the current date time of my system.
+
+
+If we want to see name, price and current date time on my system  from products table
+
+
+→  alter table products ADD COLUMN time  DATETIME default current_timestamp; → addind a column with current_timestmap
+
+
+→ select name, price ,now() from products;
+
+
+
+
+
+
+39)
+GUI mode Operation:
+
+
+
+
+
+
+
+
+
+
+MYSQL WORKBENCH:
+
+
+
+
+Row restrictions:
+
+
+
+
+→ select (*)  from customers;   → how many rows in customers table
+→ select distinct city from customers;  → how many distinct cities in that table
+→ select firstName, age from customers where age >30 and age <= 40; → shows firstname and 
+     age between 30 to 40
+→ /*aaaaaa*/ → multi line commands
+
+
+Date time column row restrictions:
+
+
+To see all field between  '2015-11-05' and  '2016-01-15' ;  
+
+
+→ select * from orders where date(orderDate) >= '2015-11-05' and date(orderDate)<= '2016-01-15' ;  
+or
+→  select * from orders where orderDate >= '2015-11-05' and orderDate <= '2016-01-25';  → this is not a good practice
+
+
+
+
+
+
+→ select * from orders where date(orderDate) = '2015-11-05' ;
+→ select * from orders where date(orderDate) >= '2015-11-05' ;
+
+
+If we want to see only date from orders table. It will take date from datetime.
+→ select id, orderNumber, date(orderdate) from orders;
+
+
+Selecting data by time:
+
+
+→ select * from orders where time (orderDate)> '11:39:00';
+→ select * from orders where time (orderDate)>= '03:30:00' and time(orderDate) <='11:39:00';
+If we want to seee time only from orders table,
+→ select id , time(orderDate) from orders;
+
+
+
+
+
+
+Or, And, In functions:
+
+
+OR:
+FALSE+FALSE= FALSE
+FALSE+TRUE = TRUE
+TRUE+ FALSE = TRUE
+TRUE + TRUE = TRUE
+
+
+AND:
+
+
+FALSE + FALSE = FALSE
+FALSE + TRUE = FALSE
+TRUE + FALSE = FALSE
+TRUE + TRUE = TRUE
+
+
+And:
+Means intersection
+If first condition true , then see second condition, if second true then see third conditions
+
+
+OR:
+Or means union.
+If first condition is true ,it does not see second condition. If first condition not true then see second condition.
+
+
+
+
+→ select * from orders where (id > 3 and time(orderDate)> '03:30:00') or productId <2;  → id is greater than 3 and time is greater than 3:30:00 after that or productid is less than true
+
+
+→ select * from orders where (id > 3 and time(orderDate)> '03:30:00') and productId <2;
+
+
+
+
+→ select * from customers where city =’Dhaka ’ and id > 2;
+
+
+
+
+
+
+
+
+Substring:
+
+
+If a big phone number, we can split it many parts
+
+
+ Select  salary, 
+ Substring (salary, 1,3) as area code
+ Substring (salary, 4,10) as number
+ From customers 
+
+
+
+
+Concate: 
+select firstName, lastName, concat(firstName,' ',lastName) as name from customers; → concatinate two string
+
+
+Date: 
+
+
+select now(),
+date(now()),
+monthname(now()),
+dayname(now()),
+year(now()), 
+month(now()), 
+day(now()), 
+time(now()), 
+hour(now()), 
+minute(now()), 
+second(now())  
+from orders;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Storage procedure: 
+The Stored procedure is used to save time to write code again and again by storing the same in database and also get the required output by passing parameters.
+Syntax:
+Create procedure <procedure_Name> 
+As 
+Begin 
+<SQL Statement> 
+End 
+Go
+Following command is an example which would fetch all records from the CUSTOMERS table in Testdb database.
+CREATE PROCEDURE SelectCustomerstabledata 
+AS 
+SELECT * FROM Testdb.Customers 
+GO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Triggers:
+
+
+Triggers are stored programs, which are automatically executed or fired when some events occur. Triggers are, in fact, written to be executed in response to any of the following events:
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+CREATE OR REPLACE TRIGGER display_salary_changes
+BEFORE DELETE OR INSERT OR UPDATE ON customers
+FOR EACH ROW
+WHEN (NEW.ID > 0)
+DECLARE
+  sal_diff number;
+BEGIN
+  sal_diff := :NEW.salary  - :OLD.salary;
+  dbms_output.put_line('Old salary: ' || :OLD.salary);
+  dbms_output.put_line('New salary: ' || :NEW.salary);
+  dbms_output.put_line('Salary difference: ' || sal_diff);
+END;
+
+
+
+
+
+
+DATABASES:
+→ mysql -u root -p
+→ Databases → Tables with column → add/delete column → 
+→ SHOW DATABASES; → To see Databases list
+→ CREATE DATABASE database_name; → To create a Database
+→ USE database_name → To enter inside of Database which name is databasename
+→ DROP DATABASE databasename → To delete a Database which name is databasename
+
+
+TABLES:
+→ SHOW TABLES → To see tables list
+→ CREATE TABLE table_name (column_name type(length) ...PRIMARY KEY (column_name))
+→ CREATE TABLE subjects ( id INT(11) NOT NULL AUTO_INCREMENT,  menu_name 
+     VARCHAR(30) NOT NULL, position INT(3) NOT NULL, visible TINYINT(1) NOT NULL, 
+     PRIMARY KEY (id) );  → no ‘’ in primary key
+
+
+→ CREATE TABLE customers ( id INT(11) NOT NULL AUTO_INCREMENT, firstName VARCHAR(255), lastName VARCHAR(255), address VARCHAR(255), email VARCHAR(255), city VARCHAR(255),division VARCHAR(255), postcode VARCHAR(255), PRIMARY KEY (id));
+
+
+→ SHOW COLUMNS FROM table_name;  → DESCRIBE table_name → to see all columns list with variable type primary keys and many more
+→ DROP TABLE subjects → To DElete a table 
+
+
+
+
+
+
+
+
+CRUD:
+→ Create , Read , Update , Delete
+
+
+INSERT:
+→ INSERT INTO table_name (column1, column2, column3) VALUES (‘val1’, ‘val2’, ‘val3’);
+
+
+UPDATE:
+→ UPDATE table_name SET column_name = 'new_value' WHERE column_name = ‘value’; → To update a value of a particular column 
+ 
+
+
+DELETE:
+→ DELETE FROM table_name WHERE column_name = ‘value’; → Deleting a row from a table
+→ ALTER TABLE table_name DROP column_name; → Dropping a column
+
+
+VIEWING:
+
+
+Show Specific Column:
+→ SELECT column_name FROM table_name; → Select a specific column from a table
+→ SELECT DISTINCT column_name FROM table_name; → Select a column from a table
+
+
+Show a Full Table:
+→ SELECT * FROM table_name; → Select full table
+
+
+Show a specific row:
+→ SELECT * FROM table_nmae WHERE column_name = ‘value’; → select a row from a table
+
+
+Show a Row with a Column:
+→ SELECT column_name FROM table_name WHERE column_name = ‘value’ → selecting a 
+     row with specific column
+
+
+Sorted View:
+→ SELECT * FROM table_name ORDER BY column_name... ASC/DESC → selecting all table 
+     and sort by a column with ascending or descending order   
+
+
+Customers tables inputs:
+insert into customers (firstName, lastName, address, email, city, division, postcode) VALUES ('Delowar jahan','imran','House 5 Lane 2','imran@gamil.com','Dhaka','Dhaka','1236'), ('Akbar','Hossain','House 51 Lane 2','akbar@gamil.com','Comilla','Chittagong','1422'), ('Faisal','Khan','House1 lane2','khan@gmail.com','Gazipur','Dhaka','1236'),('Humayun Kobir','Henu','House 8 Lane 20','kobir@gamil.com','Dhaka','Dhaka','1236'), ('MM','Forhad','House 6 Lane2','forhad@gmail.com','Moulobhibazar','Sylhet','1016'), ('Jahangir','Alom','House 9 Lane 18','alom@gmail.com','Habiganj','Sylhet','1100'), ('Ariful','Islam','House 3 Lane 3','ariful@gmail.com','Lalmonirhat','Rangpur','1258'), ('Abdul','Bari','House 8 Lane 1','bari@gmail.com','Rajshahi','Rajshahi','1244'), ('Kamal','Ahmed','House 9 Lane 21','kamal@gmail.com','Kurigram','Rangpur','1256'), ('Ivan','Habib','House 7 Lane 6','habib@gmail.com','Natore','Rajshahi','1284'), ('Kamala','Khan',NULL, NULL, NULL, NULL, NULL), (NULL, 'khan',NULL, NULL, NULL, NULL, NULL);
+
+
+
+
+
+
+
+
+→ 
+This is work bench
+limit:
+→ select * from customer limit 2; → give 2 rows output
+→ select * from customer limit 2,4 → give 4 rows return from row 3 to 7
+
+
+
+
+Select: 
+→ select id, firstName, lastName from customers; → Showing all rows with id, firstName, lastName column
+→ select id, city as town from customers  → Alias : Shows town instead of city in index
+→

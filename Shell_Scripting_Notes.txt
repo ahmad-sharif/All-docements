@@ -1,0 +1,1425 @@
+﻿https://linuxconfig.org/bash-scripting-tutorial
+http://www.tldp.org/LDP/abs/html/system.html
+http://www.tldp.org/LDP/abs/html/subshells.html
+http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html#toc10
+Special character 
+http://mywiki.wooledge.org/BashGuide/SpecialCharacters
+Bash reference manual:
+https://www.gnu.org/software/bash/manual/html_node/index.html#SEC_Contents
+
+
+
+
+
+
+http://www.linuxnix.com/23-awesome-less-known-linuxunix-command-chaining-examples/
+http://www.linuxnix.com/linuxunix-shell-scripting-10-string-manapluation-examples/
+http://www.linuxnix.com/12-examples-flower-brackets-linux/
+(()) will work like below let command
+[[]]
+{}
+let: let arg [arg ...]
+    Each ARG is an arithmetic expression to be evaluated.  Evaluation
+    is done in fixed-width integers with no check for overflow, though
+    division by 0 is trapped and flagged as an error.  The following
+    list of operators is grouped into levels of equal-precedence operators.
+    The levels are listed in order of decreasing precedence.
+    
+            id++, id--        variable post-increment, post-decrement
+            ++id, --id        variable pre-increment, pre-decrement
+            -, +                unary minus, plus
+            !, ~                logical and bitwise negation
+            **                exponentiation
+            *, /, %                multiplication, division, remainder
+            +, -                addition, subtraction
+            <<, >>                left and right bitwise shifts
+            <=, >=, <, >        comparison
+            ==, !=                equality, inequality
+            &                bitwise AND
+            ^                bitwise XOR
+            |                bitwise OR
+            &&                logical AND
+            ||                logical OR
+            expr ? expr : expr
+                            conditional operator
+            =, *=, /=, %=,
+            +=, -=, <<=, >>=,
+            &=, ^=, |=        assignment
+    
+    Shell variables are allowed as operands.  The name of the variable
+    is replaced by its value (coerced to a fixed-width integer) within
+    an expression.  The variable need not have its integer attribute
+    turned on to be used in an expression.
+    
+    Operators are evaluated in order of precedence.  Sub-expressions in
+    parentheses are evaluated first and may override the precedence
+    rules above.
+    
+    If the last ARG evaluates to 0, let returns 1; 0 is returned
+    otherwise.
+BASH SCRIPTING:
+
+
+Set path variable to point scripts location or ./scripts or moving to /bin/ or /usr/bin to execute the scripts. PATH=$PATH:/path of scripts (pwd of the scripts)
+
+
+Positive and negative Number:
+→ echo "Enter a number: "; read a ;{ [[ $a -gt 0 ]] &&  echo "$a is positive"; } || ([[ $a -lt 0 ]] && echo "$a is a negative Number") || echo "Enter Numbers Only: " 
+
+
+{ cmd1;cmd2; } && {}
+
+
+()
+
+
+\
+;
+&
+Finding files 
+→ echo "Enter File name" ;read a; [ -d $a ] && echo "Awesome $a is there" || echo " $a not exist"
+
+
+Debugging: 
+
+
+→ bash -x scriptname  →  Bourne echo flags
+→ bash -v scriptname → Verbose mode
+→ bash -e scriptname → Exit scripts when it sees an error
+→ bash -n scriptname → Syntax check. If command not found, it does not show any error
+
+
+Wild card:
+→ * → match zero or one or more characters
+→ ? → matches a single character
+→ [abc] → Return all patterns which matches any one of the enclosed character, 
+
+
+Operators:
+
+
+Mathematical operators:
+
+
+→ -eq → Equal → [ 4 -eq 4 ]
+==
+→ -ne → Not equal  
+→ -lt → less than
+→ -le  → Less than or equal to
+
+
+[ ‘saima’ -eq ‘ahmad’ ]
+ 
+→ -gt → Greater than
+→ -ge → Is greater than or equal to  
+
+
+
+
+String Operator:
+
+
+→ string1 = string2 → string1 is equal to string2 
+→ string1 != string2 → string1 is not equal to string2
+→ string1       → string1 is not null or not defined
+→ -n string → string1 is not null and does exists
+→ -z string1 → string1 is null and does exists
+#!/bin/bash
+
+
+echo  "str1: "
+read str1
+echo "str2: "
+read str2
+echo "str3: "
+read str3
+echo
+echo
+
+
+if [ "$str1" == "XYZ" ]; then
+        echo "str1 matched"
+else
+        echo "str1 does not matched with $str1"
+fi
+
+
+echo
+
+
+if [ -n $str2 ]; then
+        echo "$str2 is not null "
+else
+        echo " $str2 is null"
+fi
+echo
+
+
+if [ -z $str3 ]; then
+        echo "$str3 is null "
+else
+        echo "$str3 is not null"
+fi
+
+
+Logical Operators:
+
+
+→ ! → logical NOT
+→ && → logical AND
+→ || → Logical OR
+
+
+
+
+
+
+Shell Variables:
+
+
+→ User defined variable
+→ System Defined (Built-in) Variables
+                → 1) Built-in Variables
+2) Positional parameters
+3) Special variables
+
+
+→ Arrays and Multidimensional Arrays
+
+
+User Defined Variable:
+→ TEST= 12345
+→ echo $TEST
+
+
+Display command examples:
+→ echo → only echo
+→ echo -e → Intercept special characters→ echo “this is \n new line”
+→ echo -n → echo in a row
+→ read variable_name
+→ read -p “enter the value” VAR1  → putting input value
+→ echo $REPLY  → to see this input value
+→ printf "Current shell is %s \n" $SHELL
+→ %d→ for decimal
+→ %f → for Floating
+→ %o → for octal
+→ %s → for string
+
+
+
+
+
+
+
+
+
+
+In built System variables:
+$USER 
+$PS1 
+$PWD 
+$SHELL 
+$EUID 
+$HOSTNAME 
+$HOME 
+$HOSTTYPE 
+$MECHTYPE 
+$OSTYPE 
+$PATH 
+$PIPESTATUS 
+$IFS 
+$RANDOM 
+$REPLY 
+$DISPLAY 
+$TERM 
+$BASH_VERSION 
+$HISTSIZE 
+$HISTFILE 
+$LANG 
+$TMOUT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Special System Variables:
+
+
+$$ → Present process PID etc 
+$? → Error status 
+$0 → Script Name 
+$! → PID of background task 
+$_ → Second variable in command 
+
+
+
+
+ 
+Position Parameters / Command Line Arguments / Operational:
+
+
+→ we can pass variables as arguments by entering arguments after the script name, scripts.sh arg1 arg2
+→ shell automatically assign each argument name as a variable . To specify an arguments than include space and need to enclose the complete argument in a double quotation marks .
+→ The first argument after the script name is assigned to the variable $1, the second argument to $2….. The tenth argument to ${10}
+→ $@ → all positional parameter with space
+→ $* → all positional parameter
+→ $# → Numbers of parameter
+#!/bin/bash
+
+
+echo "Total Numbers Of Command Line Argument are $#"
+echo "$0 is script Name"
+echo "$1 is first argument"
+echo "$2 is second argument"
+echo "Total Numbers Of Command Line Argument are $#"
+echo "All positional parameters Of Command Line Argument are $@"
+
+
+Predefined way
+Reading inputs from user
+At the time of executing script, 
+
+
+
+
+
+
+
+
+
+
+Shell Arrays:
+
+
+
+
+Array definition: 
+
+
+→ VAR1=(val1 val2 val3 val4) 
+→ ${VAR1[@]} → Print whole array echo 
+→ unset ARR1 → Removing/unset Array 
+→ VAR1[0]=23 → Define or adding element in an array 
+→ ${VAR1[1]} → Print array element echo 
+→ unset VAR1[2] → Removing element 
+→ echo ${#VAR1[@]} → Print length of Array 
+→ echo ${#VAR1[1]} echo ${ARR1[@]:3:2} → Print length of an element 
+→ echo ${VAR1[2]:0:4} → To display from 3rd element up to 2 values, 3rd and 4th elements 
+→ ARR1[0][1] → To display first 4 char of 3 value in array Multidimensional array 
+
+
+
+
+
+
+Quotes: 
+
+
+→ ‘’ → single quote → echo ‘ this is $PWD’
+→ “” → Double quotes → echo “this is my $PWD”
+→ `` → Backticks command substitution → echo “list directory `ls`”
+
+
+
+
+
+
+
+
+Command Chaining:
+
+
+→ \ → contention operator → it says command is not at completed
+→ ; → Concatenation operator → use to run two or more commands
+→ && → Logical AND → second command will run if first one runs
+→ || → Logical OR → execution of second command does not depends on first command success rate
+→ {} → Command combination operator.
+→ () → Precedence operator
+→ & – runs commands in background→ $ping -c1 google.com &
+→ ping -c1 google.com & scp root@1.1.1.10:/opt/* /opt &   → run many commands in background
+→ ls;pwd;whoami  → execute many commands separated by ;
+
+
+→ if [ $? -eq 0 ]; then echo “success”; else echo “fail”; fi → if command for checking success of a command in one line
+→ for i in *;do echo “file is $i”;done → for command in one line
+→ while [ $a -lt 10 ] ; do echo “Var value is $a”; a=`expr $a + 1`; done
+→ until [ $a -gt 10 ] ; do echo “Var value is $a”; a=`expr $a + 1`; done
+
+
+→ Try to copy a file /var/ftp/pub/webadmin/debina/read from sysloggerserver1.linuxnix.com to /opt/oradba/debadmin/logic/abc folder on sysloggerserver2.persistentsystems.co.in and I am at surendrahome.beamtele.com.
+         ssh abc@sysloggerserver1.linuxnix.com:\
+ /var/ftp/pub/webadmin/debian/read \
+         abc@sysloggerserver2.persistent.co.in :/opt/oradba/debadmin/logic/abc/
+Q. connect to a machine if it can do ping
+→ ping -c1 abc.com && ssh abc@abc.com  
+Q. Assign a value to variable if it is not set
+→ [ -z $VAR ] && VAR=10  
+Q. Check if a folder exists or not. If it’s not present, create it 
+→ [ ! -d /var/tmp ] && mkdir /var/tmp 
+Q. Create folder, if the folder creation is successful, then only change the Directory.
+→ mkdir abc && cd abc 
+Q. Create a folder if the folder does not exists
+→ [ -d /var/tmp ] || mkdir /var/tmp 
+Q. Ping to a machine and let users know if it’s not reachable in a meaningful way
+→ ping -c1 google.com &> /dev/null || echo “There is some problem with network, 
+     please connect your network admin”  
+Q.  Check if a file exists or not. If it  exists inform user it exists otherwise create it,
+→  [ -f /var/abc.txt ] && echo “file exists” || touch /var/abc.txt  →
+Q. Check if my previous command executed successfully or not pwd /home/surendra
+        → [ $? -eq 0 ] && echo “Yes, pwd command successfully executed” || echo “pwd 
+     command failed”
+
+
+
+
+
+
+
+
+
+
+
+
+Not Operator:
+
+
+Q. Remove all the files, which are not a .doc file
+→ ls | grep -v doc | xargs rm -rf or rm -rf *.{xls, txt, pdf} 
+
+
+Q. Move all the files except .doc files to /opt
+→ mv !(*.doc)/opt/
+Q. Copy all the files except pdf files to /opt/all
+        → cp !(*.pdf) /opt/all
+| — PIPE OPERATOR:
+
+
+Q. Count numbers of files/folder located in a folder
+        → ls -l | wc -l
+Q. Display all the partition names in the system
+        → df -h | awk `{print $1}`
+
+
+{ } –COMMAND COMBINATION OPERATOR:
+
+
+Q. Check if /opt/abc.txt exists or not?
+→ [ -f /opt/abc.txt ] || echo “The file does not exist”; touch /opt/abc.txt  → or
+→ [ -f /opt/abc.txt ] || { echo “The file does not exist”; touch /opt/abc.txt; }
+
+
+Q. Ping to a machine, if we are able to ping display some useful info, then try to connect to it using ssh
+→ ping -c www.linuxnix.com && {echo “That is ping-able, too good..!”; ssh 
+      root@www.linuxnix.com;}  
+
+
+
+
+() –PRECEDENCE OPERATOR:
+→ ( command1 && command2 ) || ( command3 && command4 )
+
+
+
+
+
+
+
+Redirection Operators:
+
+
+What is File descriptor? 
+a)STD I/P(0) 
+b)STD O/P(1) 
+c)STD ERR(2) 
+
+
+What are redirecting Operators? 
+
+
+1. | --A pipe operator 
+2. > Output redirection operator 
+3. >> Output redirection and appending operator 
+4. < Input redirection operator 
+5. << Input redirection and appending operator 
+6. 1> Only Output redirection operator 
+7. 2> Error redirection operator 
+8. &> or >& 
+→  &>     →  stderr and stdout to file → rm -f $(find / -name core) &> /dev/null
+→  2>&1 → stderr to stdout → grep * 2>&1
+→  1>&2 → stdout to stderr → grep da * 1>&2
+
+
+10. tee command 
+11. xargs command
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Brackets:
+
+
+Curly Brackets:
+
+
+→ touch {1,2,3,4,5} → crate files 1 2 3 4 5 
+→ touch {1..10} → create files 1 to 10
+→ touch a.{1..10}.txt → 
+→ touch {a..z}
+→ touch {A..Z}
+→ touch {1..10}{1..10}
+→ touch {1..100..2}
+→ mkdir -p 2016/{1..12}/{1..30}
+
+
+          STRING MANIPULATION EXAMPLES:
+
+
+→ a=12345
+        echo "${a}"  → print the value of a
+        echo "${a}abc"  → add abc after the value of a
+        echo "${a:-abc}"  → if we have the value of a then it will print the value of a , otherwise it 
+         will print abc (second one is not variable)
+        echo "${c:=b}"  → Here assigning b to c
+        echo "${a:+now print this line}" → This will print after +
+        echo ${a?"now print this line"} → Now it will print inside of quote
+        
+
+
+        
+→ assign VAR1 with 67 if 45 is less then 35 else assign 89.
+For this example VAR1 is not set
+echo $VAR1
+No output
+Now try below example:
+echo $((VAR1= 45<35 ? 67:89))
+Output:
+89
+echo $VAR1
+89
+Indirect variable declaration
+
+
+        Sub strings:
+
+
+        → echo ${#a} → string length 
+        → echo ${a:3} → print the value of a after 3 characters to the end
+        → echo ${a:(3):(2)} → print 2 characters after 3 characters
+        → echo ${a:(-3)}  → print 3 characters from last 
+        → echo ${a:(-3):2}  → -3 means it will take 3 characters from last and 2 means , it will 
+keep first 2 characters
+Print two chars which are in 4th and 3rd position from last.
+        
+String manipulation:
+
+
+→ echo ${a//9} → it remove all 9 s from the value of a 
+        → c=123456123456
+        → echo ${c/456}  → remove only first 456 from c
+        → echo ${c/456/000}  → replace only first 456 by 000
+        → echo ${c//456}  → it removes all 456 from c
+→ echo ${c//456/000}  → replace all 456 by 000
+→ echo ${c/#123/000}  → Replace only first 123 by 000 if 123 at the beginning of the string
+→ echo ${c/%123/000}  → Replace only last 123 by 000 if 123 at the end of the string
+
+
+Uppercase: 
+
+
+→ d=aabbccddee
+→ echo ${d^}  → makes only first character from lower to upper case
+→ echo ${d^^}  → makes all characters from lower to upper case
+→ echo ${d^^[abc]} → convert to uppercase all a/b/c from d
+
+
+Lowercase: 
+
+
+→e=AABBCCDDEE
+→ echo ${e,}  → makes only first character to lowercase
+→ echo ${f,,}  → makes all character to lowercase
+        → echo ${g,,[abc]} → convert to lowercase all a/b/c from d
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Square Brackets:
+
+
+→ [  ] → single brackets → 
+→ 1) Used for testing a condition 
+a)Numeric comparison(-eq,-gt,-lt,-ne,-ge,-le) 
+b)Word comparison(==, !=, <, >) 
+c)File/folder checking(-a,-e,-f,-d,-S,-L,-g,-u,-r,-w,-x ) 
+d)Expression combination (-a, -o) 
+e)Negation(!) 
+→ 2) Array positions. 
+→ [[ ]] --Same as [ ] but > and < will not work by default, have to use \< and \>. One more difference is that for expression combination we have to use && and || instead of -a and -o
+
+
+
+
+Regular Brackets:
+→ ( ) →  use for group of command, array definitions ARR1 =( roy boy soy doy)
+→ grouping in a subshell commands → to sent output of all commands to a file 
+→ 
+→ command substitution → to substitute a command 
+→ (( )) → Arithmetic operators
+        → +, -, *, /, %, ++1( post increment ),  i++( pre increament ), --i,i-- 
+
+
+→ assign VAR1 with 67 if 45 is less then 35 else assign 89.
+        echo $((VAR1= 45<35 67:89=”” b=””>
+        → Let command
+        → expr command → expr ((1 + 1))
+
+
+File testing:
+
+
+ 
+-b filename →         Block special file
+-c filename →         Special character file
+-d directoryname → Check for directory existence
+-e filename  → Check for file existence
+-f filename  →  Check for regular file existence not a directory
+-G filename → Check if file exists and is owned by effective group ID.
+-g filename →         true if file exists and is set-group-id.
+-k filename → Sticky bit
+-L filename →  Symbolic link
+-O filename → True if file exists and is owned by the effective user id.
+-r filename → Check if file is a readable
+-S filename → Check if file is socket
+-s filename →  Check if file is nonzero size
+-u filename →  Check if file set-ser-id bit is set
+-w filename → Check if file is writable
+-x filename → Check if file is executable
+
+#!/bin/bash
+file="./file"
+if [ -e $file ]; then
+        echo "File exists"
+else 
+        echo "File does not exists"
+fi
+
+
+Create, copy, Delete, Rename, List of files:
+
+
+Creating a directory:
+
+
+echo "Creating a Directory"
+echo
+echo "Enter directory Name: "
+read dirname
+if [ ! -d $dirname ]; then
+        echo "File doesn't exist. Creating Now"
+        mkdir ./$dirname
+        echo "file created"
+else
+        echo "File exists"
+fi
+
+
+
+
+Rename files:
+
+
+#/bin/bash
+
+
+for file in *.txt
+do
+        mv "$file" "${file/a_/b}"    → here a_ is changing to b
+
+
+done
+
+
+Copy:
+
+
+#!/bin/bash
+
+
+for file in *.txt
+do
+        cp $file ./test1/${file}$(date +%m%d%y)
+done
+
+
+Delete:
+
+
+#/bin/bash
+
+
+echo "filename"
+read filename
+[ -f $filename ] && rm $filename && echo "$filename was deleted" || echo "$filename does not exist "
+
+
+List files in a Directory:
+
+
+#!/bin/bash
+
+
+for file in $serach_dir/*
+do
+echo $file
+done
+
+
+Conditional Statements:
+
+
+If .. fi command : 
+
+
+→  if condition then commands fi 
+→  if condition then commands else commands fi 
+→  if condition then commands elif condition then commands fi 
+→  if condition then commands elif condition then commands else commands fi 
+→  if condition then commands if then condition commands fi fi
+
+
+
+
+Syntax
+        If condition or expression; 
+then
+                Command1 if condition is true
+                ……..
+
+
+fi
+
+
+
+
+
+
+#!/bin/bash
+
+
+if [ -f $1 ];
+then
+        echo "\n \n $1 found and echoed"
+fi
+
+
+
+
+#!/bin/bash
+
+
+echo "Enter Number one: "
+read a
+echo
+echo "Enter number two: "
+read b
+echo
+
+
+if [ $a -eq $b ]; then
+        echo "$a and $b are equal values"
+else echo "$a and $b are not equal values"
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+If … else … fi :
+
+
+Syntax
+
+
+If condition
+then
+        condition  is zero (true- 0)
+        Execute all commands up to else statement
+Else
+        If condition is not true
+        Execute all commands up to fi
+fi 
+
+
+Syntax:
+
+
+If conditions;
+then 
+        Condition is zero
+        Execute all comments up to elif statement
+elif conditions; 
+then
+        Condition is zero
+        Execute all comments up to fi statement
+fi
+
+
+→ if no argument is will show a message and if no matching argument , it will show a message and if mach the argument it will show another message
+
+
+#!/bin/bash
+
+
+if [ $# -eq 0 ];
+then
+        echo "$0 : you need to supply one value"
+elif [ $# -gt 0 ] && [ -f $1 ] && cat $1
+then
+        echo "$1 echoed"
+else echo "$1 not found"
+
+
+fi
+
+
+#!/bin/bash
+choice=0
+echo "1. you select 1"
+echo "2. you select 2"
+echo -n "Select your choice 1 or 2 ?"
+read choice
+if [ $choice -eq 1 ]; then
+        echo "You Chose Number one"
+elif [ $choice -eq 2 ]; then
+        echo " you chose number two"
+else
+        echo "you chose different number"
+fi
+
+
+
+
+Case:  
+
+
+Syntax: 
+
+
+case "$var" in 
+"pattern1" ) commands
+… … 
+command;; 
+"pattern2" ) commands
+… …
+command;; 
+* ) commands
+… … 
+command;; 
+esac
+
+
+
+
+
+
+
+
+
+
+
+
+#!/bin/bash
+
+
+([ -z $1 ] && echo "Unknown vehicle") || ([ -n $1 ] && rental=$1)
+
+
+
+
+case $rental in
+        "car") echo "For $rental tk.20 per km";;
+        "van") echo "for $rental tk.30 per km";;
+        "jeep") echo "for $rental tk.40 per km";;
+        *) echo "no $rental for this item";;
+esac
+→ careful about ;; and “ ” marks. 
+→ if null is shows unknown vehicle , if not null then rental=$1, then if we put in command line rental.sh car, it will search for car pattern from bellow, then it will show the comments which is assign for car.
+→ *) → this is a default pattern.
+
+
+Loop Concept:
+
+
+For Loop:
+
+
+→ for ...do….done
+
+
+Syntax:
+1)
+for variable_name in list_name
+do 
+Execute one for each item in the list until the list is not finished 
+Repeat all statements between do and done
+done
+
+
+2)
+C-Style syntax 
+------------------------
+for (( i=0; i,=10; i++; )) 
+do 
+commands 
+done
+-------------------------
+
+
+for ((expr1;expr2;expr3))   → for ((variable; condition;way we are changing the test variable))
+do 
+        ….
+….
+        Repeat all statements between do and done untill expr2 is TRUE
+done
+
+
+#!/bin/bash
+for i in {1..10}
+do
+echo "Present number is $i"
+
+
+done
+
+
+----------------------------------
+
+
+for ((i=0; i<=10; i++))
+do
+        echo "c-type present number: $i"
+done
+-----------------------------------
+#!/bin/bash
+n=$1
+for i in {1..10}
+do
+echo -e "Number you entered: $n,\n Present number coming from for loop $i and \\n multiplication $i * $n= `expr $i \* $n`"
+done
+→ for1.sh 5
+→ if we use \n for newline we have to use bash -e
+
+
+Nested for loops:
+
+
+#!/bin/bash
+for i in {a..e}
+do
+        for j in {1..5}
+        do
+                echo  "$i"
+        done
+        echo ""
+done
+→ here i variable will take a, then inner for loop make 5 loops of a→ again i will take b, then inner loop j will print b 5 times…
+→ all output will come in one column
+→ if we want each five values in one row then we need to put echo -n
+
+
+While Loop:
+
+
+
+
+1) while condition; do statements; done 
+2) while true do statements done or while :; do commands; done 
+3)while read var do statements done 
+4)while condition; do commands; done < file
+5)until condition do statements done
+
+
+
+
+while [ condition ]
+do 
+command1
+command2
+………
+Done 
+
+
+
+
+
+
+#!/bin/bash
+
+
+if [ $# -eq 0 ]; then
+        echo -e "Error - Number missing" 
+        echo "syntax : $0 number" 
+        echo "Use to print multiplication table for given number "
+exit 1
+fi
+
+
+n=$1
+i=1
+
+
+while [ $i -le 10 ]
+do
+        echo "$i * $n = `expr $i \* $n`"
+        i=`expr $i + 1`
+done
+→ in while condition careful about space inside of brace
+→ if no input , it will show an error
+→ i will make loop up to reach 10
+
+
+
+
+
+
+Print Increment Numbers:
+
+
+#!/bin/bash
+
+
+for i in {1..10}
+do
+        echo  "$i"
+done
+echo
+
+
+for (( j=1; j<=10; j++))
+do
+        echo "$j"
+done
+echo "@@@@@@@@@@@"
+
+
+k=1
+while [ $k != 11 ] 
+do
+        echo "$k"
+        k=`expr $k + 1`
+
+
+done
+
+
+
+
+Print Decrement:
+
+
+#!/bin/bash
+
+
+for i in {10..1}
+do
+        echo "$i"
+done
+
+
+echo "@@@@@@@@@@@@@"
+
+
+for ((j=10; j>=1; j--))
+do
+        echo "$j"
+done
+
+
+echo "@@@@@@@@@@@"
+
+
+k=10
+while [ $k != 0 ]
+do
+        echo "$k"
+        k=`expr $k - 1`
+done
+
+
+User Defined function:
+
+
+Syntax:
+        function-name()
+        {
+                command1
+                command2
+                …..
+                Return
+        }
+
+
+
+
+→ if we need to do some code again and again, then we will make a function and we can call it 
+
+
+
+
+#!/bin/bash
+print_something()
+{
+        echo "This is a function"
+        return
+}
+print_something
+
+
+
+
+
+
+#!/bin/bash
+
+
+
+
+print_something()
+{
+        echo "Hello $1"
+        return
+}
+echo " value"
+read b
+print_something $b
+
+
+
+
+
+
+
+
+
+
+
+
+Filter commands: 
+
+
+
+
+1)Simple filtering 
+•wc 
+•head 
+•tail 
+•cut 
+•cat 
+•paste 
+•tr 
+•sort 
+•uniq 
+•comm 
+•diff 
+2)Filtering with regular expressions using grep 
+3)Advanced filtering using sed and awk
+
+
+
+
+
+
+
+
+wc:
+
+
+wc --Word count -l to list no of lines 
+-w to list total number of words 
+-c to list no of char head abc.txt --Displays by default 10 lines starting of the file. 
+
+
+head:
+
+
+head -n5 abc.txt --Displays first five lines tail abc.txt --Displays by default last 10 lines from end 
+
+
+tail:
+
+
+tail -n4 abc.txt--Displays last 4 lines 
+tail -n +5 abc.txt--Displays from start of 5th line to end of the fi
+
+
+cut:
+
+
+cut --To cut something vertically 
+-c to cut char -c1-5 to cut range of char 
+-f and -d for field and delimiter 
+
+
+cat:
+
+
+cat --To concatenate files horizontally 
+> --INPUT redirection -n giving line numbers paste file1 file2 
+-d for setting delimiter 
+tr -translate group of char to other group of char 
+tr 'a' 'A' --To translate small letters to caps 
+-s --To squeeze 
+-d --to delete some char
+
+
+Sort: 
+sort -- for sorting the files 
+-t to specify delimiter -n for numerical sort 
+-k for column sort -r for reverse order 
+-u for unique values 
+-o for saving to a file 
+
+
+Uniq: 
+uniq to get unique values 
+-c for count 
+-d for duplicates 
+-u for unique values
+
+
+Cmp: 
+
+
+cmp file1 file2 
+
+
+Diff: 
+
+
+diff file1 file2
+
+
+Grep: 
+
+
+grep --To grep some values from a file grep 'abc' file1 
+-v Inverse of search term 
+-c To count 
+-i both caps/small letters 
+-n to give line numbers 
+-w exact word
+
+
+
+
+RegEXP: 
+
+
+1)Basic regEXP 
+2)Interval Regular expressions 
+3)Extended Regular expressions(Use option -E for grep and -r for sed) 
+
+
+Basic regEXP:
+
+
+→  ^ →  Caret symbol, Match beginning of the line. 
+→ $ →  Match End of the line 
+→ * →  Match 0 or more occurrence of previous character 
+→ . →  Match Any single character 
+→ [] →  Match Range of characters, just single occurrence. 
+→ [a-z] → Match small letters 
+→ [A-Z]  → Match cap letters 
+→ [0-9] → Match numerical. 
+→ [^na] →  Match Negate a sequence 
+→ \ →  Match Escape character.
+
+
+
+
+Basic Reg examples:
+
+
+→  grep ‘^Mr’ filename 
+→ grep ‘sh$’ filename 
+→ grep –v ‘^$’ filename 
+→ grep ‘ba*s’ filename 
+→ grep ‘b.*h’ filename 
+→ grep ‘x[a-z]m’ filename 
+→ grep ‘[^ac]’ filename 
+→ grep ‘\[’ filename
+
+
+
+
+
+
+
+
+Interval RegEXP and examples:
+
+
+→  {n} --n occurrence of previous character 
+→ {1,3} - 1 to 3 times occurrence of previous character 
+→ {5, } --5 or more occurrence of previous character. 
+
+
+Examples: 
+
+
+→ ls -l | grep -E t{3} 
+→ ls -l | grep -E l{1,3} 
+→ ls -l | grep -E k{5,}
+
+
+OR
+
+
+→ ls -l | grep t\{3\} 
+→ ls -l | grep  l\{1,3\} 
+→ ls -l | grep k\{5,\}
+
+
+RegEXP extended and examples:
+
+
+→  + → Match one or more occurrences of previous character. 
+→ | →  Match Either character 
+→ ? →  Match 0 or 1 occurrence of previous character. 
+→ () → match a group of characters 
+
+
+Examples: 
+
+
+→ grep –E ‘ab+c’ filename 
+→ grep –E ‘ab?c’ filename 
+→ grep –E ‘da|be’ filename 
+→ grep –E ‘d(a|b)e’ filename 
+
+
+Find command examples:
+
+
+find destination -name filename 
+→ -iname → for finding something irrespective of case 
+→ -type → for finding type of the file 
+→ -exec → command {} \; --for executing a command on find files 
+→ -inum -For finding a file with inode number 
+→ -perm 0000 for finding files with permissions → 
+→ -newer filename → 
+→ -cnewer filename →  
+→ -anewer filename → To find files newer than one file. 
+→ -size value To find files with sizes(+, -, just number) 
+→ -mmin --To find modified files with minutes(+, -, just number) 
+→ -mtime → To find modified files with days(+, -, just number) 
+→ -amin 
+→ -atime 
+→ -cmin 
+→ -ctime → Multiple find commands.
+
+
+
+
+Date command examples:
+
+
+→ date 
+→ date +%value 
+value is as follows.. 
+→ Y and y for years in xxxx and xx format 
+→ m for month 
+→ B and b for month in xxx (Jan) or xxxxxxxx(January) 
+→ u and U for week in (0 to 7) and week number in that year 
+→ d for day of the month 
+→ H and I for hours in 24hr format and 12hr format 
+→ M for minutes 
+→ S and s for seconds in xx format and Unix time format 
+→ N →  for nanosecond info
+
+
+http://www.linuxnix.com/awk-scripting-learn-awk-built-in-variables-with-examples/

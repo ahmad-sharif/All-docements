@@ -1,0 +1,2907 @@
+﻿Installation of Python:
+
+
+By default Python is installed in many Linux/Unix machines
+→ yum install python → For RedHat Based 
+→ apt-get install python → For Debian Based
+→ pkgadd -d ActivePython* → For Sun Solaris
+ 
+Getting help on Python:
+→ python -V → Find Python Version
+→ python → To go to Python prompt by executing python command
+
+
+→ help(subprocess/variablename) → Help function to know more about a variable, datatype, function, module, class, method
+→ dir()  → Same as help function. Dir is one more help command available in python to show available function for given name
+→ type(variablename) → It shows the type of variable 
+Data Types:
+
+
+There are eight types of data in python.
+Use type() function to get the type of data
+
+
+→ Booleans → True or false as output
+→ None
+→ Numbers  → Can store numbers
+→ Strings → Can store chars
+→ List(Arrays) → Can store multiple/list values and it can be changed
+        → row1 = ["Joseph", "McCullough"] → Example
+→ Tuples → Can be store multiple/list values and can not be changed
+→ Sets → It is an unordered list of unique values
+→ Dictionary  → It is also called Hashes or Associative arrays or key-value pairs and can store key value pairs
+        → dic = { (1,2,3):"abc", 3.1415:"abc"}
+        → dic
+ 
+Print Statements, Joiners and quotes:
+
+
+→ , →  For concatenation print statements with space 
+→ + → For concatenation print statements without space
+→ VAR1=10 → print VAR1, “abc” → 10 abc
+→ print “Hello”+”World” → Helloworld
+→         %d will format a number for display.
+* %s will insert the presentation string representation of the object (i.e. str(o))
+* %r will insert the canonical string representation of the object (i.e. repr(o))
+
+
+→ name = 'marcog' 
+     number = 42 
+     print '%s %d' % (name, number)
+     will print marcog 42. Note that name is a string (%s) and number is an integer (%d for decimal).
+     In Python 3 the example would be:
+print('%s %d' % (name, number))
+
+
+→ Escape characters: 
+\n
+\r
+\t
+\u
+\L
+\U
+\E
+
+
+Quotes:
+Single/Double quotes is to hold string with spaces together. No difference between single quotes and double quotes.
+
+
+Python String:
+
+
+1. Define:
+
+
+String is a data type representing char in computer program
+→ var1=’abcdef’
+
+
+2. Quotes:
+
+
+String should be in quotes always. Single and double quotes are same and triple quotes are for multiple lines
+→ var2=”””abc
+               def”””
+
+
+3. String Operators:
+→ , → For printing multiple strings with space as separator
+        → print var1,var2
+→ + → For concatenating multiple string without space
+        → print (var1+var2)
+→ % → for formating like padding, datatype definition for a string 
+        → print “%10s” %var1
+→ * → for multiplying a string
+        → print var1*5
+
+
+
+
+4. Substrings:
+
+
+var1[0] → First value in string
+var[0:5] or var[:5] → First 6 elements in a string
+var[5:] → 6th char to end
+VAR1[:2] → First two elements in Tuple
+VAR1[:-1] → all except last element in Tuple
+?????
+
+
+5. String Logical Operators:
+
+
+→ ‘a’ in var1
+→ ‘a’ not in var1
+
+
+
+
+6.String Method:
+
+
+String count Method(3):
+
+
+The method count returns the number of occurrences of substring sub in the range [start, end]. Optional arguments start and end are interpreted as in slice notation.
+
+
+→ str.count(sub, start= 0,end=len(string))
+
+Parameters
+* sub -- This is the substring to be searched.
+* start -- Search starts from this index. First character starts from 0 index. By default search starts from 0 index.
+* end -- Search ends from this index. First character starts from 0 index. By default search ends at the last index.
+Return Value
+Centered in a string of length width.
+Example
+#!/usr/bin/python
+str = "this is string example....wow!!!";
+sub = "i";
+print "str.count(sub, 4, 40) : ", str.count(sub, 4, 40)
+sub = "wow";
+print "str.count(sub) : ", str.count(sub)
+
+Result
+str.count(sub, 4, 40) :  2
+str.count(sub) :  1
+
+
+8. Python String find Method:
+
+
+It determines if string str occurs in string, or in a substring of string if starting index beg and ending index end are given.
+
+
+→ str.find(str, beg=0, end=len(string))
+
+Parameters
+* str -- This specifies the string to be searched.
+* beg -- This is the starting index, by default its 0.
+* end -- This is the ending index, by default its equal to the length of the string.
+Return Value→ Index if found and -1 otherwise.
+Example:
+#!/usr/bin/python
+str1 = "this is string example....wow!!!";
+str2 = "exam";
+
+print str1.find(str2)
+print str1.find(str2, 10)
+print str1.find(str2, 40)
+
+Result
+15
+15
+-1
+
+
+
+
+9. Python String index Method:
+
+
+It determines if string str occurs in string or in a substring of string if starting index beg and ending index end are given. This method is same as find, but raises an exception if sub is not found.
+
+
+→ str.index(str, beg=0 end=len(string))
+
+Parameters
+* str -- This specifies the string to be searched.
+* beg -- This is the starting index, by default its 0.
+* end -- This is the ending index, by default its equal to the length of the string.
+Return Value
+Index if found otherwise raises an exception if str is not found.
+Example
+#!/usr/bin/python
+
+str1 = "this is string example....wow!!!";
+str2 = "exam";
+
+print str1.index(str2)
+print str1.index(str2, 10)
+print str1.index(str2, 40)
+
+Result
+15
+15
+Traceback (most recent call last):
+ File "test.py", line 8, in 
+ print str1.index(str2, 40);
+ValueError: substring not found
+
+shell returned 1
+
+
+11. Python String isalpha Method:
+
+
+The method isalpha checks whether the string consists of alphabetic characters only.
+
+
+→ str.isalpha()
+
+
+Return Value → This method returns true if all characters in the string are alphabetic and there is at least one character, false otherwise.
+Example:
+#!/usr/bin/python
+
+str = "this";  # No space & digit in this string
+print str.isalpha()
+
+str = "this is string example....wow!!!";
+print str.isalpha()
+
+When we run above program, it produces following result −
+True
+False
+
+
+
+
+12. Python String isdigit Method:
+
+
+The method isdigit checks whether the string consists of digits only.
+
+
+→ str.isdigit()
+
+Return Value → This method returns true if all characters in the string are digits and there is at least one character, false otherwise.
+Example:
+#!/usr/bin/python
+
+str = "123456";  # Only digit in this string
+print str.isdigit()
+
+str = "this is string example....wow!!!";
+print str.isdigit()
+
+Result:
+True
+False
+
+
+
+
+13. Python String islower Method:
+
+
+The method islower checks whether all the case-based characters lettersletters of the string are lowercase.
+
+
+→ str.islower()
+
+
+Return Value → This method returns true if all cased characters in the string are lowercase and there is at least one cased character, false otherwise.
+Example:
+#!/usr/bin/python
+
+str = "THIS is string example....wow!!!"; 
+print str.islower()
+
+str = "this is string example....wow!!!";
+print str.islower()
+
+Results:
+
+
+False
+True
+
+
+17. Python String isupper Method:
+
+
+The method isupper checks whether all the case-based characters lettersletters of the string are uppercase.
+
+
+→ str.isupper()
+
+Return Value → This method returns true if all cased characters in the string are uppercase and there is at least one cased character, false otherwise.
+Example:
+
+
+#!/usr/bin/python
+
+str = "THIS IS STRING EXAMPLE....WOW!!!"; 
+print str.isupper()
+
+str = "THIS is string example....wow!!!";
+print str.isupper()
+
+Results:
+True
+False
+
+
+
+
+18. Python String join Method:
+
+
+The method join returns a string in which the string elements of sequence have been joined by str separator.
+
+
+→ str.join(sequence)
+
+Parameters
+* sequence -- This is a sequence of the elements to be joined.
+Return Value
+This method returns a string, which is the concatenation of the strings in the sequence seq. The separator between elements is the string providing this method.
+Example
+
+
+#!/usr/bin/python
+
+s = "-";
+seq = ("a", "b", "c"); # This is sequence of strings.
+print s.join( seq )
+
+Result:
+a-b-c
+
+
+
+
+26. Python String replace Method:
+
+
+The method replace returns a copy of the string in which the occurrences of old have been replaced with new, optionally restricting the number of replacements to max.
+
+
+→ str.replace(old, new[, max])
+
+Parameters
+* old -- This is old substring to be replaced.
+* new -- This is new substring, which would replace old substring.
+* max -- If this optional argument max is given, only the first count occurrences are replaced.
+Return Value:
+This method returns a copy of the string with all occurrences of substring old replaced by new. If the optional argument max is given, only the first count occurrences are replaced.
+Example
+
+
+#!/usr/bin/python
+
+str = "this is string example....wow!!! this is really string";
+print str.replace("is", "was")
+print str.replace("is", "was", 3)
+
+Results:
+
+
+thwas was string example....wow!!! thwas was really string
+thwas was string example....wow!!! thwas is really string
+
+
+
+
+
+
+31. Python String split Method:
+
+
+The method split returns a list of all the words in the string, using str as the separator splitsonallwhitespaceifleftunspecifiedsplitsonallwhitespaceifleftunspecified, optionally limiting the number of splits to num.
+
+
+→ str.split(str="", num=string.count(str)).
+
+Parameters
+* str →  This is any delimeter, by default it is space.
+* num →  this is number of lines minus one
+Return Value → This method returns a list of lines.
+Example
+
+
+#!/usr/bin/python
+
+str = "Line1-abcdef \nLine2-abc \nLine4-abcd";
+print str.split( )
+print str.split(' ', 1 )
+
+Results:
+
+
+['Line1-abcdef', 'Line2-abc', 'Line4-abcd']
+['Line1-abcdef', '\nLine2-abc \nLine4-abcd']
+
+
+
+
+33. Python String startswith Method:
+
+
+The method startswith checks whether string starts with str, optionally restricting the matching with the given indices start and end.
+
+
+→ str.startswith(str, beg=0,end=len(string));
+
+Parameters
+* str →  This is the string to be checked.
+* beg →  This is the optional parameter to set start index of the matching boundary.
+* end →  This is the optional parameter to end start index of the matching boundary.
+Return Value
+This method returns true if found matching string otherwise false.
+
+
+Example:
+
+
+#!/usr/bin/python
+
+str = "this is string example....wow!!!";
+print str.startswith( 'this' )
+print str.startswith( 'is', 2, 4 )
+print str.startswith( 'this', 2, 4 )
+
+When we run above program, it produces following result −
+True
+True
+False
+
+
+34. Python String strip Method:
+
+
+The method strip returns a copy of the string in which all chars have been stripped from the beginning and the end of the string defaultwhitespacecharactersdefaultwhitespacecharacters.
+
+
+→ str.strip([chars]);
+
+Parameters
+* chars -- The characters to be removed from beginning or end of the string.
+Return Value
+This method returns a copy of the string in which all chars have been stripped from the beginning and the end of the string.
+Example:
+
+
+#!/usr/bin/python
+
+str = "0000000this is string example....wow!!!0000000";
+print str.strip( '0' )
+
+Result:
+
+
+this is string example....wow!!!
+
+
+7. String Inbuilt functions:
+
+
+→ len(var1) → find length
+→ dir(var1) → find supported methods
+
+
+8. Conversions:
+
+
+int(‘str’) → Convert a string type to int
+
+
+String to list vise versa:
+
+
+List to string:
+
+
+VAR2=['abc', '23' ,'45']  → This is list
+type(VAR2)
+VAR3='_'.join(VAR2)
+print VAR3 → abc_23_45
+type(VAR3) → This is String
+
+
+String to Tuple:
+
+
+VAR4=tuple(VAR3.split('_'))
+print(VAR4) → ('abc', '23', '45')
+
+
+
+
+Tuple to string:
+
+
+VAR4=tuple(VAR3.split('_'))
+print(VAR4) → ('abc', '23', '45')
+type(VAR4)  → This is Tuple
+VAR5='_'.join(VAR4)
+print(VAR5)  → abc_23_45
+type(VAR5)  → this is string
+
+
+
+
+
+
+9. Deletion:
+→ del VAR1
+
+
+10. String Modules:
+
+
+Codes, difflib, fileinput, re, stringIO, cstringIO, string, textwrap
+http://gnosis.cx/TPiP/tpip-pagesized.pdf
+
+
+
+
+Python List:
+
+
+1. Define:
+
+
+The list is a most versatile datatype available in Python which can be written as a list of comma-separated values (items) between square brackets. Important thing about a list is that items in a list need not be of the same type.
+
+
+Creating a list is as simple as putting different comma-separated values between square brackets. For example −
+
+
+list1 = ['physics', 'chemistry', 1997, 2000];
+list2 = [1, 2, 3, 4, 5 ];
+list3 = ["a", "b", "c", "d"]
+list4 = [‘ab’, 5, ‘r34’, [23, ‘hg’, ‘x5’]]
+Nested lists:
+
+
+list4[3][0] equals to 23
+
+
+Similar to string indices, list indices start at 0, and lists can be sliced, concatenated and so on.
+
+
+2. Quotes:
+Quote list’s string elements Operators
+
+
+3. Sublists:
+
+
+var1[0] → First value in string
+var[0:5] or var[:5] → First 6 elements in a string
+var[5:] → 6th char to end
+VAR1[:2] → First two elements in Tuple
+VAR1[:-1] → all except last element in Tuple
+Var[:]  → All elements
+?????
+
+
+4. Operations:
+
+
+Logical Operators:
+
+
+‘element1’ in VAR1
+‘element2’ not in VAR1
+
+
+List Operations:
+len([1, 2, 3])
+	3
+	Length
+	[1, 2, 3] + [4, 5, 6]
+	[1, 2, 3, 4, 5, 6]
+	Concatenation
+	['Hi!'] * 4
+	['Hi!', 'Hi!', 'Hi!', 'Hi!']
+	Repetition
+	3 in [1, 2, 3]
+	True
+	Membership
+	for x in [1, 2, 3]: print x,
+	1 2 3
+	Iteration
+	
+
+5. List comprehension:
+
+
+Python supports a concept called "list comprehensions". It can be used to construct lists in a very natural, easy way, like a mathematician is used to do.
+The following are common ways to describe lists (or sets, or tuples, or vectors) in mathematics.
+
+
+	S = {x² : x in {0 ... 9}}
+V = (1, 2, 4, 8, ..., 2¹²)
+M = {x | x in S and x even}
+	
+
+
+
+Example:
+>>> S = [x**2 for x in range(10)]
+>>> V = [2**i for i in range(13)]
+>>> M = [x for x in S if x % 2 == 0]
+>>> 
+>>> print S; print V; print M
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+[1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096]
+[0, 4, 16, 36, 64]
+	
+
+
+
+For example, assume we want to create a list of squares, like:
+>>> squares = []
+>>> for x in range(10):
+...    squares.append(x**2)
+...
+>>> squares
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+
+We can obtain the same result with:
+squares = [x**2 for x in range(10)]
+And
+>>> [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
+[(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
+Is equivalent to
+>>> combs = []
+>>> for x in [1,2,3]:
+...    for y in [3,1,4]:
+...        if x != y:
+...            combs.append((x, y))
+...
+>>> combs
+[(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
+
+
+
+
+Conversion:
+List to tuple
+tuple(listname)
+list(listname)
+
+
+List Methods:
+List cmp() Method:
+The method cmp() compares elements of two lists.
+→ cmp(list1, list2)
+* list1 -- This is the first list to be compared.
+* list2 -- This is the second list to be compared.
+Return Value
+If elements are of the same type, perform the compare and return the result. If elements are different types, check to see if they are numbers.
+* If numbers, perform numeric coercion if necessary and compare.
+* If either element is a number, then the other element is "larger" (numbers are "smallest").
+* Otherwise, types are sorted alphabetically by name.
+If we reached the end of one of the lists, the longer list is "larger." If we exhaust both lists and share the same data, the result is a tie, meaning that 0 is returned.
+Example:
+#!/usr/bin/python
+
+list1, list2 = [123, 'xyz'], [456, 'abc']
+
+print cmp(list1, list2)
+print cmp(list2, list1)
+list3 = list2 + [786];
+print cmp(list2, list3)
+When we run above program, it produces following result −
+-1
+1
+-1
+
+
+
+
+
+
+List len() Method:
+
+
+The method len() returns the number of elements in the list.
+→ len(list)
+Example:
+#!/usr/bin/python
+
+list1, list2 = [123, 'xyz', 'zara'], [456, 'abc']
+
+print "First list length : ", len(list1)
+print "Second list length : ", len(list2)
+When we run above program, it produces following result −
+First list length :  3
+Second list length :  2
+
+
+
+
+List append() Method:
+
+
+The method append() appends a passed obj into the existing list.
+
+
+→ list.append(obj) → obj -- This is the object to be appended in the list.
+
+
+Example:
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc'];
+aList.append( 2009 );
+print "Updated List : ", aList
+When we run above program, it produces following result −
+Updated List :  [123, 'xyz', 'zara', 'abc', 2009]
+
+
+List count() Method:
+
+
+The method count() returns count of how many times obj occurs in list.
+
+
+→ list.count(obj)  → obj -- This is the object to be counted in the list.
+Example:
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc', 123];
+
+print "Count for 123 : ", aList.count(123)
+print "Count for zara : ", aList.count('zara')
+When we run above program, it produces following result −
+Count for 123 :  2
+Count for zara :  1
+
+
+
+
+List extend() Method:
+
+
+The method extend() appends the contents of seq to list.
+→ list.extend(seq) → seq -- This is the list of elements
+
+
+Example:
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc', 123];
+bList = [2009, 'manni'];
+aList.extend(bList)
+
+print "Extended List : ", aList
+When we run above program, it produces following result −
+Extended List :  [123, 'xyz', 'zara', 'abc', 123, 2009, 'manni']
+
+
+List insert() Method:
+
+
+The method insert() inserts object obj into list at offset index.
+
+
+→ list.insert(index, obj) → 
+* index -- This is the Index where the object obj need to be inserted.
+* obj -- This is the Object to be inserted into the given list.
+Example
+The following example shows the usage of insert() method.
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc']
+
+aList.insert( 3, 2009)
+
+print "Final List : ", aList
+When we run above program, it produces following result −
+Final List : [123, 'xyz', 'zara', 2009, 'abc']
+
+
+
+
+List pop() Method:
+
+
+The method pop() removes and returns last object or obj from the list.
+→ list.pop(obj=list[-1])
+* obj →  This is an optional parameter, index of the object to be removed from the list
+Example
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc'];
+
+print "A List : ", aList.pop()
+print "B List : ", aList.pop(2)
+When we run above program, it produces following result −
+A List :  abc
+B List :  zara
+
+
+
+
+List remove() Method:
+* obj -- This is the object to be removed from the list.
+Example:
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc', 'xyz'];
+
+aList.remove('xyz');
+print "List : ", aList
+aList.remove('abc');
+print "List : ", aList
+When we run above program, it produces following result −
+List :  [123, 'zara', 'abc', 'xyz']
+List :  [123, 'zara', 'xyz']
+
+
+
+List reverse() Method:
+The method reverse() reverses objects of list in place.
+→ list.reverse()
+Example:
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc', 'xyz'];
+
+aList.reverse();
+print "List : ", aList
+When we run above program, it produces following result −
+List :  ['xyz', 'abc', 'zara', 'xyz', 123]
+
+
+List sort() Method:
+The method sort() sorts objects of list, use compare func if given.
+→ list.sort([func])
+Example:
+
+
+#!/usr/bin/python
+
+aList = [123, 'xyz', 'zara', 'abc', 'xyz'];
+
+aList.sort();
+print "List : ", aList
+When we run above program, it produces following result −
+List :  [123, 'abc', 'xyz', 'xyz', 'zara']
+
+
+Note: sort and reverse will change the VAR2 elements location permanently.
+
+
+
+
+10. Accessing, Updating, Delete List Elements:
+Access:
+To access values in lists, use the square brackets for slicing along with the index or indices to obtain value available at that index. For example −
+#!/usr/bin/python
+
+list1 = ['physics', 'chemistry', 1997, 2000];
+list2 = [1, 2, 3, 4, 5, 6, 7 ];
+
+print "list1[0]: ", list1[0]
+print "list2[1:5]: ", list2[1:5]
+When the above code is executed, it produces the following result −
+list1[0]:  physics
+list2[1:5]:  [2, 3, 4, 5]
+
+
+Update:
+ 
+You can update single or multiple elements of lists by giving the slice on the left-hand side of the assignment operator, and you can add to elements in a list with the append() method. For example −
+
+
+#!/usr/bin/python
+
+list = ['physics', 'chemistry', 1997, 2000];
+
+print "Value available at index 2 : "
+print list[2]
+list[2] = 2001;
+print "New value available at index 2 : "
+print list[2]
+
+
+
+
+When the above code is executed, it produces the following result −
+
+
+Value available at index 2 :
+1997
+New value available at index 2 :
+2001
+
+
+Delete:
+
+
+To remove a list element, you can use either the del statement if you know exactly which element(s) you are deleting or the remove() method if you do not know. For example −
+#!/usr/bin/python
+
+list1 = ['physics', 'chemistry', 1997, 2000];
+
+print list1
+del list1[2];
+print "After deleting value at index 2 : "
+print list1
+
+
+
+
+When the above code is executed, it produces following result −
+
+
+['physics', 'chemistry', 1997, 2000]
+After deleting value at index 2 :
+['physics', 'chemistry', 2000]
+
+
+
+
+Python Tuples:
+
+
+Define Tuple:
+
+
+A tuple is a sequence of immutable Python objects. Tuples are sequences, just like lists.
+Tuples use parentheses, whereas lists use square brackets.
+
+
+tup1 = ('physics', 'chemistry', 1997, 2000);
+tup2 = (1, 2, 3, 4, 5 );
+tup3 = "a", "b", "c", "d";
+tup1 = ();  → Empty tuple
+tup1 = (50,); → you have to include a comma, even though there is only one value
+The tuple can contain mixed data types. Tuples are created using ( ).
+TUP1 = (read, 123, re34, (23, hg, xy45))
+TUP2 = (1, 2, 4, 6)
+Nested tuples:
+VAR1[3][0] equals to 23
+
+
+3. Sublists:
+
+
+var1[0] → First value in Tuple
+var[0:5] or var[:5] → First 6 elements in a tuple
+var[5:] → 6th char to end
+Var[:-1] → last char
+Var[:]  → All elements
+VAR1[:2] → First two elements in Tuple
+VAR1[:-1] → all except last element in Tuple
+
+
+
+
+
+
+Tuples Operations:
+Tuples respond to the + and * operators much like strings.
+
+
+Python Expression
+	Results
+	Description
+	len((1, 2, 3))
+	3
+	Length
+	(1, 2, 3) + (4, 5, 6)
+	(1, 2, 3, 4, 5, 6)
+	Concatenation
+	('Hi!',) * 4
+	('Hi!', 'Hi!', 'Hi!', 'Hi!')
+	Repetition
+	3 in (1, 2, 3)
+	True
+	Membership
+	for x in (1, 2, 3): print x,
+	1 2 3
+	Iteration
+	
+
+tup3=(1,2,3)
+1 in tup3  → true
+4 not in tup3 → true
+
+
+Tuple Builtin functions:
+
+
+Tuple cmp() method:
+
+
+The method cmp() compares elements of two tuples.
+→ cmp(tuple1, tuple2)
+* tuple1 -- This is the first tuple to be compared
+* tuple2 -- This is the second tuple to be compared
+Return Value:
+If elements are of the same type, perform the compare and return the result. If elements are different types, check to see if they are numbers.
+* If numbers, perform numeric coercion if necessary and compare.
+* If either element is a number, then the other element is "larger" (numbers are "smallest").
+* Otherwise, types are sorted alphabetically by name.
+If we reached the end of one of the tuples, the longer tuple is "larger." If we exhaust both tuples and share the same data, the result is a tie, meaning that 0 is returned.
+Example
+#!/usr/bin/python
+
+tuple1, tuple2 = (123, 'xyz'), (456, 'abc')
+
+print cmp(tuple1, tuple2)
+print cmp(tuple2, tuple1)
+tuple3 = tuple2 + (786,);
+print cmp(tuple2, tuple3)
+
+
+Results:
+-1
+1
+-1
+
+
+Tuple len() Method:
+
+
+The method len() returns the number of elements in the tuple.
+→ len(tuple) →  This is a tuple for which number of elements to be counted.
+Example
+
+
+#!/usr/bin/python
+
+tuple1, tuple2 = (123, 'xyz', 'zara'), (456, 'abc')
+
+print "First tuple length : ", len(tuple1)
+print "Second tuple length : ", len(tuple2)
+When we run above program, it produces following result −
+First tuple length :  3
+Second tuple length :  2
+
+
+
+Tuple max() Method:
+The method max() returns the elements from the tuple with maximum value.
+→ max(tuple) →  This is a tuple from which max valued element to be returned.
+Example
+#!/usr/bin/python
+
+tuple1, tuple2 = (123, 'xyz', 'zara', 'abc'), (456, 700, 200)
+
+print "Max value element : ", max(tuple1)
+print "Max value element : ", max(tuple2)
+Results:
+Max value element :  zara
+Max value element :  700
+
+
+
+
+Tuple min() Method:
+The method min() returns the elements from the tuple with minimum value.
+→ min(tuple) →  This is a tuple from which min valued element to be returned.
+Example
+#!/usr/bin/python
+
+tuple1, tuple2 = (123, 'xyz', 'zara', 'abc'), (456, 700, 200)
+
+print "min value element : ", min(tuple1)
+print "min value element : ", min(tuple2)
+Results:
+min value element :  123
+min value element :  200
+
+
+Tuple tuple() Method:
+
+
+The method tuple() converts a list of items into tuples
+→ tuple( listname ) →  This is a tuple to be converted into tuple.
+
+
+Example
+#!/usr/bin/python
+
+aList = (123, 'xyz', 'zara', 'abc');
+aTuple = tuple(aList)
+
+print "Tuple elements : ", aTuple
+Results:
+Tuple elements :  (123, 'xyz', 'zara', 'abc')
+
+
+Conversion:
+
+
+→ tuple( listname ) →  This is a tuple to be converted into tuple.
+→ list(tuplename) → list to tuple
+
+
+
+
+
+
+
+
+Tuple Accessing, Updating and Deleting:
+
+
+
+
+Accessing:
+
+
+#!/usr/bin/python
+
+tup1 = ('physics', 'chemistry', 1997, 2000);
+tup2 = (1, 2, 3, 4, 5, 6, 7 );
+
+print "tup1[0]: ", tup1[0]
+print "tup2[1:5]: ", tup2[1:5]
+When the above code is executed, it produces the following result −
+tup1[0]:  physics
+tup2[1:5]:  [2, 3, 4, 5]
+
+
+Updating:
+
+
+Tuples are immutable which means you cannot update or change the values of tuple elements. You are able to take portions of existing tuples to create new tuples as the following example demonstrates −
+#!/usr/bin/python
+
+tup1 = (12, 34.56);
+tup2 = ('abc', 'xyz');
+
+# Following action is not valid for tuples
+# tup1[0] = 100;
+
+# So let's create a new tuple as follows
+tup3 = tup1 + tup2;
+print tup3
+When the above code is executed, it produces the following result −
+(12, 34.56, 'abc', 'xyz')
+
+
+
+
+Deleting:
+
+
+Removing individual tuple elements is not possible. There is, of course, nothing wrong with putting together another tuple with the undesired elements discarded.
+To explicitly remove an entire tuple, just use the del statement. For example:
+#!/usr/bin/python
+
+tup = ('physics', 'chemistry', 1997, 2000);
+
+print tup
+del tup;
+print "After deleting tup : "
+print tup
+This produces the following result. Note an exception raised, this is because after del tup tuple does not exist any more −
+('physics', 'chemistry', 1997, 2000)
+After deleting tup :
+Traceback (most recent call last):
+ File "test.py", line 9, in <module>
+   print tup;
+NameError: name 'tup' is not defined
+
+
+
+
+Instances of Set and ImmutableSet both provide the following operations:
+Python sets:
+
+
+A set is an unordered collection of data with no duplicate elements. A set supports operations like union, intersection or difference. Similar as in Mathematics.
+set() function to create set.
+To get unique values of a list
+list1=list(set(list1))
+
+
+
+
+set1 = set(['a', 'b', 'c', 'c', 'd'])
+set2 = set(['a', 'b', 'x', 'y', 'z'])
+
+
+Intersection:
+
+
+print "intersection: ", set1 & set2
+set1.intersection(set2)
+result  
+set(['a', 'b'])
+
+
+Union:
+
+
+print "union: ", set1 | set2
+set1.union(set2)
+Result :
+set(['a', 'c', 'b', 'd', 'y', 'x', 'z'])
+
+
+Difference:
+
+
+
+
+print "difference: ", set1 - set2
+set1.difference(set2)
+difference:  set(['c', 'd'])
+
+
+
+
+Symmetric difference:
+
+
+print "symmetric difference: ", set1 ^ set2
+set1.symmetric_difference(set2)
+Result:
+symmetric difference:  set(['c', 'd', 'y', 'x', 'z'])
+
+
+set1.add(3) → 
+set(['a', 3, 'c', 'b', 'd'])
+
+
+set1.remove(3)
+set(['a', 'c', 'b', 'd'])
+
+
+set1.clear() → to make empty set
+
+
+frozenset(set1)
+
+
+Set to string
+‘_’.join(set) → 'a_c_b_d'
+
+
+Sort a set and convert to list
+sorted(set, key=int)
+
+
+
+
+
+
+Operation
+	Equivalent
+	Result
+	len(s)
+	 
+	number of elements in set s(cardinality)
+	x in s
+	 
+	test x for membership in s
+	x not in s
+	 
+	test x for non-membership in s
+	s.issubset(t)
+	s <= t
+	test whether every element in s is in t
+	s.issuperset(t)
+	s >= t
+	test whether every element in t is in s
+	s.union(t)
+	s | t
+	new set with elements from both s and t
+	s.intersection(t)
+	s & t
+	new set with elements common tos and t
+	s.difference(t)
+	s - t
+	new set with elements in s but not in t
+	s.symmetric_difference(t)
+	s ^ t
+	new set with elements in either s or t but not both
+	s.copy()
+	 
+	new set with a shallow copy of s
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Operation
+	Equivalent
+	Result
+	s.update(t)
+	s |= t
+	return set s with elements added from t
+	s.intersection_update(t)
+	s &= t
+	return set s keeping only elements also found in t
+	s.difference_update(t)
+	s -= t
+	return set s after removing elements found in t
+	s.symmetric_difference_update(t)
+	s ^= t
+	return set s with elements from s or t but not both
+	s.add(x)
+	 
+	add element x to set s
+	s.remove(x)
+	 
+	remove x from set s; raisesKeyError if not present
+	s.discard(x)
+	 
+	removes x from set s if present
+	s.pop()
+	 
+	remove and return an arbitrary element from s; raises KeyErrorif empty
+	s.clear()
+	 
+	remove all elements from set s
+	
+
+
+
+Example
+>>>
+>>> from sets import Set
+>>> engineers = Set(['John', 'Jane', 'Jack', 'Janice'])
+>>> programmers = Set(['Jack', 'Sam', 'Susan', 'Janice'])
+>>> managers = Set(['Jane', 'Jack', 'Susan', 'Zack'])
+>>> employees = engineers | programmers | managers           # union
+>>> engineering_management = engineers & managers            # intersection
+>>> fulltime_management = managers - engineers - programmers # difference
+>>> engineers.add('Marvin')                                  # add element
+>>> print engineers 
+Set(['Jane', 'Marvin', 'Janice', 'John', 'Jack'])
+>>> employees.issuperset(engineers)     # superset test
+False
+>>> employees.update(engineers)         # update from another set
+>>> employees.issuperset(engineers)
+True
+>>> for group in [engineers, programmers, managers, employees]: 
+...    group.discard('Susan')          # unconditionally remove element
+...    print group
+...
+Set(['Jane', 'Marvin', 'Janice', 'John', 'Jack'])
+Set(['Janice', 'Jack', 'Sam'])
+Set(['Jane', 'Zack', 'Jack'])
+Set(['Jack', 'Sam', 'Jane', 'Marvin', 'Janice', 'John', 'Zack'])
+
+
+
+
+
+
+
+
+
+
+
+List vs Tuples vs Sets:
+
+
+A list is an mutable (modifiable) sequence data type. The list can contain mixed data types. And lists are created using [].
+
+
+A tuple is an immutable(non modifiable) sequence data type. The tuple can contain mixed data types.
+
+
+A set is an unordered collection of data with no duplicate elements. A set supports operations like union, intersection or difference. Similar as in Mathematics.
+
+
+
+
+Python Dictionary:
+
+
+Each key is separated from its value by a colon (:), the items are separated by commas, and the whole thing is enclosed in curly braces. An empty dictionary without any items is written with just two curly braces, like this: {}.
+
+
+Keys are unique within a dictionary while values may not be. The values of a dictionary can be of any type, but the keys must be of an immutable data type such as strings, numbers, or tuples.
+
+
+Example: 
+
+
+dict() - is equal to {key1:val1, key2:val2}
+a = dict(oe=1, tw=2, tre=3)
+b = {'oe': 1, 'tw': 2, 'tre': 3}
+c=dict(zip(['oe','tw','tre'], [1,2,3]))
+d=dict([('tw',2), ('oe',1), ('tre',3)])
+e = dict({'tre': 3, 'oe': 1, 'tw': 2})
+a == b == c == d == e
+
+
+
+
+Accessing Values in Dictionary:
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+
+print "dict['Name']: ", dict['Name']
+print "dict['Age']: ", dict['Age']
+Results:
+dict['Name']:  Zara
+dict['Age']:  7
+
+If we attempt to access a data item with a key, which is not part of the dictionary, we get an error as follows −
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+
+print "dict['Alice']: ", dict['Alice']
+When the above code is executed, it produces the following result −
+dict['Alice']:
+Traceback (most recent call last):
+  File "test.py", line 4, in <module>
+     print "dict['Alice']: ", dict['Alice'];
+KeyError: 'Alice'
+
+Updating Dictionary
+
+
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+
+dict['Age'] = 8; # update existing entry
+dict['School'] = "DPS School"; # Add new entry
+
+
+print "dict['Age']: ", dict['Age']
+print "dict['School']: ", dict['School']
+When the above code is executed, it produces the following result −
+dict['Age']:  8
+dict['School']:  DPS School
+
+Delete Dictionary Elements
+
+
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+
+del dict['Name']; # remove entry with key 'Name'
+dict.clear();     # remove all entries in dict
+del dict ;        # delete entire dictionary
+
+print "dict['Age']: ", dict['Age']
+print "dict['School']: ", dict['School']
+This produces the following result. Note that an exception is raised because after del dict dictionary does not exist any more −
+dict['Age']:
+Traceback (most recent call last):
+ File "test.py", line 8, in <module>
+   print "dict['Age']: ", dict['Age'];
+TypeError: 'type' object is unsubscriptable
+
+Note: del() method is discussed in subsequent section.
+Properties of Dictionary Keys
+Dictionary values have no restrictions. They can be any arbitrary Python object, either standard objects or user-defined objects. However, same is not true for the keys.
+There are two important points to remember about dictionary keys −
+(a) More than one entry per key not allowed. Which means no duplicate key is allowed. When duplicate keys encountered during assignment, the last assignment wins. For example −
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7, 'Name': 'Manni'}
+
+print "dict['Name']: ", dict['Name']
+When the above code is executed, it produces the following result −
+dict['Name']:  Manni
+
+(b) Keys must be immutable. Which means you can use strings, numbers or tuples as dictionary keys but something like ['key'] is not allowed. Following is a simple example:
+#!/usr/bin/python
+
+dict = {['Name']: 'Zara', 'Age': 7}
+
+print "dict['Name']: ", dict['Name']
+When the above code is executed, it produces the following result −
+Traceback (most recent call last):
+  File "test.py", line 3, in <module>
+     dict = {['Name']: 'Zara', 'Age': 7};
+TypeError: list objects are unhashable
+
+
+
+
+Dictionary built in funtions:
+
+
+cmp(dic1,dict2)
+len(dict1)
+
+
+
+
+dictionary clear() Method:
+The method clear() removes all items from the dictionary.
+→ dict.clear()
+Example
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7};
+
+print "Start Len : %d" %  len(dict)
+dict.clear()
+print "End Len : %d" %  len(dict)
+When we run above program, it produces following result −
+Start Len : 2
+End Len : 0
+
+
+Dictionary copy() method:
+
+
+The method copy() returns a shallow copy of the dictionary.
+→ dict.copy()
+Example
+#!/usr/bin/python
+
+dict1 = {'Name': 'Zara', 'Age': 7};
+
+dict2 = dict1.copy()
+print "New Dictinary : %s" %  str(dict2)
+When we run above program, it produces following result −
+New Dictinary : {'Age': 7, 'Name': 'Zara'}
+
+
+
+
+Dictionary fromkets() method:
+The method fromkeys() creates a new dictionary with keys from seq and values set to value.
+→ dict.fromkeys(seq[, value])
+* seq -- This is the list of values which would be used for dictionary keys preparation.
+* value -- This is optional, if provided then value would be set to this value
+Example
+
+
+#!/usr/bin/python
+
+seq = ('name', 'age', 'sex')
+
+dict = dict.fromkeys(seq)
+print "New Dictionary : %s" %  str(dict)
+
+dict = dict.fromkeys(seq, 10)
+print "New Dictionary : %s" %  str(dict)
+When we run above program, it produces following result −
+New Dictionary : {'age': None, 'name': None, 'sex': None}
+New Dictionary : {'age': 10, 'name': 10, 'sex': 10}
+
+
+
+
+
+
+Dictionary get() method:
+
+
+The method get() returns a value for the given key. If key is not available then returns default value None.
+→ dict.get(key, default=None)
+* key -- This is the Key to be searched in the dictionary.
+* default -- This is the Value to be returned in case key does not exist.
+Example
+#!/usr/bin/python
+
+dict = {'Name': 'Zabra', 'Age': 7}
+
+print "Value : %s" %  dict.get('Age')
+print "Value : %s" %  dict.get('Education', "Never")
+When we run above program, it produces following result −
+Value : 7
+Value : Never
+
+
+
+
+Dictionary items() method:
+
+
+The method items() returns a list of dict's (key, value) tuple pairs
+→ dict.items()
+Example
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7}
+
+print "Value : %s" %  dict.items()
+When we run above program, it produces following result −
+Value : [('Age', 7), ('Name', 'Zara')]
+
+
+
+
+Dictionary key() method:
+The method keys() returns a list of all the available keys in the dictionary.
+→ dict.keys()
+Example
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7}
+
+print "Value : %s" %  dict.keys()
+When we run above program, it produces following result −
+Value : ['Age', 'Name']
+
+
+
+
+Dictionary update() method:
+The method update() adds dictionary dict2's key-values pairs in to dict. This function does not return anything.
+→ dict.update(dict2) →  This is the dictionary to be added into dict.
+
+
+Example
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7}
+dict2 = {'Sex': 'female' }
+
+dict.update(dict2)
+print "Value : %s" %  dict
+When we run above program, it produces following result −
+Value : {'Age': 7, 'Name': 'Zara', 'Sex': 'female'}
+
+
+
+
+Dictionary value() method:
+The method values() returns a list of all the values available in a given dictionary.
+→ dict.values()
+Example
+#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7}
+
+print "Value : %s" %  dict.values()
+When we run above program, it produces following result −
+Value : [7, 'Zara']
+
+
+
+
+Python Number:
+
+
+Number data types store numeric values. They are immutable data types, means that changing the value of a number data type results in a newly allocated object.
+Number objects are created when you assign a value to them. For example −
+var1 = 1
+var2 = 10
+You can also delete the reference to a number object by using the del statement. The syntax of the del statement is −
+del var1[,var2[,var3[....,varN]]]]
+You can delete a single object or multiple objects by using the del statement. For example:
+del var
+del var_a, var_b
+Python supports four different numerical types −
+* int (signed integers): They are often called just integers or ints, are positive or negative whole numbers with no decimal point.
+* long (long integers ): Also called longs, they are integers of unlimited size, written like integers and followed by an uppercase or lowercase L.
+* float (floating point real values) : Also called floats, they represent real numbers and are written with a decimal point dividing the integer and fractional parts. Floats may also be in scientific notation, with E or e indicating the power of 10 (2.5e2 = 2.5 x 102 = 250).
+* complex (complex numbers) : are of the form a + bJ, where a and b are floats and J (or j) represents the square root of -1 (which is an imaginary number). The real part of the number is a, and the imaginary part is b. Complex numbers are not used much in Python programming.
+Examples
+Here are some examples of numbers
+int
+	long
+	float
+	complex
+	10
+	51924361L
+	0.0
+	3.14j
+	100
+	-0x19323L
+	15.20
+	45.j
+	-786
+	0122L
+	-21.9
+	9.322e-36j
+	080
+	0xDEFABCECBDAECBFBAEL
+	32.3+e18
+	.876j
+	-0490
+	535633629843L
+	-90.
+	-.6545+0J
+	-0x260
+	-052318172735L
+	-32.54e100
+	3e+26J
+	0x69
+	-4721885298529L
+	70.2-E12
+	4.53e-7j
+	* Python allows you to use a lowercase L with long, but it is recommended that you use only an uppercase L to avoid confusion with the number 1. Python displays long integers with an uppercase L.
+* A complex number consists of an ordered pair of real floating point numbers denoted by a + bj, where a is the real part and b is the imaginary part of the complex number.
+Number Type Conversion
+Python converts numbers internally in an expression containing mixed types to a common type for evaluation. But sometimes, you need to coerce a number explicitly from one type to another to satisfy the requirements of an operator or function parameter.
+* Type int(x) to convert x to a plain integer.
+* Type long(x) to convert x to a long integer.
+* Type float(x) to convert x to a floating-point number.
+* Type complex(x) to convert x to a complex number with real part x and imaginary part zero.
+* Type complex(x, y) to convert x and y to a complex number with real part x and imaginary part y. x and y are numeric expressions
+Mathematical Functions
+Python includes following functions that perform mathematical calculations.
+Function
+	Returns ( description )
+	abs(x)
+	The absolute value of x: the (positive) distance between x and zero.
+	ceil(x)
+	The ceiling of x: the smallest integer not less than x
+	cmp(x, y)
+	-1 if x < y, 0 if x == y, or 1 if x > y
+	exp(x)
+	The exponential of x: ex
+	fabs(x)
+	The absolute value of x.
+	floor(x)
+	The floor of x: the largest integer not greater than x
+	log(x)
+	The natural logarithm of x, for x> 0
+	log10(x)
+	The base-10 logarithm of x for x> 0 .
+	max(x1, x2,...)
+	The largest of its arguments: the value closest to positive infinity
+	min(x1, x2,...)
+	The smallest of its arguments: the value closest to negative infinity
+	modf(x)
+	The fractional and integer parts of x in a two-item tuple. Both parts have the same sign as x. The integer part is returned as a float.
+	pow(x, y)
+	The value of x**y.
+	round(x [,n])
+	x rounded to n digits from the decimal point. Python rounds away from zero as a tie-breaker: round(0.5) is 1.0 and round(-0.5) is -1.0.
+	sqrt(x)
+	The square root of x for x > 0
+	Random Number Functions
+Random numbers are used for games, simulations, testing, security, and privacy applications. Python includes following functions that are commonly used.
+Function
+	Description
+	choice(seq)
+	A random item from a list, tuple, or string.
+	randrange ([start,] stop [,step])
+	A randomly selected element from range(start, stop, step)
+	random()
+	A random float r, such that 0 is less than or equal to r and r is less than 1
+	seed([x])
+	Sets the integer starting value used in generating random numbers. Call this function before calling any other random module function. Returns None.
+	shuffle(lst)
+	Randomizes the items of a list in place. Returns None.
+	uniform(x, y)
+	A random float r, such that x is less than or equal to r and r is less than y
+	Trigonometric Functions
+Python includes following functions that perform trigonometric calculations.
+Function
+	Description
+	acos(x)
+	Return the arc cosine of x, in radians.
+	asin(x)
+	Return the arc sine of x, in radians.
+	atan(x)
+	Return the arc tangent of x, in radians.
+	atan2(y, x)
+	Return atan(y / x), in radians.
+	cos(x)
+	Return the cosine of x radians.
+	hypot(x, y)
+	Return the Euclidean norm, sqrt(x*x + y*y).
+	sin(x)
+	Return the sine of x radians.
+	tan(x)
+	Return the tangent of x radians.
+	degrees(x)
+	Converts angle x from radians to degrees.
+	radians(x)
+	Converts angle x from degrees to radians.
+	Mathematical Constants
+
+
+The module also defines two mathematical constants −
+Constants
+	Description
+	pi
+	The mathematical constant pi.
+	e
+	The mathematical constant e.
+	
+
+
+
+
+
+
+
+
+
+Python Built-in functions:
+
+
+
+
+abs(-45), abs(19.99), abs(23L) is 45, 19.99, 23
+
+
+help() --To get help about different modules. help(re)
+
+
+dir() --List available funs of an object. dir(re)
+
+
+type() --Gives da        tatype of the object. 
+
+
+import re
+type(re)
+
+
+Conversions:
+str() -Anything into string.
+
+
+dict() - is equal to {key1:val1, key2:val2}
+a = dict(oe=1, tw=2, tre=3)
+b = {'oe': 1, 'tw': 2, 'tre': 3}
+c=dict(zip(['oe','tw','tre'], [1,2,3]))
+d=dict([('tw',2), ('oe',1), ('tre',3)])
+e = dict({'tre': 3, 'oe': 1, 'tw': 2})
+a == b == c == d == e
+
+
+list()/tuple()/set()-For converting strings, Dict-keys, dict-values, sets, into lists/tuple/set. 
+
+
+input(), raw_input() --To take input from users
+
+
+len() --To get length of any data type
+
+
+print() --To print information
+
+
+open(), file() --To open file and file() is removed in 3
+
+
+pow(x, y) --x power y
+
+
+
+
+range(8), xrange(8) → Print 0 to 7
+round(100.9082,1) equals to 100.9 → The method round() returns x rounded to n digits from the decimal point.
+
+
+delattr(), getattr(), hasattr(), setattr()
+
+
+
+
+all() → Return True if all elements of the iterable are true (or if the iterable is empty)
+
+
+Example:
+
+
+ >>> all([0,1,2,3])
+False
+>>> all([1,2,3])
+True
+>>> mylist = ["hello", "there", "how", "are", "you", ""]
+>>> all(mylist)
+False
+>>> all(mylist[:-1])
+True
+>>> print(all([]))
+True
+ 
+
+
+
+
+any() → Return True if any element of the iterable is true. If the iterable is empty, return False.
+>>> any([0,1,2,3])
+True
+>>> any([0, False, "", {}, []])
+False
+>>> any([])
+False
+>>> mylist = [x for x in xrange(10) if x%2 == 0]
+>>> mylist
+[0, 2, 4, 6, 8]
+>>> any(mylist)
+True
+
+
+
+
+Built-in Function
+	Description
+	abs()
+	Return the absolute value of a number.
+>>> abs(-5)
+5
+>>> abs(5)
+5
+>>> abs(-2.5)
+2.5
+>>> abs(2.5)
+2.5
+
+
+
+
+
+	all()
+	Return True if all elements of the iterable are true (or if the iterable is empty).
+>>> all([0,1,2,3])
+False
+>>> all([1,2,3])
+True
+>>> mylist = ["hello", "there", "how", "are", "you", ""]
+>>> all(mylist)
+False
+>>> all(mylist[:-1])
+True
+>>> print(all([]))
+True
+
+
+	any()
+	Return True if any element of the iterable is true. If the iterable is empty, return False.
+
+
+>>> any([0,1,2,3])
+True
+>>> any([0, False, "", {}, []])
+False
+>>> any([])
+False
+>>> mylist = [x for x in xrange(10) if x%2 == 0]
+>>> mylist
+[0, 2, 4, 6, 8]
+>>> any(mylist)
+True
+
+
+
+
+
+	ascii()
+	Return a string containing a printable representation of an object, but escape the non-ASCII characters.
+	basestring()
+	Used with isinstance() to help determine if an object is of type str or of type unicode.
+>>> mystr = "hello"
+>>> myunicode = u"hello"
+>>> myint = 10
+>>> type(mystr)
+<type 'str'>
+>>> type(myunicode)
+<type 'unicode'>
+>>> type(mystr) == type(myunicode)
+False
+>>> isinstance(mystr, basestring)
+True
+>>> isinstance(myunicode, basestring)
+True
+>>> isinstance(myint, basestring)
+False
+
+
+
+
+
+	bin()
+	Convert an integer number to a binary string.
+
+
+>>> x = 10
+>>> b = bin(x)
+>>> b
+'0b1010'
+>>> type(b)
+<type 'str'>
+>>> # b is just a string, we can't do arithmetic with it
+>>> b + 0b10
+Traceback (most recent call last):
+ File "<stdin>", line 2, in <module>
+TypeError: cannot concatenate 'str' and 'int' objects
+>>> # To convert a binary string to an int, we must specify a base to int()
+>>> int(b)
+Traceback (most recent call last):
+ File "<stdin>", line 2, in <module>
+ValueError: invalid literal for int() with base 10: '0b1010'
+>>> int(b, 2)
+10
+>>> # Can't use bin() on a float
+>>> bin(5.5)
+Traceback (most recent call last):
+ File "<stdin>", line 2, in <module>
+TypeError: 'float' object cannot be interpreted as an index
+
+
+
+
+
+	bool()
+	Convert a value to a Boolean.
+
+
+>>> bool("Python is fun!")
+True
+>>> t = []
+>>> bool(t)
+False
+>>> bool(0)
+False
+>>> bool()
+False
+>>> bool(1)
+True
+
+
+
+
+
+
+
+
+
+	bytearray()
+	Return a new array of bytes.
+	bytes()
+	Return a new "bytes" object.
+	callable()
+	Return True if the object argument appears callable, False if not.
+	chr()
+	Return the string representing a character.
+Return a character whose ASCII code is the integer i. i must be in the range 0 to 255 (inclusive). chr() is the inverse of the function ord(),
+>>> # See asciitable.com
+>>> chr(65)
+'A'
+>>> ord('A')
+65
+>>> ord('B')
+66
+>>> ord(chr(65))
+65
+>>> chr(-1)
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+ValueError: chr() arg not in range(256)
+
+
+
+------
+
+
+>>> alphabet = ''
+>>> for letter in range(65, 91):
+...   alphabet += chr(letter)
+...
+>>> alphabet
+'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+
+	classmethod()
+	Return a class method for the function.
+@classmethod is a decorator for a class method that makes the first parameter receive a reference to the class itself as opposed to the instance. A large distinction between @classmethod and @staticmethod is that if a static method wishes to reference a class variable or another class/static method, it must know the name of the class to do so.
+>>> class MyClass(object):
+...     x = 10
+...     @classmethod
+...     def f1(cls):
+...         return 2 * cls.x
+...     @staticmethod
+...     def f2():
+...         return 2 * MyClass.x
+...
+>>> MyClass.f1()
+20
+>>> MyClass.f2()
+20
+
+
+	cmp(x,y)
+	Returns an integer value based on the comparison of two objects, x and y. The integer value is negative if x<y, zero if x==y, and positive if x>y. Consequently, cmp() is NOT a commutative operation. In other words, cmp(x,y)is not the same as cmp(y,x)
+>>> x = 1
+>>> y = 2
+>>> cmp(x,y)
+-1
+>>> cmp(y,x)
+1
+>>> import datetime
+>>> now = datetime.datetime.now()
+>>> later = now + datetime.timedelta(hours=1)
+>>> cmp(now,later)
+-1
+>>> # Switching the order gives you the opposite sign
+>>> cmp(later,now)
+1
+>>> # Equal values have a cmp() value of 0
+...
+>>> a = 5
+>>> b = 5
+>>> cmp(a,b)
+0
+>>> # Switching the order doesn't make a difference in this case
+>>> cmp(b,a)
+0
+
+Most cmp() evaluations result in either a -1, 0, or 1. However, the comparison functions cmp() calls are only required to return a negative value for x<y, a 0 for x==y, and a positive value for x>y. So if you are using the return value of cmp() in a conditional, you should structure your conditionals to be based on whether the return value is less than 0, 0, or greater than 0.
+>>> a = 1
+>>> b = 1
+>>> cmp_val = cmp(a, b)
+>>> if cmp_val < 0:
+...     print("a < b")
+... elif cmp_val == 0:
+...     print("a == b")
+... else:
+...     print("a > b")
+...
+a == b
+
+
+
+
+
+	compile(source, filename, mode)
+	Compile the source into a code or AST object.
+Compile a source string from filename into a code object, which can later be executed by eval() or exec(). filename is simply used for run-time error messages. It is recommended to use '<string>' as the filename if source was not read from a file. mode is a string which indicates the compilation mode with the following options available:
+* 'exec': indicates compliation is intended for an entire Python module
+* 'single': indicates compilation is intended for a single statement
+* 'eval': indicates compilation is intended for a single expression
+The author, at this point in time, cannot think of a good use for 'single' mode. Just throwing that out there...
+Consider this simple module
+1
+2
+3
+4
+5
+6
+7
+8
+9
+	import json
+
+def myfn(mydict):
+   return json.dumps(mydict)
+
+def myfn2():
+   return myfn({"x": 30})
+
+print(myfn2())
+
+	Here is how we compile and exec
+>>> with open('simple_module.py') as f:
+...     contents = f.read()
+...
+>>> code_obj = compile(contents, 'simple_module.py', 'exec')
+>>> exec(code_obj)
+{"x": 30}
+
+Note that using 'single', or 'eval' would not yield the correct results
+>>> code_obj = compile(contents, 'simple_module.py', 'single')
+>>> exec(code_obj)
+>>> code_obj = compile(contents, 'simple_module.py', 'eval')
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+ File "simple_module.py", line 1
+   import json
+        ^
+SyntaxError: invalid syntax
+
+Notes on single mode
+'single' mode in the example above doesn't technically fail, but since 'single' mode only generates bytecode for the first statement it encounters, the only result of the exec() is that the json module is now loaded. Let's completely restart the interpretor and see for ourselves.
+~$ python
+Python 2.7.3 (default, Sep 26 2012, 21:51:14)
+[GCC 4.7.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> with open('simple_module.py') as f:
+...     source = f.read()
+...
+>>> json
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+NameError: name 'json' is not defined
+>>> code_obj = compile(source, '<string>', 'single')
+>>> exec(code_obj)
+>>> json
+<module 'json' from '/usr/lib/python2.7/json/__init__.pyc'>
+>>> # simple_module defines myfn and myfn2, but single mode didn't get
+>>> # past the json import
+>>> myfn
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+NameError: name 'myfn' is not defined
+>>> myfn2
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+NameError: name 'myfn2' is not defined
+
+Notes on eval mode
+'eval' mode is intended for compiling expressions. It is important to note that while all expressions are statements, not all statements are expressions. Attempting to compile a statement that is not an expression will result in a syntax error. (More information on expressions vs statements in Python.)
+>>> an_expression = "5+5"
+>>> a_statement = "print(5+5)"
+>>> # This doesn't cause an error
+>>> code_obj = compile(an_expression, '<string>', 'eval')
+>>> # This does, however
+>>> code_obj = compile(a_statement, '<string>', 'eval')
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+ File "<string>", line 1
+   print(5+5)
+       ^
+SyntaxError: invalid syntax
+
+Notes on syntax errors
+Suppose we have a module with a syntax error and we attempt to compile it.
+1
+2
+3
+4
+5
+	import json
+
+# Missing closing parenthesis
+def myfn(mydict:
+   return json.dumps(mydict)
+
+	The compile() function itself will raise a SyntaxError
+>>> with open('module_with_error.py') as f:
+...     source = f.read()
+... 
+>>> code_obj = compile(source, 'module_with_error.py', 'exec')
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+ File "module_with_error.py", line 4
+   def myfn(mydict:
+                  ^
+SyntaxError: invalid syntax
+
+
+	complex()
+	Create a complex number or convert a string or number to a complex number.
+
+
+Method 1: Passing numeric values
+>>> x = complex(4, 2)
+>>> x
+(4+2j)
+>>> y = complex(4, -5)
+>>> y
+(4-5j)
+>>> # We can perform mathematical operations on these numbers
+... 
+>>> x + y
+(8-3j)
+>>> x * y
+(26-12j)
+>>> # We don't need to provide an imaginary part
+>>> a = complex(4)
+>>> a
+(4+0j)
+
+Method 2: From a string
+If you pass a single string complex(), it will attempt to parse the string into its real and imaginary parts.
+The official documentation notes that the string cannot contain whitespace around the + or - (if there is one).
+>>> x = complex("4+2j")
+>>> x
+(4+2j)
+>>> y = complex("4-5j")
+>>> y
+(4-5j)
+>>> x+y
+(8-3j)
+>>> x*y
+(26-12j)
+>>> a = complex("4")
+>>> a
+(4+0j)
+>>> # What happens if we have a space around + or -?
+... 
+>>> b = complex("3+ 6j")
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+ValueError: complex() arg is a malformed string
+>>> b = complex("3 + 6j")
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+ValueError: complex() arg is a malformed string
+>>> b = complex("3 +6j")
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+ValueError: complex() arg is a malformed string
+>>> # What happens if we pass a completely invalid string?
+... 
+>>> c = complex("lol")
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+ValueError: complex() arg is a malformed string
+
+You can also call complex() with no arguments, which defaults to 0. I would recommend just providing 0 as the argument, for the sake of those reading your source.
+>>> complex()
+0j
+>>> complex(0)
+0j
+
+
+
+
+
+	delattr()
+	Deletes the named attribute of an object.
+
+
+This function deletes the attribute with name attrname from the object.
+>>> class MyClass(object):
+...     def __init__(self):
+...         self.x = 10
+... 
+>>> obj = MyClass()
+>>> obj.x
+10
+>>> delattr(obj, "x")
+>>> obj.x
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+ AttributeError: 'MyClass' object has no attribute 'x'
+
+Note that if we attempt to delete a read-only attribute, such as a class variable, delattr() will raise an AttributeError
+>>> class MyClass(object):
+...     x = 10
+...
+>>> obj = MyClass()
+>>> obj.x
+10
+>>> delattr(obj, "x")
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+ AttributeError: 'MyClass' object attribute 'x' is read-only
+
+Similarly, trying to delete an attribute that doesn't exist will raise an AttributeError
+>>> class MyClass(object):
+...     def __init__(self):
+...         self.x = 10
+... 
+>>> obj = MyClass()
+>>> delattr(obj, "y")
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+AttributeError: y
+
+
+
+
+
+	dict()
+	Create a new dictionary.
+
+
+
+
+
+
+>>> {'number': 3, 'string': 'abc', 'numbers': [3, 4, 5]}
+{'numbers': [3, 4, 5], 'number': 3, 'string': 'abc'}
+>>> dict([(1, "one"), [2, "two"], (3, "three")])
+{1: 'one', 2: 'two', 3: 'three'}
+>>> dict(zip("ABCDEF", range(10, 16)))
+{'A': 10, 'C': 12, 'B': 11, 'E': 14, 'D': 13, 'F': 15
+>>> dict(
+...   number=3,
+...   string="abc",
+...   numbers=[3, 4, 5]
+... )
+{'number': 3, 'string': 'abc', 'numbers': [3, 4, 5]
+
+
+	dir()
+	Return the list of names in the current local scope.
+
+
+dir() with an argument
+This function is extremely useful for discovering what methods or attributes an object has. For example,
+>>> mystr = "hello"
+>>> dir(mystr)
+['__add__', '__class__', '__contains__', '__delattr__', '__doc__', '__eq__',
+'__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__',
+'__getslice__', '__gt__', '__hash__', '__init__', '__le__', '__len__',
+'__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__',
+'__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__',
+'__sizeof__', '__str__', '__subclasshook__', '_formatter_field_name_split',
+'_formatter_parser', 'capitalize', 'center', 'count', 'decode', 'encode',
+'endswith', 'expandtabs', 'find', 'format', 'index', 'isalnum', 'isalpha',
+'isdigit', 'islower', 'isspace', 'istitle', 'isupper', 'join', 'ljust',
+'lower', 'lstrip', 'partition', 'replace', 'rfind', 'rindex', 'rjust',
+'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip',
+'swapcase', 'title', 'translate', 'upper', 'zfill']
+
+By convention, object members prefixed with underscores or double underscores (such as __add__), are not meant to be accessed directly. Here's a nice helper function to only return the members/methods intended for direct access:
+>>> def mydir(myobj):
+...     return [x for x in dir(myobj) if not x.startswith("_")]
+... 
+>>> mystr = "Hello"
+>>> mydir(mystr)
+['capitalize', 'center', 'count', 'decode', 'encode', 'endswith', 'expandtabs',
+'find', 'format', 'index', 'isalnum', 'isalpha', 'isdigit', 'islower',
+'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip',
+'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit',
+'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title',
+'translate', 'upper', 'zfill']
+
+How does dir() know what to return?
+If an object provides a __dir__() method, dir() simply returns __dir__()s return value. If no __dir__()method is provided, dir() attempts to gather information about the object by examining the __dict__ attribute of the object, or examining the type of the object itself.
+Consider the following example:
+>>> class MyClass(object):
+...     def __init__(self, x, y):
+...             self.x = x
+...             self.y = y
+...     def add(self):
+...             return self.x + self.y
+...     def subtract(self):
+...             return self.x - self.y
+... 
+>>> obj = MyClass(5,7)
+>>> obj.add()
+12
+>>> obj.subtract()
+-2
+>>> dir(obj)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__',
+'__getattribute__', '__hash__', '__init__', '__module__', '__new__',
+'__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__',
+'__str__', '__subclasshook__', '__weakref__', 'add', 'subtract', 'x', 'y']
+
+Notice that dir() does not make an effort to differentiate between methods and attributes. add and x have no clear differences, and generally only trial and error combined with a bit of common-sense can be used to determine whether an object member is a method or function.
+Since we provide no __dir__() method in the class, dir() attempts to gather information about the object based upon the object's __dict__ attribute and its type.
+>>> obj.__dict__
+{'y': 7, 'x': 5}
+
+Now we examine the dir of object, which our Class is built from, and we'll see many similarities.
+>>> dir(obj)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__',
+'__getattribute__', '__hash__', '__init__', '__module__', '__new__',
+'__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__',
+'__str__', '__subclasshook__', '__weakref__', 'add', 'subtract', 'x', 'y']
+>>> dir(object)
+['__class__', '__delattr__', '__doc__', '__format__', '__getattribute__',
+'__hash__', '__init__', '__new__', '__reduce__', '__reduce_ex__', '__repr__',
+'__setattr__', '__sizeof__', '__str__', '__subclasshook__']
+
+A lot of this information isn't particularly interesting, though, as we we have been discouraged from directly accessing a majority of these members. It would be cumbersome to create the mydir() helper we made above every time we opened the shell.
+So let's alter our class to provide a useful __dir__ method.
+>>> class MyClass(object):
+...     def __init__(self, x, y):
+...             self.x = x
+...             self.y = y
+...     def add(self):
+...             return self.x + self.y
+...     def subtract(self):
+...             return self.x - self.y
+...     def __dir__(self):
+...             return ['add()', 'subtract()', 'x', 'y']
+...
+>>> obj = MyClass(5,7)
+>>> dir(obj)
+['add()', 'subtract()', 'x', 'y']
+
+The result of this dir() has much less noise, clearly indicates what is a method and what is an attribute, an consequently would prove much more enjoyable to use when debugging over the default list seen earlier.
+However, if we were to add methods or attributes to MyClass, we would have to make sure the __dir__()method is updated every time. It's extremely easy for small matters like these to be forgotten. Here is a fun little recipe for useful, dynamic dir() lists:
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+	class Class(object):
+   def __dir__(self):
+       attributes = self.__dict__.keys()
+       nounderscore = filter(lambda x: not x.startswith("_"), dir(self.__class__))
+       methods = filter(lambda x: callable(getattr(self, x)), nounderscore)
+       for i,m in enumerate(methods):
+           methods[i] = m + "()"
+           nounderscore.remove(m)
+
+       # We add the remaining nounderscore's in case they didn't show up in
+       # the __dict__. We also group methods and attributes together for
+       # readability.
+       dirlist = [{"methods":methods}, {"attributes": attributes+nounderscore}]
+       return dirlist
+
+class MyClass(Class):
+   some_class_variable = True
+
+   def __init__(self, x, y):
+       self.x = x
+       self.y = y
+
+   def add(self):
+       return self.x + self.y
+
+   def subtract(self):
+       return self.x - self.y
+
+obj = MyClass(5,7)
+print(dir(obj))
+
+	raw source | show output ⇓
+dir() with no arguments
+Executing dir() with no arguments invokes different behavior. It will return a list of all the variables in the current local scope.
+Suppose we start a new interactive Python session. We can see the result of dir() change as we add more variables.
+~$ python
+Python 2.7.3 (default, Sep 26 2012, 21:51:14)
+[GCC 4.7.2] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> dir()
+['__builtins__', '__doc__', '__name__', '__package__']
+>>> mystr = "Hello"
+>>> dir()
+['__builtins__', '__doc__', '__name__', '__package__', 'mystr']
+>>> class MyClass(object):
+...     pass
+... 
+>>> dir()
+['MyClass', '__builtins__', '__doc__', '__name__', '__package__', 'mystr']
+
+
+
+
+
+	divmod()
+	Return a pair of numbers consisting of quotient and remainder when using integer division.
+
+
+Returns the quotient and remainder when dividing the number a by the number b.
+>>> a = 5
+>>> b = 2
+>>> divmod(a,b)
+(2, 1)
+>>> q,r = divmod(a,b)
+>>> q
+2
+>>> r
+1
+>>> a == b*q+r
+True
+
+Here's an example using floating point numbers:
+>>> a = 15.64
+>>> b = 4.63
+>>> divmod(a,b)
+(3.0, 1.7500000000000009)
+>>> q,r = divmod(a,b)
+>>> a == b*q+r
+True
+
+And here's the classic Euclidean algorithm for computing the greatest common divisor between two integers.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+	def euclid(a, b):
+   '''
+    Find the gcd of a and b (with a >= b)
+    '''
+   q,r = divmod(a,b)
+   while r != 0:
+       a = b
+       b = r
+       q,r = divmod(a,b)
+   return b
+
+print(euclid(25, 120))
+print(euclid(18, 81))
+	
+
+	enumerate(iterable, start=0)
+	Return an enumerate object.
+>>> seasons = ['Spring', 'Summer', 'Fall', 'Winter']
+>>> list(enumerate(seasons))
+[(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')]
+>>> list(enumerate(seasons, start=1))
+[(1, 'Spring'), (2, 'Summer'), (3, 'Fall'), (4, 'Winter')]
+Equivalent to:
+def enumerate(sequence, start=0):
+   n = start
+   for elem in sequence:
+       yield n, elem
+       n += 1
+
+
+	eval()
+	The argument is parsed and evaluated as a Python expression.
+
+
+>>> eval('5+5')
+10
+>>> y = eval('3*3')
+>>> y
+9
+You can use variables in an eval expression.
+>>> x = 10
+>>> y = eval('x+15')
+>>> y
+25
+
+
+	exec()
+	Dynamic execution of Python code.
+	filter()
+	Construct an iterator from elements of iterable for which function returns true.
+	float()
+	Convert a string or a number to floating point.
+	format()
+	Convert a value to a "formatted" representation.
+	frozenset()
+	Return a new frozenset object.
+	getattr()
+	Return the value of the named attribute of an object.
+	globals()
+	Return a dictionary representing the current global symbol table.
+	hasattr()
+	Return True if the name is one of the object's attributes.
+	hash()
+	Return the hash value of the object.
+	help()
+	Invoke the built-in help system.
+	hex()
+	Convert an integer number to a hexadecimal string.
+	id()
+	Return the "identity" of an object.
+	input()
+	Reads a line from input, converts it to a string (stripping a trailing newline), and returns that.
+	int()
+	Convert a number or string to an integer.
+	isinstance()
+	Return True if the object argument is an instance.
+	issubclass()
+	Return True if class is a subclass.
+	iter()
+	Return an iterator object.
+	len()
+	Return the length (the number of items) of an object.
+
+
+>>> s = "Python"
+>>> len(s)
+6
+>>> lst = [1, 2, 3]
+>>> len(lst)
+3
+>>> d = {"a":"b", "c":"d", "e":"f"}
+>>> len(d)
+3
+
+
+	list()
+	Return a list.
+	locals()
+	Update and return a dictionary representing the current local symbol table.
+	map()
+	Return an iterator that applies function to every item of iterable, yielding the results.
+	max()
+	Return the largest item in an iterable.
+
+
+>>> lst = [16, 32, 8, 64, 2, 4]
+>>> max(lst)
+64
+>>> lst = ['one', 'two', 'three']
+>>> max(lst)
+'two'
+>>> max(42, 76, 35)
+76
+>>> max(1, 2, "three")
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+TypeError: unorderable types: str() > int()
+
+
+	memoryview()
+	Return a "memory view" object created from the given argument.
+	min()
+	Return the smallest item in an iterable.
+
+
+>>> lst = [16, 32, 8, 64, 2, 4]
+>>> min(lst)
+2
+>>> lst = ['one', 'two', 'three']
+>>> min(lst)
+'one'
+>>> min(42, 76, 35)
+35
+>>> min(1, 2, 'three')
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+TypeError: unorderable types: str() > int()
+
+
+	next()
+	Retrieve the next item from the iterator.
+	object()
+	Return a new featureless object.
+	oct()
+	Convert an integer number to an octal string.
+	open()
+	Open file and return a corresponding file object.
+	ord()
+	Return an integer representing the Unicode.
+>>> alphabet = 'ABCDEFGH'
+>>> for letter in alphabet:
+...   print(ord(letter), letter)
+65 A
+66 B
+67 C
+68 D
+69 E
+70 F
+71 G
+72 H
+
+
+	pow()
+	pow(x, y[, z]) returns x to the power y. If a third argument z is given, then the result is reduced modulo z (then you get the remainder after dividing (xraised to the power y) by z).
+
+
+>>> pow(2, 2)
+4
+>>> pow(2, 3)
+8
+>>> pow(2, 4)
+16
+>>> for i in range(5, 12):
+...    print(pow(2, i), pow(2, i, 100))
+...
+32 32
+64 64
+128 28
+256 56
+512 12
+1024 24
+2048 48
+
+
+
+
+
+	print()
+	Print objects to the stream.
+	property()
+	Return a property attribute.
+	range()
+	Return an iterable sequence.
+	repr()
+	Return a string containing a printable representation of an object.
+	reversed()
+	Return a reverse iterator.
+>>> lst = [1, 2, 3]
+>>> reversed(lst)
+<list_reverseiterator object at 0x01E4DC70>
+>>> for i in reversed(lst):
+>>>   print(i)
+3
+2
+1
+
+
+
+
+
+	round()
+	Return the rounded floating point value.
+
+
+>>> round(33.5)
+34
+>>> round(33.3333333333, 2)
+33.33
+
+
+	set()
+	Return a new set object.
+	setattr()
+	Assigns the value to the attribute.
+	slice()
+	Return a slice object.
+	sorted()
+	Return a new sorted list.
+
+
+>>> numbers = [3, 1, 6, 7, 1100, 10]
+>>> sorted(numbers)
+[1, 3, 6, 7, 10, 1100]
+>>> t = ['Beta','beta','alpha','Alpha']
+>>> sorted(t)
+['Alpha', 'Beta', 'alpha', 'beta']
+
+
+	staticmethod()
+	Return a static method for function.
+	str()
+	Return a str version of object.
+	sum()
+	Sums the items of an iterable from left to right and returns the total.
+
+
+>>> s = {1, 2, 3}
+>>> sum(s)
+6
+>>> lst = ['Python','is','fun']
+>>> sum(lst)
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+
+
+>>> lst = ['Python','is','fun!']
+>>> ' '.join(lst)
+'Python is fun!'
+
+
+	super()
+	Return a proxy object that delegates method calls to a parent or sibling class.
+	tuple()
+	Return a tuple
+	type()
+	Return the type of an object.
+	vars()
+	Return the __dict__ attribute for a module, class, instance, or any other object.
+	zip()
+	Make an iterator that aggregates elements from each of the iterables.
+
+
+>>> lst_1 = ['Python','is','fun']
+>>> lst_2 = [1000, 2000, 3000]
+>>> lst_3 = [10, 9, 8, 7, 6, 5]
+>>> list(zip(lst_1, lst_2))
+[('Python', 1000), ('is', 2000), ('fun', 3000)]
+>>> list(zip(lst_1, lst_2, lst_3))
+[('Python', 1000, 10), ('is', 2000, 9), ('fun', 3000, 8)]
+
+
+	__import__()
+	This function is invoked by the import statement.
