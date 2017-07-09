@@ -1,0 +1,336 @@
+Enable EPEL Repository in RHEL/CentOS 7/6/5:
+## RHEL/CentOS 7 64-Bit ##
+# wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
+# rpm -ivh epel-release-7-9.noarch.rpm
+
+## RHEL/CentOS 6 32-Bit ##
+# wget http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+# rpm -ivh epel-release-6-8.noarch.rpm
+
+
+## RHEL/CentOS 6 64-Bit ##
+# wget http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+# rpm -ivh epel-release-6-8.noarch.rpm
+
+https://www.tecmint.com/how-to-enable-epel-repository-for-rhel-centos-6-5/
+
+
+
+Aws:
+
+EC2:
+Create:
+
+ubuntu:
+aws ec2 run-instances --image-id ami-e94e5e8a --instance-type t2.micro --subnet-id  subnet-40849637 --associate-public-ip-address --security-group-ids sg-d43b14b3 --key-name ahmad_key
+
+Redhat:
+aws ec2 run-instances --image-id ami-9a3322f9 --instance-type t2.micro --subnet-id  subnet-40849637 --associate-public-ip-address --security-group-ids sg-d43b14b3 --key-name ahmad_key
+
+Amazon ami:
+aws ec2 run-instances --image-id ami-10918173 --instance-type t2.micro --subnet-id  subnet-40849637 --associate-public-ip-address --security-group-ids sg-d43b14b3 --key-name ahmad_key
+
+
+Stop:
+
+aws ec2 stop-instances --instance-ids i-058ca9fd801f3291f
+
+
+Start:
+
+aws ec2 start-instances --instance-ids i-058ca9fd801f3291
+
+
+Edit:
+
+
+Delete:
+
+aws ec2 terminate-instances --instance-ids i-058ca9fd801f3291f
+Nginx: 
+
+Reversed proxy:
+--------------------
+
+
+events {}
+
+
+
+http{
+        include mime.types;
+
+        server {
+                listen 80;
+                server_name www.turzza.com;
+#               root /sites/;
+                
+                location / {
+                
+                        proxy_pass 'http://localhost:8000/';
+         
+                }
+                
+                location /b {
+                        proxy_pass 'http://localhost:8080/';
+                }
+
+        
+        }
+        server {
+                listen 80;
+                server_name www.cloudexpert.guru;
+                root /site2/;           
+          
+         
+                location /greet {
+                        return 200 'this is location block';
+                }
+
+
+
+Load balancer:
+
+events {}
+
+
+
+http{
+        include mime.types;
+
+        upstream my_server {
+                server localhost;
+                server localhost:8000;
+                server localhost:8080;
+        }
+          
+         
+        server {
+                listen 80; 
+                server_name www.turzza.com;
+                root /sites/;           
+                
+                location / {
+
+                        proxy_pass 'http://my_server/';
+    
+                }
+                
+#               location /b {
+#                       proxy_pass 'http://localhost:8080/';
+#               }
+    
+
+        }
+
+
+Sticky load balancer:
+
+events {}
+
+
+
+http{
+        include mime.types;
+
+        upstream my_server {
+                ip_hash;
+    server localhost;
+                server localhost:8000;
+                server localhost:8080;
+        }
+          
+         
+        server {
+                listen 80; 
+                server_name www.turzza.com;
+                root /sites/;           
+                
+                location / {
+
+                        proxy_pass 'http://my_server/';
+    
+                }
+                
+#               location /b {
+#                       proxy_pass 'http://localhost:8080/';
+#               }
+    
+
+        }
+Least connection:
+
+events {}
+
+
+
+http{
+        include mime.types;
+
+        upstream my_server {
+	    least_conn;
+                server localhost;
+                server localhost:8000;
+                server localhost:8080;
+        }
+          
+         
+        server {
+                listen 80; 
+                server_name www.turzza.com;
+                root /sites/;           
+                
+                location / {
+
+                        proxy_pass 'http://my_server/';
+    
+                }
+                
+#               location /b {
+#                       proxy_pass 'http://localhost:8080/';
+#               }
+    
+
+        }
+
+
+MariaDB :
+
+Server config:
+   1  yum update -y
+    2  yum groupinstall mariadb mariadb-client
+   
+    7  vi /etc/my.cnf  →   add bind-address=private ip add to my.cnf
+   
+    9  systemctl enable mariadb
+   
+   11  systemctl start mariadb
+   
+   16  systemctl status mariadb.service
+   17  mysql_secure_installation
+   18  systemctl restart mariadb
+   19  mysql -u root -p
+  
+   22  yum install firewalld
+   23  firewall-cmd --permanent --add-service=mysql
+ 
+   25  service  firewalld start
+   26  firewall-cmd --permanent --add-service=mysql →  to add mysql 3306 port to allow incoming traffic
+   
+   28  firewall-cmd --reload
+  
+   →   ss -tulpin | grep mysql → this command show that this ip address is listening port 3306
+   
+From another server
+→ yum groupinstall mariadb mariadbclient -y
+ →  telnet 172.31.32.210 3306 here ip adress is server ip addr
+→ mysql -h 172.31.32.210 -u root -p
+→ it shows i am not allow to login by host
+To make it allow we nned to go to server and log in by root user follow steps:
+→ mysql -u root -p
+→ grant all on *.* to root@'172.31.35.79' identified by → 'redhat'; here ip addr is remote server ip addr and redhat is password
+→ flush privileges;
+GRANT ALL PRIVILEGES ON *.* TO 'ss'@'localhost' IDENTIFIED BY 'root';
+To create users
+→ we can access from remote server
+→ mysql -h 172.31.32.210 -u root -p
+
+→ now we need to add 
+→ vi /etc/my.cnf → skip-networking=1
+To allow only local server connection
+
+
+Back up databases:
+
+→ mysqldump -u root -p database_name > backup.sql
+→ mysqldump -u root -p --databases db1 db2 > baup.sql
+→ mysqldump -u root -p --all-databases> db.sql
+
+Restoring databases:
+
+When we restore databsae that time same name of databes have to be present
+→ mysql -u root -p dbname < backup.sql
+
+
+Lamp for Amazon ami:
+
+yum install -y httpd24 php56 php56-mysqlnd
+Or [ yum install -t httpd24 php70 mysql56-server php70-mysqlnd ]
+
+
+Lamp for RHEL:
+yum install httpd mariadb-server mariadb php php-mysql
+
+Lamp for Ubuntu:
+
+sudo apt-get install php7.0 php-pear libapache2-mod-php7.0 php7.0-mysql -y
+sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql -y
+
+
+
+
+
+#! /bin/bash
+    sudo yum install wget -y
+    sudo wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
+    sudo  rpm -ivh epel-release-7-9.noarch.rpm
+    sudo yum update -y
+    sudo yum install -y httpd24 php56 php56-mysqlnd
+
+Or [ yum install -t httpd24 php70 mysql56-server php70-mysqlnd ]
+  
+   sudo service httpd start
+    sudo chkconfig httpd on
+echo “<php phpinfo(); ?>” > /var/www/html/phpinfo.php
+    sudo groupadd www
+    sudo usermod -a -G www ec2-user
+    #exit
+    #groups
+    sudo chown -R root:www /var/www
+    sudo chmod 2775 /var/www
+    find /var/www -type d -exec sudo chmod 2775 {} +
+    find /var/www -type f -exec sudo chmod 0664 {} +
+    cd /var/www
+    mkdir inc
+    cd inc
+    #vi dbinfo.inc
+    <?php
+        define('DB_SERVER', 'mysql123.cxcnjw4tc2pl.ap-southeast-2.rds.amazonaws.com');
+        define('DB_USERNAME', 'mysql123');
+        define('DB_PASSWORD', 'mysql123');
+        define('DB_DATABASE', 'mysql123');
+    ?> > dbinfo.inc
+   cd /var/www/html
+   #vi SamplePage.php
+   > SamlePage.php
+
+Lamp for ubuntu:
+
+sudo apt-get update
+sudo apt-get install apache2 -y
+service apache2 status
+sudo apt-get install mysql-server -y
+sudo apt-get install php7.0 php-pear libapache2-mod-php7.0 php7.0-mysql -y
+vi /etc/apache2/mods-enabled/dir.conf
+service apache2 restart
+sudo service apache2 restart
+sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql -y
+sudo service apache2 restart
+cd /var/www
+sudo mkdir inc
+cd inc/
+vi dbinfo.inc
+sudo vi dbinfo.inc
+cd /var/www/html
+sudo vi SamplePage.php
+
+
+
+Ssl: 
+Yum install -y mod24_ssl
+Service httpd restart
+
+
+
+
+
