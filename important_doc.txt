@@ -333,4 +333,28 @@ Service httpd restart
 
 
 
+PHP And OctoberCMS Installation:
+
+
+→ apt-get update
+ 
+
+→  apt-get install unzip    
+→ apt-get install  php7.0-curl php7.0-json php7.0-cgi php7.0 libapache2-mod-php7.0 php7.0-mcrypt php7.0-gd php7.0-mbstring php7.0-zip
+
+#php7.0-mysql
+
+→ wget http://octobercms.com/download -O octobercms.zip
+→ unzip octobercms.zip -d /var/www/html/octobercms/
+
+→ chown -R www-data:www-data /var/www/html/octobercms/
+→ chmod -R 755 /var/www/html/octobercms/
+
+  
+  
+→ curl -sS https://getcomposer.org/installer | php
+→ sudo mv composer.phar /usr/local/bin/composer
+
+→ service apache2 restart
+
 
